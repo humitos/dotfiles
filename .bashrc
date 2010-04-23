@@ -84,11 +84,6 @@ if [ -x /usr/bin/dircolors ]; then
     eval "`dircolors -b`"
     alias ls='ls --color=auto'
     alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    #alias grep='grep --color=auto'
-    #alias fgrep='fgrep --color=auto'
-    #alias egrep='egrep --color=auto'
 fi
 
 # some more ls aliases
@@ -96,10 +91,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias humitos='ssh -p 443 humitos@10.0.0.5'
-#alias cultura='ssh root@2384833.arnetdyn.com.ar'
 alias mydiff='svn diff | colordiff | less -R'
-#alias timssh='ssh -X -C -L 8888:localhost:5900 timgoetz@173.14.201.230'
-#alias timvnc='xtightvncviewer localhost::8888 -bgr233 -quality 1 -depth 4'
 alias actualizar_apt='sudo apt-get update && sudo apt-get --download-only -y upgrade && sudo apt-get --download-only -y dist-upgrade'
 
 #export PYTHONSTARTUP=/home/humitos/.pythonrc.py
