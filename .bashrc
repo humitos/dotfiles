@@ -123,6 +123,7 @@ has_virtualenv() {
         workon `cat .venv`
     fi
 }
+
 venv_cd () {
     cd "$@" && has_virtualenv
 }
