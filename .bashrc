@@ -16,8 +16,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 . ~/.shell/aliases
-. ~/.shell/functions
 . ~/.shell/variables
+. ~/.shell/functions
 
 # bash completion
 for f in $HOME/.shell/completion.d/*; do
