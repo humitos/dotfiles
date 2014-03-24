@@ -1,0 +1,1 @@
+PYTHONPATH=/home/humitos/Source/icaro python -c "import carga; carga.compilar_pic('main', 'sdcc') ; carga.upload_pic('main', 'sdcc')"
