@@ -8,6 +8,6 @@ set visible-stats on
 set completion-ignore-case on
 
 # no limit in history
-set history-size 0
+# set history-size 0
 
 $include  /etc/inputrc
