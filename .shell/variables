@@ -1,0 +1,66 @@
+# don't put duplicate lines or lines starting with space in the
+# history.
+export HISTCONTROL=ignoreboth
+
+export HISTSIZE=5000
+export HISTFILESIZE=9000
+export HISTFILE=~/.histfile
+export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g"
+
+export LESS="-R"
+
+# For OpenOffice to look more gtk-friendly
+export OOO_FORCE_DESKTOP=gnome
+
+# virtualenvwrapper configuration
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Source
+
+# Python "pip" configurations
+export PIP_DOWNLOAD_CACHE=~/.pip
+export PIP_FIND_LINKS=file://$HOME/.pip/packages
+export PIP_WHEEL_DIR=$PIP_FIND_LINKS
+export PIP_USE_WHEEL=1
+
+# useful to cd into a directory without writting the whole path
+export CDPATH=.:~/Source
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "$TERM" in
+    xterm) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+#force_color_prompt=yes
+
+if [ -n "$force_color_prompt" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+	# We have color support; assume it's compliant with Ecma-48
+	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+	# a case would tend to support setf rather than setaf.)
+	color_prompt=yes
+    else
+	color_prompt=
+    fi
+fi
+
+if [ "$color_prompt" = yes ]; then
+    STARTCOLOR="\e[1;32m"
+    ENDCOLOR="\e[0m"
+    PS1="[\A] (\!) \u: \[$STARTCOLOR\]\W\[$ENDCOLOR\]> "
+else
+    PS1="\u@\h:\w\$ "
+fi
+unset color_prompt force_color_prompt
+
+
+export BROWSER=firefox
+
+shopt -s histappend # Append history instead of overwriting
+shopt -s cdspell # Correct minor spelling errors in cd command
+# shopt -s dotglob # includes dotfiles in pathname expansion
+shopt -s checkwinsize # If window size changes, redraw contents
+shopt -s cmdhist # Multiline commands are a single command in history.
+shopt -s extglob # Allows basic regexps in bash.

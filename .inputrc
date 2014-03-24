@@ -1,0 +1,6 @@
+# only require 1 <Tab> to see ambiguous listings
+set show-all-if-ambiguous on
+
+# result in a character being appended to any file-names returned by
+# completion
+set visible-stats on

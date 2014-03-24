@@ -1,11 +1,23 @@
+[core]
+    editor = "emacs -nw --quick"
+
 [color]
 	diff = auto
 	ui = auto
+
 [sendemail]
+	chainreplyto = false
+	from = Manuel Kaufmann <humitos@gmail.com>
+	smtpserver = smtp.gmail.com
+	smtpuser = humitos@gmail.com
+	smtpserverport = 587
+	smtpencryption = tls
 	confirm = auto
+
 [user]
 	name = Manuel Kaufmann
 	email = humitos@gmail.com
+
 [pager]
 	log = diff-highlight | less
 	show = diff-highlight | less
@@ -21,3 +33,5 @@
 [alias]
 	ci = commit
 	st = status -s
+[push]
+	default = simple
