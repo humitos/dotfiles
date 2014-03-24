@@ -4,3 +4,5 @@ set show-all-if-ambiguous on
 # result in a character being appended to any file-names returned by
 # completion
 set visible-stats on
+
+$include  /etc/inputrc
