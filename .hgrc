@@ -1,3 +1,55 @@
 [ui]
+# Name data to appear in commits
 username = Manuel Kaufmann <humitos@gmail.com>
-verbose = True
+editor = emacs -nw --quick
+
+[diff]
+git = True
+
+[extensions]
+color =
+pager =
+record =
+
+[pager]
+pager = LESS='FRX' less
+
+[color]
+# valid modes are win32, ansi, auto, off
+mode = auto
+
+status.modified = magenta
+status.added = green
+status.removed = red
+status.deleted = cyan
+status.unknown = blue
+status.ignored = black
+
+
+# status.modified = blue bold underline red_background
+# status.modified = blue bold
+# status.added = green bold
+# status.removed = red bold
+# status.deleted = cyan bold underline
+# status.deleted = cyan bold
+# status.unknown = magenta bold underline
+# status.unknown = magenta bold
+# status.ignored = black bold
+
+qseries.applied = blue bold underline
+qseries.unapplied = black bold
+qseries.missing = red bold
+
+diff.diffline = bold
+diff.extended = cyan bold
+diff.file_a = red bold
+diff.file_b = green bold
+diff.hunk = magenta
+diff.deleted = red
+diff.inserted = green
+diff.changed = white
+diff.trailingwhitespace = bold red_background
+
+[alias]
+__mystatus = status
+st = !hg __mystatus $($HG root) $HG_ARGS
