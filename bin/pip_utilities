@@ -4,4 +4,5 @@ pip install --upgrade \
     ipdb \
     ipython \
     django-debug-toolbar \
+    fabric-virtualenv \
     djcmd
