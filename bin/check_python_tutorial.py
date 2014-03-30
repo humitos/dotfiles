@@ -5,7 +5,7 @@
 
 # This script checks if there is a newer tag than the specified in CURRENT_TAG
 
-import conf
+import sys
 import smtplib
 import feedparser
 import urllib
@@ -13,7 +13,7 @@ import urllib
 from email.mime.text import MIMEText
 
 TAGS_URL = 'http://hg.python.org/cpython/tags'
-CURRENT_TAG = 'v3.4.0rc1'
+CURRENT_TAG = 'v3.4.0'
 ATOM_URL = 'http://hg.python.org/cpython/atom-tags'
 
 rss = feedparser.parse(ATOM_URL)
@@ -22,10 +22,12 @@ tags = rss['entries'][:5]
 
 def send_mail(tag, bz2_url, rev):
     # Send an email to my account
+    import conf
+
     text = '''Please go to {} to check it out.
 
         wget -c {}
-        tar xvf 04f714765c13.tar.bz2 -C /tmp --wildcards --no-anchored 'Doc/tutorial/*.rst'
+        tar xvf {}.tar.bz2 -C /tmp --wildcards --no-anchored 'Doc/tutorial/*.rst'
         mv /tmp/cpython-{}/Doc/tutorial/*.rst ~/Source/tutorial/original
         cd ~/Source/tutorial
         git diff
@@ -60,6 +62,16 @@ if __name__ == '__main__':
         if major != 'v3':
             continue
 
-        current_minor = CURRENT_TAG.split('.')[1]
+        current_major, current_minor, current_rest = CURRENT_TAG.split('.')
         if int(minor) > int(current_minor):
-            send_mail(py_version, bz2_url, rev)
+            print('A new tag of Python is available "{}" at {}' \
+                  .format(py_version, bz2_url))
+
+            if '--email' in sys.argv:
+                send_mail(py_version, bz2_url, rev)
+        elif int(minor) == int(current_minor):
+            if rest != current_rest:
+                print('Check yourself! It would be awesome that ' \
+                      'distutils.version handle this problem')
+                print('Your version: {} Published version: {}' \
+                      .format(CURRENT_TAG, py_version))
