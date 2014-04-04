@@ -1,14 +1,16 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # REQUIREMENTS:
 # pip install feedparser
 
 # This script checks if there is a newer tag than the specified in CURRENT_TAG
 
+import os
 import sys
 import smtplib
 import feedparser
 import urllib
+import configparser
 
 from email.mime.text import MIMEText
 
@@ -22,7 +24,11 @@ tags = rss['entries'][:5]
 
 def send_mail(tag, bz2_url, rev):
     # Send an email to my account
-    import conf
+    conf = configparser.ConfigParser()
+    try:
+        conf.read(os.path.expanduser('~/.python-tutorial-es'))
+    except IOError:
+        print('You need a config file in ~/.python-tutorial-es')
 
     text = '''Please go to {} to check it out.
 
@@ -31,16 +37,16 @@ def send_mail(tag, bz2_url, rev):
         mv /tmp/cpython-{}/Doc/tutorial/*.rst ~/Source/tutorial/original
         cd ~/Source/tutorial
         git diff
-    '''.format(TAGS_URL, bz2_url, rev)
+    '''.format(TAGS_URL, bz2_url, rev, rev)
     msg = MIMEText(text)
-    msg['From'] = conf.FROMADDR
-    msg['To'] = conf.TOADDRS
+    msg['From'] = conf.get('email', 'FROMADDR')
+    msg['To'] = conf.get('email', 'TOADDRS')
     subject = '[Python HG] There is a new tag: {tag}'.format(tag=tag)
     msg['Subject'] = subject
 
     # Credentials
-    username = conf.USERNAME
-    password = conf.PASSWORD
+    username = conf.get('email', 'USERNAME')
+    password = conf.get('email', 'PASSWORD')
 
     # The actual mail send
     server = smtplib.SMTP('smtp.gmail.com:587')
@@ -48,6 +54,14 @@ def send_mail(tag, bz2_url, rev):
     server.login(username, password)
     server.send_message(msg)
     server.quit()
+
+
+def new_version_found(py_version, bz2_url, rev):
+    print('A new tag of Python is available "{}" at {}' \
+          .format(py_version, bz2_url))
+
+    if '--email' in sys.argv:
+        send_mail(py_version, bz2_url, rev)
 
 
 if __name__ == '__main__':
@@ -64,14 +78,12 @@ if __name__ == '__main__':
 
         current_major, current_minor, current_rest = CURRENT_TAG.split('.')
         if int(minor) > int(current_minor):
-            print('A new tag of Python is available "{}" at {}' \
-                  .format(py_version, bz2_url))
-
-            if '--email' in sys.argv:
-                send_mail(py_version, bz2_url, rev)
+            new_version_found(py_version, bz2_url, rev)
         elif int(minor) == int(current_minor):
-            if rest != current_rest:
-                print('Check yourself! It would be awesome that ' \
-                      'distutils.version handle this problem')
-                print('Your version: {} Published version: {}' \
-                      .format(CURRENT_TAG, py_version))
+            # Options: a, b, rc1, rc2. We can just simply compare the
+            # strings and we will know which version is previous to
+            # the other one.
+            if rest != current_rest \
+               and rest[0] != current_rest[0] \
+               and rest[1:] > current_rest[1:]:
+                    new_version_found(py_version, bz2_url, rev)
