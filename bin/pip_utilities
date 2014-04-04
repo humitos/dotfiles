@@ -1,8 +1,9 @@
 #!/bin/bash
 
-pip install --upgrade --use-wheel \
+pip install --use-wheel \
     ipdb \
     ipython \
     django-debug-toolbar \
+    fabric \
     fabric-virtualenv \
     dj-cmd
