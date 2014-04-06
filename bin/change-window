@@ -1,0 +1,34 @@
+#!/usr/bin/env python
+
+import os
+import sys
+import commands
+
+LIST_WINDOWS = 'wmctrl -l | grep -i {} | grep -v grep | tail -n 1'
+CHANGE_WINDOW = 'wmctrl -i -a {}'
+COMMANDS_TO_NAME = {
+    'thunar': 'archivos',
+    'xfce4-terminal': 'Terminal',
+    'pidgin': '"Lista de amigos"',
+}
+
+
+
+def get_window_id(command):
+    output = commands.getoutput(LIST_WINDOWS.format(command))
+    print output
+    win_id = output.split(' ')[0]
+    print repr(win_id)
+    return win_id
+
+def main():
+    program = sys.argv[1]
+    title = COMMANDS_TO_NAME.get(program, program)
+    win_id = get_window_id(title)
+    if win_id != '':
+        os.system(CHANGE_WINDOW.format(win_id))
+    else:
+        os.system(program)
+
+if __name__ == '__main__':
+    main()
