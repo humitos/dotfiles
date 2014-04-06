@@ -13,4 +13,4 @@ Installation
 Needed packages
 ===============
 
-    sudo apt-get install xtitle python-virtualenv virtualenvwrapper git curl
+    sudo apt-get install xtitle python-virtualenv virtualenvwrapper git curl wmctrl
