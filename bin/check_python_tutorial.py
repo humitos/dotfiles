@@ -11,6 +11,7 @@ import smtplib
 import feedparser
 import urllib
 import configparser
+import subprocess
 
 from email.mime.text import MIMEText
 
@@ -22,6 +23,21 @@ rss = feedparser.parse(ATOM_URL)
 tags = rss['entries'][:5]
 
 
+def download_uncompress_create_diff(bz2_url, rev):
+    c = 'wget -c {}'.format(bz2_url)
+    output = subprocess.check_output(c, shell=True)
+    c = 'tar xvf {}.tar.bz2 -C /tmp --wildcards --no-anchored \'Doc/tutorial/*.rst\''.format(rev)
+    output = subprocess.check_output(c, shell=True)
+    c = 'mv /tmp/cpython-{}/Doc/tutorial/*.rst ~/src/tutorial/original'.format(rev)
+    output = subprocess.check_output(c, shell=True)
+    c = 'cd ~/src/tutorial && git diff'
+    output = subprocess.check_output(c, shell=True)
+    c = 'cd ~/src/tutorial && git reset --hard origin/master'
+    subprocess.check_output(c, shell=True)
+
+    return output
+
+
 def send_mail(tag, bz2_url, rev):
     # Send an email to my account
     conf = configparser.ConfigParser()
@@ -30,14 +46,20 @@ def send_mail(tag, bz2_url, rev):
     except IOError:
         print('You need a config file in ~/.python-tutorial-es')
 
-    text = '''Please go to {} to check it out.
+    text = \
+'''Please go to {} to check it out.
 
         wget -c {}
         tar xvf {}.tar.bz2 -C /tmp --wildcards --no-anchored 'Doc/tutorial/*.rst'
         mv /tmp/cpython-{}/Doc/tutorial/*.rst ~/Source/tutorial/original
         cd ~/Source/tutorial
         git diff
-    '''.format(TAGS_URL, bz2_url, rev, rev)
+
+------------------
+
+{}
+
+    '''.format(TAGS_URL, bz2_url, rev, rev, download_uncompress_create_diff)
     msg = MIMEText(text)
     msg['From'] = conf.get('email', 'FROMADDR')
     msg['To'] = conf.get('email', 'TOADDRS')
