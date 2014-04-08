@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+
+# https://github.com/whiteinge/dotfiles/blob/master/.pythonrc.py
+
 """Best goddamn .pythonrc file in the whole world.
 
 This file is executed when the Python interactive shell is started if
@@ -71,6 +74,9 @@ if os.path.exists(HISTFILE):
 
 # Set maximum number of items that will be written to the history file
 readline.set_history_length(300)
+
+# http://conjurecode.com/enable-auto-complete-in-python-interpreter/
+readline.parse_and_bind('tab:complete')
 
 def savehist():
     readline.write_history_file(HISTFILE)
