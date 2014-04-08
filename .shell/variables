@@ -72,3 +72,5 @@ shopt -s extglob # Allows basic regexps in bash.
 PROMPT_COMMAND='xtitle ${USER}@${HOSTNAME}: `basename ${PWD}`'
 
 export PYTHONSTARTUP=~/.pythonrc.py
+
+export EDITOR="emacs --quick -nw"
