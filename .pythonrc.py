@@ -53,8 +53,7 @@ class TermColors(dict):
     )
 
     NoColor = ''
-    _base  = '\001\033[%sm\002'
-
+    _base  = '\033[%sm'
     def __init__(self):
         if os.environ.get('TERM') in ('xterm-color', 'xterm-256color', 'linux',
                                     'screen', 'screen-256color', 'screen-bce'):
