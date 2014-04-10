@@ -7,10 +7,12 @@
 r=runserver
 rp=runserver_plus
 
-sh=shell
+s=shell
 sp=shell_plus
 
 cs=collectstatic --noinput
+
+sdb=syncdb --noinput
 
 m=migrate
 sma=schemamigration --auto
