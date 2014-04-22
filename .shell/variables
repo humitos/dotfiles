@@ -73,4 +73,6 @@ PROMPT_COMMAND='xtitle ${USER}@${HOSTNAME}: `basename ${PWD}`'
 
 export PYTHONSTARTUP=~/.pythonrc.py
 
-export EDITOR="emacs --quick -nw"
+export ALTERNATE_EDITOR=emacs
+export EDITOR=emacsclient
+export VISUAL=emacsclient
