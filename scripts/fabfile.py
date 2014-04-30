@@ -10,12 +10,13 @@
 # settings for the django instance and be able to use the following
 # information (I put these settings in my local_settings.py):
 #
-# import os
+# import os, datetime
 # FABRIC_COLORIZE_ERRORS = True
 # FABRIC_SHELL = '/usr/local/bin/bash -l -c'
 # FABRIC_USER = 'example'
-# FABRIC_HOSTS = 'example.com'
-# FABRIC_SQL_DUMP_FILENAME = 'example'
+# FABRIC_HOSTS = ['example.com']
+# FABRIC_SQL_DUMP_FILENAME = '%s_%s.sql.gz' % (
+#     'cascade', datetime.date.today().strftime('%Y%m%d'))
 # FABRIC_PROJECT = '/home/example/example-project'
 # FABRIC_VENV = os.path.join(FABRIC_PROJECT, 'env')
 # FABRIC_DB_USER = DATABASES['default']['USER']
@@ -60,11 +61,12 @@ if USE_DJANGO_SETTINGS:
 
 
 def deploy():
+    db_dump()
     git_pull()
     run_migrations()
-    run_collectstatic()
-    run_loadflatpages()
-    run_loaddbtemplates()
+    # run_collectstatic()
+    # run_loadflatpages()
+    # run_loaddbtemplates()
     restart_uwsgi()
 
 
@@ -110,15 +112,12 @@ def run_loaddbtemplates():
 
 
 def db_dump():
-    today = datetime.date.today()
-    filename = '%s_%s.sql.gz' % (env.sql_dump_filename, today.strftime('%Y%m%d'))
-
     # uses ~/.pgpass to get the password
     # hostname:port:database:username:password
     # you can use wildcards also
     run('pg_dump -h %s -p %s -U %s --no-password %s | gzip > %s' %
-        (env.db_host, env.db_port, env.db_user, env.db_name, os.path.join('/tmp', filename)))
-    get(os.path.join('/tmp', filename), filename)
+        (env.db_host, env.db_port, env.db_user, env.db_name, os.path.join('/tmp', env.sql_dump_filename)))
+    get(os.path.join('/tmp', env.sql_dump_filename), env.sql_dump_filename)
 
 
 def production_settings():
