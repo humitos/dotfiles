@@ -9,15 +9,15 @@
 # get_django_settings() is called at the begginig to get all the
 # settings for the django instance and be able to use the following
 # information (I put these settings in my local_settings.py):
-#
+
 # import os, datetime
 # FABRIC_COLORIZE_ERRORS = True
 # FABRIC_SHELL = '/usr/local/bin/bash -l -c'
 # FABRIC_USER = 'example'
 # FABRIC_HOSTS = ['example.com']
 # FABRIC_SQL_DUMP_FILENAME = '%s_%s.sql.gz' % (
-#     'cascade', datetime.date.today().strftime('%Y%m%d'))
-# FABRIC_PROJECT = '/home/example/example-project'
+#     FABRIC_USER, datetime.date.today().strftime('%Y%m%d'))
+# FABRIC_PROJECT = '/home/%(user)s/%(user)s-commute-challenge' % {'user': FABRIC_USER}
 # FABRIC_VENV = os.path.join(FABRIC_PROJECT, 'env')
 # FABRIC_DB_USER = DATABASES['default']['USER']
 # FABRIC_DB_NAME = DATABASES['default']['NAME']
@@ -61,7 +61,7 @@ if USE_DJANGO_SETTINGS:
 
 
 def deploy():
-    db_dump()
+    # db_dump()
     git_pull()
     run_migrations()
     # run_collectstatic()
