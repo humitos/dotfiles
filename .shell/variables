@@ -71,7 +71,8 @@ shopt -s extglob # Allows basic regexps in bash.
 # set window title at start
 PROMPT_COMMAND='xtitle ${USER}@${HOSTNAME}: `basename ${PWD}`'
 
-export PYTHONSTARTUP=~/.pythonrc.py
+# use jedi for autocompletion (sudo pip install jedi)
+export PYTHONSTARTUP="$(python -m jedi repl)"
 
 export ALTERNATE_EDITOR=emacs
 export EDITOR=emacsclient
