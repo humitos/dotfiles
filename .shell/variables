@@ -18,7 +18,7 @@ export PROJECT_HOME=$HOME/Source
 
 # Python "pip" configurations
 export PIP_DOWNLOAD_CACHE=~/.pip
-export PIP_FIND_LINKS=file://$HOME/.pip
+#export PIP_FIND_LINKS=file://$HOME/.pip
 export PIP_WHEEL_DIR=$PIP_FIND_LINKS
 export PIP_USE_WHEEL=1
 
