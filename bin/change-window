@@ -20,7 +20,13 @@ import commands
 
 LIST_WINDOWS = 'wmctrl -l -x | grep -i {} | grep -v grep | tail -n {}'
 CHANGE_WINDOW = 'wmctrl -i -a {}'
-
+COMMANDS_TO_WMCMD = {
+    'pidgin': 'Pidgin.Pidgin',
+    'emacs': 'emacs.Emacs',
+    'thunar': 'Thunar.Thunar',
+    'xfce4-terminal': 'xfce4-terminal.Xfce4-terminal',
+    'firefox': 'Navigator.Firefox',
+}
 
 def get_window_id(command):
     # This function is horrible but it's late at night and I just want
@@ -29,7 +35,7 @@ def get_window_id(command):
         n = 2
     else:
         n = 1
-    output = commands.getoutput(LIST_WINDOWS.format(command, n))
+    output = commands.getoutput(LIST_WINDOWS.format(COMMANDS_TO_WMCMD[command], n))
     if n > 1:
         if command == 'pidgin':
             lines = output.splitlines()
