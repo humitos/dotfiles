@@ -8,16 +8,8 @@ from genshi.builder import tag
 from trac.wiki.macros import WikiMacroBase
 
 GOOGLE_CHART_API_URL = 'http://chart.apis.google.com/chart?'
-DOTPROJECT_URL = 'https://projects.machinalis.com/index.php?'
-DOTPROJECT_ARGS = {'a': 'reports',
-                   'do_report': 'submit',
-                   'log_userfilter': '11',
-                   'm': 'projects',
-                   'report_type': 'tasklogs',
-                   # 'project_id': '53',
-                   # 'log_end_date': '20101130',
-                   # 'log_start_date': '20101101',
-                   }
+GRINCH_URL = 'http://netlandish.grinchapp.com/history/'
+
 
 class CalcularHorasMacro(WikiMacroBase):
     """Simple HelloWorld macro.
@@ -40,9 +32,11 @@ class CalcularHorasMacro(WikiMacroBase):
           Note that if there are ''no'' parenthesis (like in, e.g.
           [[HelloWorld]]), then `args` is `None`.
         """
-        # import pdb;pdb.set_trace()
-        total, horas_semanas = self.get_total_hours(formatter.source)
         self.data = {}
+        self.hours = {}
+
+        total, horas_semanas = self.get_total_hours(formatter.source)
+
         for arg in args.split(', '):
             k, v  = arg.split('=')
             self.data[k] = v
@@ -50,23 +44,29 @@ class CalcularHorasMacro(WikiMacroBase):
         return self.get_html(total, horas_semanas)
 
     def get_section_hours(self, content):
-        hours = re.findall(r'(\d\d?):(\d\d)hs|(\d\d?)hs', content)
+        regex = r'(?P<hour>\d\d?)(?::(?P<minutes>\d\d))?hs( \((?P<project>[\w -]+)\))?'
+        hours = re.findall(regex, content)
+        # hours = re.findall(r'(\d\d?):(\d\d)hs|(\d\d?)hs', content)
+        # import ipdb;ipdb.set_trace()
+
         total = 0
         for h in hours:
-            if h[-1] != '':
-                # horas enteras
-                total += int(h[-1])
-            else:
+            if h[-1] not in self.hours:
+                self.hours[h[-1]] = 0
+
+            hours_to_log = int(h[0])
+            try:
                 # horas:minutos
-                total += int(h[0])
-                total += int(h[1]) / 60.0
+                minutes_to_log = int(h[1]) / 60.0
+                time_to_log = hours_to_log + minutes_to_log
+                total += time_to_log
+            except ValueError:
+                # horas enteras
+                time_to_log = hours_to_log
+                total += time_to_log
+
+            self.hours[h[-1]] += time_to_log
         return total
-        # text = ['Horas trabajadas: %.2f' % total,
-        #         'Precio en dolares (U$S%s): %.2f' % (valor_hora, total * valor_hora)]
-        # ul = tag.ul()
-        # for li in text:
-        #     ul.append(tag.li(li))
-        # return ul
 
     def get_total_hours(self, content):
         semanas = content.split('----')
@@ -86,15 +86,22 @@ class CalcularHorasMacro(WikiMacroBase):
         ul = tag.ul()
         for li in text:
             ul.append(tag.li(li))
-        #link = tag.a('@machinalis: Report Dot project', href=self._get_dotproject_report_url())
-        #ul.append(link)
+
+        if 'date' in self.data:
+            link = tag.a('@netlandish: Grinch report',
+                         href=self._get_grinch_report_url())
+            ul.append(link)
         div.append(ul)
 
         img = tag.img(src=self._get_google_chart(horas_semanas))
         div.append(img)
 
+        ul = tag.ul()
+        for project, hours in self.hours.iteritems():
+            ul.append(tag.li('{0}: {1}'.format(project.title(), hours)))
+        div.append(ul)
+
         return div
-        
 
     def _get_google_chart(self, horas_semanas):
         data = {}
@@ -110,16 +117,13 @@ class CalcularHorasMacro(WikiMacroBase):
         url = GOOGLE_CHART_API_URL + urlencode(data)
         return url
 
-    def _get_dotproject_report_url(self):
-        # 'project_id': '53',
-        # 'log_end_date': '20101130',
-        # 'log_start_date': '20101101',
-        args = copy.deepcopy(self.data)
-        del args['valor_hora']
-        args.update(DOTPROJECT_ARGS)
-        url = DOTPROJECT_URL + urlencode(args)
-        return url
-    
+    def _get_grinch_report_url(self):
+        date = self.data['date']
+        return GRINCH_URL + '?' + urlencode({
+            'start_date': date + '-01',
+            'end_date': date + '-31',
+            'submit': 'Filter+Entries'
+        })
+
     # Note that there's no need to HTML escape the returned data,
     # as the template engine (Genshi) will do it for us.
-
