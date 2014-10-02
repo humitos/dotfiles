@@ -15,6 +15,8 @@ export OOO_FORCE_DESKTOP=gnome
 # virtualenvwrapper configuration
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Source
+export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
+source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # Python "pip" configurations
 export PIP_DOWNLOAD_CACHE=~/.pip
@@ -52,7 +54,7 @@ fi
 if [ "$color_prompt" = yes ]; then
     STARTCOLOR="\e[1;32m"
     ENDCOLOR="\e[0m"
-    PS1="[\A] (\!) \u: \[$STARTCOLOR\]\W\[$ENDCOLOR\]> "
+    PS1="[\A] \u: \[$STARTCOLOR\]\W\[$ENDCOLOR\]> "
 else
     PS1="\u@\h:\w\$ "
 fi

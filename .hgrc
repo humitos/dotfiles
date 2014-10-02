@@ -10,6 +10,10 @@ git = True
 color =
 pager =
 record =
+# hggit = /usr/share/pyshared/hgext/git
+# diff_highlight =
+hgrep = /home/humitos/Source/bash-dotfiles/scripts/hgrep.py
+blame = /home/humitos/Source/bash-dotfiles/scripts/blametrail.py
 
 [pager]
 pager = LESS='FRX' less
@@ -53,3 +57,5 @@ diff.trailingwhitespace = bold red_background
 [alias]
 __mystatus = status
 st = !hg __mystatus $($HG root) $HG_ARGS
+show = log --color=always -pr
+

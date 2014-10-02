@@ -9,14 +9,13 @@ import os
 import sys
 import smtplib
 import feedparser
-import urllib
 import configparser
 import subprocess
 
 from email.mime.text import MIMEText
 
 TAGS_URL = 'http://hg.python.org/cpython/tags'
-CURRENT_TAG = 'v3.4.0'
+CURRENT_TAG = 'v3.4.2rc1'
 ATOM_URL = 'http://hg.python.org/cpython/atom-tags'
 
 rss = feedparser.parse(ATOM_URL)
@@ -59,7 +58,8 @@ def send_mail(tag, bz2_url, rev):
 
 {}
 
-    '''.format(TAGS_URL, bz2_url, rev, rev, download_uncompress_create_diff)
+    '''.format(TAGS_URL, bz2_url, rev, rev,
+               download_uncompress_create_diff(bz2_url, rev))
     msg = MIMEText(text)
     msg['From'] = conf.get('email', 'FROMADDR')
     msg['To'] = conf.get('email', 'TOADDRS')

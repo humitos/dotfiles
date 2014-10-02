@@ -33,3 +33,5 @@
 [alias]
 	ci = commit
 	st = status -s
+[push]
+	default = simple

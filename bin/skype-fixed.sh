@@ -6,4 +6,5 @@
 # Skype is not working properly in Xubuntu 14.04 LTS (no sound at all). After
 # running Skype with this configuration the issue dissappears...
 
-env PULSE_LATENCY_MSEC=30 skype
+env PULSE_LATENCY_MSEC=30 skype &
+skype-call-recorder

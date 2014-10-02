@@ -5,7 +5,7 @@ shopt -s dotglob # shows dots in file globbing
 for i in *; do
   rm $HOME/$i 2>/dev/null # remove duplicates
   
-  if [[ $i == *~ ]] 
+  if [[ $i == *~ ] | [ $i == README.md ] | [$i == scripts] ] 
   then
       echo "Excluding $i"
   else

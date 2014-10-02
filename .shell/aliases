@@ -1,4 +1,4 @@
-alias youtube-dl='~/Source/youtube-dl/youtube-dl --restrict-filenames --retries 50 --continue'
+alias youtube-dl='PYTHONPATH=$PYTHONPATH:/home/humitos/Source/youtube-dl/ ~/Source/youtube-dl/bin/youtube-dl --restrict-filenames --retries 50 --continue'
 
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -30,4 +30,4 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias e='emacsclient -nw'
+alias e='emacsclient -n'
