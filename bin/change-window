@@ -17,6 +17,17 @@ import commands
 # 0x024000ab  0 Navigator.Firefox     victoria Inbox (0) - someone@gmail.com - Gmail - Mozilla Firefox
 # 0x04200db8  0 Pidgin.Pidgin         victoria (someone@gmail.com)
 # 0x0420006a  0 Pidgin.Pidgin         victoria Lista de amigos
+# 0x03600052  0 sun-awt-X11-XFramePeer.org-openstreetmap-josm-Main  victoria Editor Java de OpenStreetMap
+# 0x03e00001  0 Google-chrome.Google-chrome  victoria Nueva pestana - Google Chrome
+
+# XFCE4 XML FILE
+# .config/xfce4/xfconf/xfce-perchannel-xml/xfce4-keyboard-shortcuts.xml
+# [...]
+#       <property name="&lt;Super&gt;a" type="string" value="/home/humitos/bin/change-window thunar"/>
+#       <property name="&lt;Super&gt;c" type="string" value="/home/humitos/bin/change-window pidgin"/>
+#       <property name="&lt;Super&gt;j" type="string" value="/home/humitos/bin/change-window josm-latest"/>
+#       <property name="&lt;Super&gt;g" type="string" value="/home/humitos/bin/change-window google-chrome"/>
+# [...]
 
 LIST_WINDOWS = 'wmctrl -l -x | grep -i {} | grep -v grep | tail -n {}'
 CHANGE_WINDOW = 'wmctrl -i -a {}'
@@ -26,6 +37,8 @@ COMMANDS_TO_WMCMD = {
     'thunar': 'Thunar.Thunar',
     'xfce4-terminal': 'xfce4-terminal.Xfce4-terminal',
     'firefox': 'Navigator.Firefox',
+    'josm-latest': 'sun-awt-X11-XFramePeer.org-openstreetmap-josm-Main',
+    'google-chrome': 'Google-chrome.Google-chrome',
 }
 
 def get_window_id(command):
