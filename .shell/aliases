@@ -31,3 +31,5 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias e='emacsclient -n'
+alias supdate='sudo apt-get update'
+alias supgrade='sudo apt-get upgrade'
