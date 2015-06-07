@@ -39,6 +39,7 @@ COMMANDS_TO_WMCMD = {
     'firefox': 'Navigator.Firefox',
     'josm-latest': 'sun-awt-X11-XFramePeer.org-openstreetmap-josm-Main',
     'google-chrome': 'Google-chrome.Google-chrome',
+    'terminator': 'terminator.Terminator',
 }
 
 def get_window_id(command):
