@@ -5,7 +5,21 @@
 
 # This script checks if there is a newer tag than the specified in CURRENT_TAG
 
+# File: ~/.python-tutorial-es
+# [email]
+
+# USERNAME = your username
+# PASSWORD = your password here
+# FROMADDR = from@address.com
+# TOADDRS = to@address.com
+
+
+# $ crontab -e
+# @weekly nice -n 19 /home/humitos/.virtualenvs/check-python-tutorial/bin/python /home/humitos/src/check_python_tutorial.py --email
+
+
 import os
+import re
 import sys
 import smtplib
 import feedparser
@@ -15,7 +29,7 @@ import subprocess
 from email.mime.text import MIMEText
 
 TAGS_URL = 'http://hg.python.org/cpython/tags'
-CURRENT_TAG = 'v3.4.2rc1'
+CURRENT_TAG = 'v3.4.3'
 ATOM_URL = 'http://hg.python.org/cpython/atom-tags'
 
 rss = feedparser.parse(ATOM_URL)
@@ -23,9 +37,9 @@ tags = rss['entries'][:5]
 
 
 def download_uncompress_create_diff(bz2_url, rev):
-    c = 'wget -c {}'.format(bz2_url)
+    c = 'wget --content-disposition -c {}'.format(bz2_url + '/Doc/tutorial/')
     output = subprocess.check_output(c, shell=True)
-    c = 'tar xvf {}.tar.bz2 -C /tmp --wildcards --no-anchored \'Doc/tutorial/*.rst\''.format(rev)
+    c = 'tar xvf cpython-{}.tar.bz2 -C /tmp --wildcards --no-anchored \'Doc/tutorial/*.rst\''.format(rev)
     output = subprocess.check_output(c, shell=True)
     c = 'mv /tmp/cpython-{}/Doc/tutorial/*.rst ~/src/tutorial/original'.format(rev)
     output = subprocess.check_output(c, shell=True)
@@ -34,7 +48,7 @@ def download_uncompress_create_diff(bz2_url, rev):
     c = 'cd ~/src/tutorial && git reset --hard origin/master'
     subprocess.check_output(c, shell=True)
 
-    return output
+    return output.decode('utf-8')
 
 
 def send_mail(tag, bz2_url, rev):
@@ -99,13 +113,15 @@ if __name__ == '__main__':
             continue
 
         current_major, current_minor, current_rest = CURRENT_TAG.split('.')
-        if int(minor) > int(current_minor):
-            new_version_found(py_version, bz2_url, rev)
-        elif int(minor) == int(current_minor):
-            # Options: a, b, rc1, rc2. We can just simply compare the
-            # strings and we will know which version is previous to
-            # the other one.
-            if rest != current_rest \
-               and rest[0] != current_rest[0] \
-               and rest[1:] > current_rest[1:]:
+        if not re.search('[a|b|rc]+', rest):
+
+            if int(minor) > int(current_minor):
+                new_version_found(py_version, bz2_url, rev)
+            elif int(minor) == int(current_minor):
+                # Options: a, b, rc1, rc2. We can just simply compare the
+                # strings and we will know which version is previous to
+                # the other one.
+                if rest != current_rest \
+                   and rest[0] != current_rest[0] \
+                   and rest[1:] > current_rest[1:]:
                     new_version_found(py_version, bz2_url, rev)
