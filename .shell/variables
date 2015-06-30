@@ -72,7 +72,7 @@ shopt -s cmdhist # Multiline commands are a single command in history.
 shopt -s extglob # Allows basic regexps in bash.
 
 # set window title at start
-PROMPT_COMMAND='xtitle ${USER}@${HOSTNAME}: `basename ${PWD}`'
+PROMPT_COMMAND='xtitle ${USER}@${HOSTNAME}: `basename "${PWD}"`'
 
 # use jedi for autocompletion (sudo pip install jedi)
 export PYTHONSTARTUP="$(python -m jedi repl)"
