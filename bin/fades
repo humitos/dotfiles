@@ -1,0 +1,4 @@
+#!/bin/bash
+
+FADES_BIN=/home/humitos/.virtualenvs/fades/bin/fades
+$FADES_BIN $*
