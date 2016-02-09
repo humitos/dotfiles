@@ -4,6 +4,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias cp='cp -iv'
+
 alias servethis="python -c 'import SimpleHTTPServer; SimpleHTTPServer.test()'"
 alias servesmtp="python -m smtpd -n -c DebuggingServer localhost:1025"
 
@@ -33,3 +35,6 @@ fi
 alias e='emacsclient -n'
 alias supdate='sudo apt-get update'
 alias supgrade='sudo apt-get upgrade'
+
+alias fades=/home/humitos/Source/3rdparty/fades/bin/fades
+alias bpython='fades -d bpython -d jedi -d watchdog -x bpython'

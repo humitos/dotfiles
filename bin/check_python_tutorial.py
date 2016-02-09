@@ -22,26 +22,28 @@ import os
 import re
 import sys
 import smtplib
-import feedparser
+import feedparser  # fades
 import configparser
 import subprocess
 
 from email.mime.text import MIMEText
 
 TAGS_URL = 'http://hg.python.org/cpython/tags'
-CURRENT_TAG = 'v3.4.3'
+CURRENT_TAG = 'v3.5.0'
 ATOM_URL = 'http://hg.python.org/cpython/atom-tags'
 
 rss = feedparser.parse(ATOM_URL)
-tags = rss['entries'][:5]
+tags = rss['entries'][:10]
 
 
 def download_uncompress_create_diff(bz2_url, rev):
     c = 'wget --content-disposition -c {}'.format(bz2_url + '/Doc/tutorial/')
     output = subprocess.check_output(c, shell=True)
-    c = 'tar xvf cpython-{}.tar.bz2 -C /tmp --wildcards --no-anchored \'Doc/tutorial/*.rst\''.format(rev)
+    c = 'tar xvf cpython-{}.tar.bz2 -C /tmp --wildcards --no-anchored \'Doc/tutorial/*.rst\''.format(
+        rev)
     output = subprocess.check_output(c, shell=True)
-    c = 'mv /tmp/cpython-{}/Doc/tutorial/*.rst ~/src/tutorial/original'.format(rev)
+    c = 'mv /tmp/cpython-{}/Doc/tutorial/*.rst ~/src/tutorial/original'.format(
+        rev)
     output = subprocess.check_output(c, shell=True)
     c = 'cd ~/src/tutorial && git diff'
     output = subprocess.check_output(c, shell=True)
@@ -60,7 +62,7 @@ def send_mail(tag, bz2_url, rev):
         print('You need a config file in ~/.python-tutorial-es')
 
     text = \
-'''Please go to {} to check it out.
+        '''Please go to {} to check it out.
 
         wget -c {}
         tar xvf {}.tar.bz2 -C /tmp --wildcards --no-anchored 'Doc/tutorial/*.rst'
@@ -93,7 +95,7 @@ def send_mail(tag, bz2_url, rev):
 
 
 def new_version_found(py_version, bz2_url, rev):
-    print('A new tag of Python is available "{}" at {}' \
+    print('A new tag of Python is available "{}" at {}'
           .format(py_version, bz2_url))
 
     if '--email' in sys.argv:

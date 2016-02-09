@@ -2,8 +2,8 @@
 # history.
 export HISTCONTROL=ignoreboth
 
-export HISTSIZE=5000
-export HISTFILESIZE=9000
+export HISTSIZE=15000
+export HISTFILESIZE=19000
 export HISTFILE=~/.histfile
 export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g"
 
@@ -19,11 +19,12 @@ export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
 source /usr/local/bin/virtualenvwrapper_lazy.sh
 
 # Python "pip" configurations
-export PIP_DOWNLOAD_CACHE=~/.pip
+#export PIP_DOWNLOAD_CACHE=~/.pip
 #export PIP_FIND_LINKS=file://$HOME/.pip
-export PIP_WHEEL_DIR=$PIP_FIND_LINKS
+#export PIP_WHEEL_DIR=$PIP_FIND_LINKS
 export PIP_USE_WHEEL=1
-export PIP_INDEX_URL=http://localhost:3141/root/pypi/+simple/
+#export PIP_INDEX_URL=http://localhost:3141/root/pypi/+simple/
+export PIP_INDEX_URL=http://devpi.raspberrypi:3141/root/pypi/+simple/
 
 # useful to cd into a directory without writting the whole path
 export CDPATH=.:~/Source
