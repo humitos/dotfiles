@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 
+import commands
 import os
 import sys
-import commands
 
 # EXAMPLE OF wmctrl OUTPUT
 
@@ -29,18 +29,21 @@ import commands
 #       <property name="&lt;Super&gt;g" type="string" value="/home/humitos/bin/change-window google-chrome"/>
 # [...]
 
-LIST_WINDOWS = 'wmctrl -l -x | grep -i {} | grep -v grep | tail -n {}'
+LIST_WINDOWS = 'wmctrl -l -x | grep -i "{}" | grep -v grep | tail -n {}'
 CHANGE_WINDOW = 'wmctrl -i -a {}'
 COMMANDS_TO_WMCMD = {
     'pidgin': 'Pidgin.Pidgin',
-    'emacs': 'emacs.Emacs',
+    'emacs --no-site-file --no-site-lisp': 'emacs.Emacs',
     'thunar': 'Thunar.Thunar',
     'xfce4-terminal': 'xfce4-terminal.Xfce4-terminal',
     'firefox': 'Navigator.Firefox',
     'josm-latest': 'sun-awt-X11-XFramePeer.org-openstreetmap-josm-Main',
     'google-chrome': 'Google-chrome.Google-chrome',
+    'google-chrome --app=https://mozio.slack.com/': 'Mozio Slack',
     'terminator': 'terminator.Terminator',
+    'slack': 'slack.Slack',
 }
+
 
 def get_window_id(command):
     # This function is horrible but it's late at night and I just want
@@ -57,7 +60,6 @@ def get_window_id(command):
                 if 'Lista de amigos' not in l:
                     output = l
                     break
-    print output
     win_id = output.split(' ')[0]
     return win_id
 

@@ -1,0 +1,15 @@
+# emacs files
+*.restclient
+*~
+*#
+.projectile
+.dir-locals.el
+TAGS
+locate.db
+\#*
+
+# git
+*.orig
+
+# virtualenv
+.venv

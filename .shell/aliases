@@ -38,3 +38,6 @@ alias supgrade='sudo apt-get upgrade'
 
 alias fades=/home/humitos/Source/3rdparty/fades/bin/fades
 alias bpython='fades -d bpython -d jedi -d watchdog -x bpython'
+alias docker-compose='fades -d docker-compose -x docker-compose'
+
+alias ff='firefox'
