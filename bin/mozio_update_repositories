@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MOZIO_PATH=/home/humitos/mozio
-MOZIO_REPOSITORIES="data-entry mozio mozio_auth mozio-commons ondemand"
+MOZIO_REPOSITORIES="data-entry mozio mozio_auth mozio-commons mozio-locations mozio-search ondemand"
 
 for REPO in ${MOZIO_REPOSITORIES}; do
   echo "Updating '${REPO}'...";
