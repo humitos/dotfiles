@@ -14,3 +14,7 @@ locate.db
 
 # virtualenv
 .venv
+
+
+*.questions
+.style.yapf
