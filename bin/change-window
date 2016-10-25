@@ -33,7 +33,7 @@ LIST_WINDOWS = 'wmctrl -l -x | grep -i "{}" | grep -v grep | tail -n {}'
 CHANGE_WINDOW = 'wmctrl -i -a {}'
 COMMANDS_TO_WMCMD = {
     'pidgin': 'Pidgin.Pidgin',
-    'emacs --no-site-file --no-site-lisp': 'emacs.Emacs',
+    'emacs-snapshot --no-site-file --no-site-lisp': 'emacs-snapshot.Emacs',
     'thunar': 'Thunar.Thunar',
     'xfce4-terminal': 'xfce4-terminal.Xfce4-terminal',
     'firefox': 'Navigator.Firefox',
