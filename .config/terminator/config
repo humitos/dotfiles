@@ -2,6 +2,7 @@
   title_hide_sizetext = True
   inactive_color_offset = 0.64
   enabled_plugins = LaunchpadCodeURLHandler, APTURLHandler, Logger, LaunchpadBugURLHandler
+  window_state = maximise
 [keybindings]
   switch_to_tab_4 = <Alt>4
   switch_to_tab_2 = <Alt>2
