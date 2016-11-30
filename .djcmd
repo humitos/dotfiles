@@ -10,15 +10,10 @@ rp=runserver_plus
 s=shell
 sp=shell_plus
 
-cs=collectstatic --noinput
-
-sdb=syncdb --noinput
+t=test --noinput
+tp=test --keepdb
+test_plus=test --keepdb
 
 m=migrate
-sma=schemamigration --auto
-smi=schemamigration --init
-
-mm=makemessages -a
-cm=compilemessages
-
+mm=makemigrations
 cleanpyc=clean_pyc
