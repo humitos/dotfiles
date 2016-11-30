@@ -32,6 +32,7 @@ new = green bold
 whitespace = red reverse
 
 [alias]
+b = branch
 # https://github.com/brandon-rhodes/homedir/blob/master/.gitconfig
 ci = commit
 amend = commit --amend

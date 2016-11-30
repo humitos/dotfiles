@@ -18,3 +18,5 @@ locate.db
 
 *.questions
 .style.yapf
+
+setup.cfg
