@@ -44,3 +44,6 @@ alias ipython='fades -d ipython -x ipython'
 alias ff='firefox'
 
 alias twine='fades -d twine -x twine'
+
+alias g=git
+alias o='cd /home/humitos/mozio/ondemand'
