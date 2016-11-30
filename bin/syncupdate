@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# update system
+sudo apt-get update
+sudo apt-get upgrade -dy
+sudo apt-get dist-upgrade -dy
+
+# update mozio repositories and environments
+mozio_update_repositories
+mozio_update_venv_elpy
+
+# update emacs configuration
+cd ~/.emacs.d ; ./bin/update_git_submodules ; cd -
+
+# update raspberrypi packages
+ssh alarm@raspberrypi sudo pacman -Suy --noconfirm
