@@ -20,3 +20,4 @@ locate.db
 .style.yapf
 
 setup.cfg
+celerybeat-schedule
