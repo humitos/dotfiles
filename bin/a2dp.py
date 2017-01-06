@@ -151,6 +151,21 @@ class BluetoothctlProtocol(asyncio.SubprocessProtocol):
         finally:
             self.not_listen_output()
 
+    async def power_on(self):
+        await self.send_and_wait('power on', 'Bluetooth turned on')
+
+    async def agent_on(self):
+        await self.send_and_wait('agent on', 'Agent turned on')
+
+    async def default_agent(self):
+        await self.send_and_wait('default-agent', 'Default-Agent')
+
+    async def scan(self, mode):
+        await self.send_and_wait('scan %s' % mode, 'Scan mode turned %s' % mode)
+
+    async def default_agent(self):
+        await self.send_and_wait('default-agent', 'Default-Agent')
+
     async def disconnect(self, mac):
         await self.send_and_wait('disconnect %s' % ':'.join(mac), 'Successful disconnected')
 
@@ -286,8 +301,14 @@ async def main(args):
         device_id = await find_dev_id(mac, fail_safe=True)
         if device_id is None:
             print('It seems device: %s is not connected yet, trying to connect.' % ':'.join(mac))
+            await protocol.power_on()
+            await protocol.agent_on()
+            await protocol.default_agent()
+            # await protocol.scan('on')
+            await protocol.disconnect(mac)
             await protocol.trust(mac)
             await protocol.connect(mac)
+            # await protocol.scan('off')
             device_id = await find_dev_id(mac)
 
         sink = await find_sink(mac, fail_safe=True)
