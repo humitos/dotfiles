@@ -29,7 +29,7 @@ Shorthands:
 
     $ alias speakers="a2dp.py 10:08:C1:44:AE:BC"
     $ alias headphones="a2dp.py 00:22:37:3D:DA:50"
-    
+
     $ speakers
 
 
@@ -56,18 +56,17 @@ Change Log
 - 0.1.1
   * Supporting the `[NEW]` prefix for devices & controllers as advised by @wdullaer
   * Drying the code.
-
 """
 
-import sys
-import re
-import asyncio
-import subprocess as sb
-import argparse
+from __future__ import division, print_function, unicode_literals
 
+import argparse
+import asyncio
+import re
+import subprocess as sb
+import sys
 
 __version__ = '0.2.5'
-
 
 HEX_DIGIT_PATTERN = '[0-9A-F]'
 HEX_BYTE_PATTERN = '%s{2}' % HEX_DIGIT_PATTERN
@@ -76,7 +75,6 @@ DEVICE_PATTERN = re.compile('^(?:.*\s)?Device\s(?P<mac>%s)\s(?P<name>.*)' % MAC_
 CONTROLLER_PATTERN = re.compile('^(?:.*\s)?Controller\s(?P<mac>%s)\s(?P<name>.*)' % MAC_ADDRESS_PATTERN)
 WAIT_TIME = .75
 TRIES = 8
-
 
 # CLI Arguments
 parser = argparse.ArgumentParser(prog=sys.argv[0])
@@ -100,6 +98,7 @@ class RetryExceededError(Exception):
 
 
 class BluetoothctlProtocol(asyncio.SubprocessProtocol):
+
     def __init__(self, exit_future, echo=True):
         self.exit_future = exit_future
         self.transport = None
@@ -197,7 +196,7 @@ class BluetoothctlProtocol(asyncio.SubprocessProtocol):
             return devices[0]
 
         for i, d in enumerate(devices):
-            print('%d. %s %s' % (i+1, d[0], d[1]))
+            print('%d. %s %s' % (i + 1, d[0], d[1]))
         print('Select device[1]:')
         selected = input()
         return devices[0 if not selected.strip() else (int(selected) - 1)]
