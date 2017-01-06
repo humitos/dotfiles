@@ -84,6 +84,9 @@ ADS_TITLES = (
     ['REYKON'],
     ['Directv'],
     ['TOP HITS'],
+    ['Discovery Mujer'],
+    ['The Voice'],
+    ['5 Décadas De Rock Argentino'],
 )  # yapf: disable
 
 
