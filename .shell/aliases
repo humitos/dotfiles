@@ -33,8 +33,8 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 alias e='emacsclient -n'
-alias supdate='sudo apt-get update'
-alias supgrade='sudo apt-get upgrade'
+alias supdate='sudo apt update'
+alias supgrade='sudo apt upgrade'
 
 alias fades=/home/humitos/Source/3rdparty/fades/bin/fades
 alias bpython='fades -d bpython -d jedi -d watchdog -x bpython'

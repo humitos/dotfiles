@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # update system
-sudo apt-get update
-sudo apt-get upgrade -dy
-sudo apt-get dist-upgrade -dy
+sudo apt update
+sudo apt upgrade -dy
+sudo apt dist-upgrade -dy
 
 # update mozio repositories and environments
 mozio_update_repositories
@@ -13,4 +13,4 @@ mozio_update_venv_elpy
 cd ~/.emacs.d ; ./bin/update_git_submodules ; cd -
 
 # update raspberrypi packages
-ssh alarm@raspberrypi sudo pacman -Suy --noconfirm
+ssh alarm@192.168.10.1 sudo pacman -Suy --noconfirm
