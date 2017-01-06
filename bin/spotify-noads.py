@@ -39,8 +39,8 @@ import time
 HOSTNAME = commands.getoutput('hostname')
 TERMINAL_ENCODING = commands.getoutput('locale charmap')
 WMCTRL_WINDOW_LIST = "wmctrl -l -x | grep 'spotify.Spotify' | grep -v 'grep'"
-MUTE_COMMAND = 'amixer -q -D pulse sset Master mute'
-UNMUTE_COMMAND = 'amixer -q -D pulse sset Master unmute'
+MUTE_COMMAND = 'amixer -q -D pulse sset Master mute; pacmd set-sink-input-mute 0 true'
+UNMUTE_COMMAND = 'amixer -q -D pulse sset Master unmute; pacmd set-sink-input-mute 0 false'
 SPOTIFY_OPEN_COMMAND = 'ps -ef | grep Spotify | grep -v grep | wc -l'
 
 MUTED = False
