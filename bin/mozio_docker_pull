@@ -1,0 +1,12 @@
+#!/bin/bash
+
+MOZIO_PATH=/home/humitos/mozio
+MOZIO_REPOSITORIES="mozio ondemand data-entry mozio-locations mozio-commons mozio_auth"
+
+FADES=/home/humitos/Source/3rdparty/fades/bin/fades
+DOCKER_COMPOSE="${FADES} -d docker-compose -x docker-compose"
+
+for REPO in ${MOZIO_REPOSITORIES}; do
+  echo "Pulling docker-compose from '${REPO}'...";
+  ${DOCKER_COMPOSE} --file ${MOZIO_PATH}/${REPO}/docker-compose.yml pull
+done
