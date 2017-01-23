@@ -38,8 +38,8 @@ import time
 HOSTNAME = commands.getoutput('hostname')
 TERMINAL_ENCODING = commands.getoutput('locale charmap')
 WMCTRL_WINDOW_LIST = "wmctrl -l -x | grep 'spotify.Spotify' | grep -v 'grep'"
-MUTE_COMMAND = 'amixer -q -D pulse sset Master mute; pacmd set-sink-input-mute 0 true'
-UNMUTE_COMMAND = 'amixer -q -D pulse sset Master unmute; pacmd set-sink-input-mute 0 false'
+MUTE_COMMAND = 'amixer -q -D pulse sset Master mute; pacmd set-sink-input-mute {index} true'
+UNMUTE_COMMAND = 'amixer -q -D pulse sset Master unmute; pacmd set-sink-input-mute {index} false'
 SPOTIFY_OPEN_COMMAND = 'ps -ef | grep Spotify | grep -v grep | wc -l'
 
 MUTED = False
@@ -85,16 +85,27 @@ ADS_TITLES = (
 )  # yapf: disable
 
 
+def get_pacmd_index():
+    """
+    Get the current index for the Spotify audio stream using `pacmd`.
+
+    At the moment it's quite dumb and could be improved to really get just the Spotify index.
+    """
+    return commands.getoutput("pacmd list-sink-inputs | grep index | awk '{ print $2 }'")
+
+
 def mute():
     global MUTED
     MUTED = True
-    os.system(MUTE_COMMAND)
+    index = get_pacmd_index()
+    os.system(MUTE_COMMAND.format(index=index))
 
 
 def unmute():
     global MUTED
     MUTED = False
-    os.system(UNMUTE_COMMAND)
+    index = get_pacmd_index()
+    os.system(UNMUTE_COMMAND.format(index=index))
 
 
 def is_spotify_opened():
@@ -143,8 +154,7 @@ def check_spotify_ads():
 
     spotify_title = spotify_title.strip()
     known_title = is_known_title(spotify_title)
-    if (spotify_title not in SONGS_PLAYED and known_title) or (
-            not MUTED and not known_title):
+    if (spotify_title not in SONGS_PLAYED and known_title) or (not MUTED and not known_title):
         print('Playing:', spotify_title)
 
     if spotify_title not in SONGS_PLAYED and known_title:
