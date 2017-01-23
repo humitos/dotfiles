@@ -31,6 +31,6 @@ for venv in ${MOZIO_VIRTUALENVS}; do
         pip install -r ${REPO_DIR}/requirements/${REQUIREMENTS}.txt
     fi
     pip install -U -r /home/humitos/.emacs.d/requirements.elpy.in
-    pip install -U pdbpp dj-cmd
+    pip install -U pdbpp dj-cmd django-extensions
     deactivate;
 done
