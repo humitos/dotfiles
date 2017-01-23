@@ -1,0 +1,35 @@
+#!/bin/bash
+
+. /usr/local/bin/virtualenvwrapper_lazy.sh
+
+deactivate
+
+MOZIO_VIRTUALENVS=`lsvirtualenv | grep -E "^mozio"`
+for venv in ${MOZIO_VIRTUALENVS}; do
+    rmvirtualenv ${venv}
+    mkvirtualenv --python python2 ${venv}
+    pip install -U pip
+
+    REPO_DIR=/home/humitos/mozio/${venv}
+
+    if [ "mozio-auth" == ${venv} ]; then
+        REPO_DIR=/home/humitos/mozio/mozio_auth
+    fi
+
+    if [ "mozio-ondemand" == ${venv} ]; then
+        REPO_DIR=/home/humitos/mozio/ondemand
+    fi
+    echo "Repository directory:" ${REPO_DIR}
+    if [ -d ${REPO_DIR} ]; then
+        workon ${venv};
+        if [ -d ${REPO_DIR}/requirements/dev.txt ]; then
+            REQUIREMENTS=dev
+        else
+            REQUIREMENTS=base
+        fi
+        pip install -r ${REPO_DIR}/requirements/${REQUIREMENTS}.txt
+    fi
+    pip install -U -r /home/humitos/.emacs.d/requirements.elpy.in
+    pip install -U pdbpp dj-cmd
+    deactivate;
+done
