@@ -2,9 +2,7 @@
 
 . /usr/local/bin/virtualenvwrapper_lazy.sh
 
-deactivate
-
-MOZIO_VIRTUALENVS=`lsvirtualenv | grep -E "^mozio"`
+MOZIO_VIRTUALENVS="mozio-auth mozio-data-entry mozio-ondemand mozio-locations mozio-search"
 for venv in ${MOZIO_VIRTUALENVS}; do
     rmvirtualenv ${venv}
     mkvirtualenv --python python2 ${venv}
@@ -15,10 +13,13 @@ for venv in ${MOZIO_VIRTUALENVS}; do
     if [ "mozio-auth" == ${venv} ]; then
         REPO_DIR=/home/humitos/mozio/mozio_auth
     fi
-
     if [ "mozio-ondemand" == ${venv} ]; then
         REPO_DIR=/home/humitos/mozio/ondemand
     fi
+    if [ "mozio-data-entry" == ${venv} ]; then
+        REPO_DIR=/home/humitos/mozio/data-entry
+    fi
+
     echo "Repository directory:" ${REPO_DIR}
     if [ -d ${REPO_DIR} ]; then
         workon ${venv};
