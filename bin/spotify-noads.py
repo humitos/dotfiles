@@ -31,7 +31,6 @@
 from __future__ import division, print_function, unicode_literals
 
 import commands
-import datetime
 import os
 import sys
 import time
@@ -51,10 +50,6 @@ SONGS_PLAYED = []
 SLEEP_BEFORE_UNMUTE = 1.5
 SLEEP_BETWEEN_EACH_CHECK = 0.1
 SLEEP_WHEN_SPOTIFY_CLOSED = 5
-
-datetime
-
-datetime
 
 # Define the names of the Artists, Songs, etc you usually listen to here
 KNOWN_TITLES = (
