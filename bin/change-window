@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+from __future__ import division, print_function, unicode_literals
+
 import commands
 import os
 import sys
@@ -33,13 +35,19 @@ LIST_WINDOWS = 'wmctrl -l -x | grep -i "{}" | grep -v grep | tail -n {}'
 CHANGE_WINDOW = 'wmctrl -i -a {}'
 COMMANDS_TO_WMCMD = {
     'pidgin': 'Pidgin.Pidgin',
-    'emacs-snapshot --no-site-file --no-site-lisp': 'emacs-snapshot.Emacs',
+    'emacs': {
+        'command': 'emacs-snapshot --no-site-file --no-site-lisp',
+        'window-title': 'emacs-snapshot.Emacs',
+    },
     'thunar': 'Thunar.Thunar',
     'xfce4-terminal': 'xfce4-terminal.Xfce4-terminal',
     'firefox': 'Navigator.Firefox',
     'josm-latest': 'sun-awt-X11-XFramePeer.org-openstreetmap-josm-Main',
     'google-chrome': 'Google-chrome.Google-chrome',
-    'google-chrome --app=https://mozio.slack.com/': 'Mozio Slack',
+    'mozio-slack': {
+        'command': 'google-chrome --app=https://mozio.slack.com/ --profile-directory=Default',
+        'window-title': 'Mozio Slack',
+    },
     'terminator': 'terminator.Terminator',
     'slack': 'slack.Slack',
 }
@@ -52,7 +60,12 @@ def get_window_id(command):
         n = 2
     else:
         n = 1
-    output = commands.getoutput(LIST_WINDOWS.format(COMMANDS_TO_WMCMD[command], n))
+
+    window_title = COMMANDS_TO_WMCMD.get(command)
+    if isinstance(window_title, dict):
+        window_title = window_title.get('command')
+
+    output = commands.getoutput(LIST_WINDOWS.format(window_title, n))
     if n > 1:
         if command == 'pidgin':
             lines = output.splitlines()
@@ -68,9 +81,17 @@ def main():
     program = sys.argv[1]
     win_id = get_window_id(program)
     if win_id != '':
-        os.system(CHANGE_WINDOW.format(win_id))
+        cmd = CHANGE_WINDOW.format(win_id)
     else:
-        os.system(program)
+        cmd = COMMANDS_TO_WMCMD.get(program)
+        if isinstance(cmd, dict):
+            cmd = cmd['command']
+        else:
+            cmd = program
+
+    print(cmd)
+    os.system(cmd)
+
 
 if __name__ == '__main__':
     main()
