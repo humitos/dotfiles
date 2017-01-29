@@ -60,6 +60,12 @@ KNOWN_TITLES = (
     ['Queen'],
     ['Soda Stereo'],
     ['Tonolec'],
+    ['Kevin Johansen'],
+    ['Michael Jackson'],
+    ['Morcheeba'],
+    ['Pink Floyd'],
+    ['Queen'],
+    ['Lenine'],
 
     # Titles I want to be sure that are valid
     map(
