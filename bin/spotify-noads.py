@@ -88,6 +88,7 @@ ADS_TITLES = (
     ['Discovery Mujer'],
     ['The Voice'],
     ['5 Décadas De Rock Argentino'],
+    ['Sillón de amigos'],
 )  # yapf: disable
 
 
@@ -97,7 +98,9 @@ def get_pacmd_index():
 
     At the moment it's quite dumb and could be improved to really get just the Spotify index.
     """
-    return commands.getoutput("pacmd list-sink-inputs | grep index | awk '{ print $2 }'")
+    cmd = "pacmd list | grep -C 20 Spotify | grep bluez_sink.FC_A8_9A_B9_45_14 | awk '{ print $2 }'"
+    # cmd = "pacmd list-sink-inputs | grep index | awk '{ print $2 }'"
+    return commands.getoutput(cmd)
 
 
 def mute():
