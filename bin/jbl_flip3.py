@@ -1,11 +1,13 @@
 #! /usr/bin/env python3.5
 
-import re
-import sys
-import asyncio
-import subprocess as sb
+from __future__ import division, print_function, unicode_literals
 
-WAIT_TIME = 0.75
+import asyncio
+import re
+import subprocess as sb
+import sys
+
+WAIT_TIME = 1.75
 
 
 class BluetoothctlProtocol(asyncio.SubprocessProtocol):
@@ -15,6 +17,14 @@ class BluetoothctlProtocol(asyncio.SubprocessProtocol):
         self.transport = None
         self.output = None
         self.echo = echo
+
+    def pipe_data_received(self, fd, raw):
+        d = raw.decode()
+        if self.echo:
+            print(d, end='')
+
+        if self.output is not None:
+            self.output += d
 
     def listen_output(self):
         self.output = ''
@@ -51,16 +61,20 @@ class BluetoothctlProtocol(asyncio.SubprocessProtocol):
                 return True
 
     async def disconnect(self, mac):
-        await self.send_command('disconnect %s' % ':'.join(mac))
+        await self.send_and_wait('disconnect %s' % (mac), 'Successful disconnected', fail_expression='Failed')
 
     async def connect(self, mac):
-        await self.send_command('connect %s' % ':'.join(mac))
+        await self.send_and_wait('connect %s' % (mac), 'Connection successful')
 
     def process_exited(self):
         self.exit_future.set_result(True)
 
+    async def scan(self, mode):
+        await self.send_command('scan %s' % mode)
+
     async def quit(self):
         await self.send_command('quit')
+
 
 async def wait():
     return await asyncio.sleep(WAIT_TIME)
@@ -73,7 +87,7 @@ async def execute_command(cmd):
         stdout.decode() if stdout is not None else '', \
         stderr.decode() if stderr is not None else ''
     if p.returncode != 0 or stderr.strip() != '':
-        raise Exception('Command: %s failed with status: %s\nstderr: %s' % (cmd, p.returncode, stderr))
+        print('Command: %s failed with status: %s\nstderr: %s' % (cmd, p.returncode, stderr))
     return stdout
 
 
@@ -90,18 +104,20 @@ async def main():
 
     exit_future = asyncio.Future()
     transport, protocol = await asyncio.get_event_loop().subprocess_exec(
-        lambda: BluetoothctlProtocol(exit_future, echo=True), 'bluetoothctl'
-    )
+        lambda: BluetoothctlProtocol(exit_future, echo=True), 'bluetoothctl')
 
     await set_profile(device_id, profile='off')
+    await protocol.scan('on')
     await protocol.disconnect(mac)
     await protocol.connect(mac)
+    await protocol.quit()
+    transport.close()
+
     await set_profile(device_id, profile='a2dp_sink')
 
-    await protocol.quit()
     await exit_future
-    transport.close()
     print('Exit')
+
 
 if __name__ == '__main__':
     sys.exit(asyncio.get_event_loop().run_until_complete(main()))
