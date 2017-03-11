@@ -43,6 +43,7 @@ lp = log -p
 ls = log --stat
 st = status -s
 locate = ls-tree --name-only -r HEAD
+serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 
 [push]
 default = simple
