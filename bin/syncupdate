@@ -9,6 +9,8 @@ sudo apt dist-upgrade -dy
 mozio_update_repositories
 mozio_update_venv_elpy
 
+mozio_docker_pull
+
 # update emacs configuration
 cd ~/.emacs.d ; ./bin/update_git_submodules ; cd -
 
