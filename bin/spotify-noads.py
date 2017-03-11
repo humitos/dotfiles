@@ -66,6 +66,8 @@ KNOWN_TITLES = (
     ['Pink Floyd'],
     ['Queen'],
     ['Lenine'],
+    ['Gustavo Santaolalla'],
+    ['Genesis'],
 
     # Titles I want to be sure that are valid
     map(
@@ -73,7 +75,7 @@ KNOWN_TITLES = (
             'Remastered', 'Extended Version', 'En Vivo', 'MTV Unplugged',
             'Acoustic', 'Versión Acústica', 'Live', 'Directo', 'directo',
             'unplugged', 'en directo', 'Unplugged Version', 'Live/Unplugged',
-            'Instrumental', 'Remasterizado', 'BBC'
+            'Instrumental', 'Remasterizado', 'BBC', 'Single Version',
         ],
     ),
     # ...
@@ -89,6 +91,7 @@ ADS_TITLES = (
     ['The Voice'],
     ['5 Décadas De Rock Argentino'],
     ['Sillón de amigos'],
+    ['Discover te lleva a Soda Stereo'],
 )  # yapf: disable
 
 
