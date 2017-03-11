@@ -113,6 +113,10 @@ async def main():
     await protocol.quit()
     transport.close()
 
+    # try multiple times to set the proper profile
+    await wait()
+    await set_profile(device_id, profile='a2dp_sink')
+    await wait()
     await set_profile(device_id, profile='a2dp_sink')
 
     await exit_future
