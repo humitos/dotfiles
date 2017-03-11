@@ -47,3 +47,5 @@ alias twine='fades -d twine -x twine'
 
 alias g=git
 alias o='cd /home/humitos/mozio/ondemand'
+
+alias conda=/home/humitos/.miniconda3/bin/conda
