@@ -38,8 +38,10 @@ import time
 HOSTNAME = commands.getoutput('hostname')
 TERMINAL_ENCODING = commands.getoutput('locale charmap')
 WMCTRL_WINDOW_LIST = "wmctrl -l -x | grep 'spotify.Spotify' | grep -v 'grep'"
-MUTE_COMMAND = 'amixer -q -D pulse sset Master mute; pacmd set-sink-input-mute {index} true'
-UNMUTE_COMMAND = 'amixer -q -D pulse sset Master unmute; pacmd set-sink-input-mute {index} false'
+# MUTE_COMMAND = 'amixer -q -D pulse sset Master mute; pacmd set-sink-input-mute {index} true'
+# UNMUTE_COMMAND = 'amixer -q -D pulse sset Master unmute; pacmd set-sink-input-mute {index} false'
+MUTE_COMMAND = 'pacmd set-sink-input-mute {index} true'
+UNMUTE_COMMAND = 'pacmd set-sink-input-mute {index} false'
 SPOTIFY_OPEN_COMMAND = 'ps -ef | grep Spotify | grep -v grep | wc -l'
 
 MUTED = False
@@ -101,9 +103,11 @@ def get_pacmd_index():
 
     At the moment it's quite dumb and could be improved to really get just the Spotify index.
     """
-    cmd = "pacmd list | grep -C 20 Spotify | grep bluez_sink.FC_A8_9A_B9_45_14 | awk '{ print $2 }'"
+    cmd = "LC_ALL=C pacmd list-sink-inputs | grep -C 20 Spotify | grep index | awk '{ print $2 }' | head -n 1"
+    # cmd = "LC_ALL=C pactl list | grep -E '(^Sink Input)|(media.name = \"Spotify\"$)' | cut -d \# -f2 | grep -v Spotify"
+    # cmd = "pacmd list | grep -C 20 Spotify | grep bluez_sink.FC_A8_9A_B9_45_14 | awk '{ print $2 }'"
     # cmd = "pacmd list-sink-inputs | grep index | awk '{ print $2 }'"
-    return commands.getoutput(cmd)
+    return commands.getoutput(cmd).decode(TERMINAL_ENCODING)
 
 
 def mute():
