@@ -127,6 +127,7 @@ def unmute():
 def is_spotify_opened():
     global SPOTIFY_OPENED
     output = commands.getoutput(SPOTIFY_OPEN_COMMAND)
+    output = output.decode(TERMINAL_ENCODING)
     SPOTIFY_OPENED = bool(int(output))  # 0 is closed
     return SPOTIFY_OPENED
 
