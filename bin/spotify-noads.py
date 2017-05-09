@@ -70,6 +70,7 @@ KNOWN_TITLES = (
     ['Lenine'],
     ['Gustavo Santaolalla'],
     ['Genesis'],
+    ['JAF'],
 
     # Titles I want to be sure that are valid
     map(
@@ -94,6 +95,7 @@ ADS_TITLES = (
     ['5 Décadas De Rock Argentino'],
     ['Sillón de amigos'],
     ['Discover te lleva a Soda Stereo'],
+    ['Legarda'],
 )  # yapf: disable
 
 
