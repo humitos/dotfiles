@@ -1,4 +1,4 @@
-. /usr/local/bin/virtualenvwrapper_lazy.sh
+# /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 for venv in `lsvirtualenv | grep -E "^mozio|^emacs-default"`; do
   workon ${venv}; pip install -U -r /home/humitos/.emacs.d/requirements.elpy.in;
   done

@@ -1,11 +1,11 @@
 #!/bin/bash
 
-. /usr/local/bin/virtualenvwrapper_lazy.sh
+source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 
 MOZIO_VIRTUALENVS="mozio-auth mozio-data-entry mozio-ondemand mozio-locations mozio-search"
 for venv in ${MOZIO_VIRTUALENVS}; do
     rmvirtualenv ${venv}
-    mkvirtualenv --python python2 ${venv}
+    mkvirtualenv --python /usr/bin/python2 ${venv}
     pip install -U pip
 
     REPO_DIR=/home/humitos/mozio/${venv}
