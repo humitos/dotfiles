@@ -15,8 +15,8 @@ export OOO_FORCE_DESKTOP=gnome
 # virtualenvwrapper configuration
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Source
-export VIRTUALENVWRAPPER_SCRIPT=/usr/local/bin/virtualenvwrapper.sh
-source /usr/local/bin/virtualenvwrapper_lazy.sh
+# export VIRTUALENVWRAPPER_SCRIPT=/usr/share/virtualenvwrapper/virtualenvwrapper.sh
+source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 
 # Python "pip" configurations
 #export PIP_DOWNLOAD_CACHE=~/.pip
