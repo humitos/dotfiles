@@ -1,3 +1,5 @@
+# ; -*- mode: sh;-*-
+
 alias youtube-dl='PYTHONPATH=$PYTHONPATH:/home/humitos/Source/youtube-dl/ ~/Source/youtube-dl/bin/youtube-dl --restrict-filenames --retries 50 --continue'
 
 alias ..='cd ..'
