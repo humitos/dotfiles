@@ -1,6 +1,8 @@
-# /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
-for venv in `lsvirtualenv | grep -E "^mozio|^emacs-default"`; do
-  workon ${venv}; pip install -U -r /home/humitos/.emacs.d/requirements.elpy.in;
-  done
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
-deactivate
+VIRTUALENVS=`pyenv virtualenvs  | grep -E " +mozio| +emacs-default" | awk '{ print $1 }'`
+
+for venv in $VIRTUALENVS; do
+  pyenv activate ${venv}; pip install -U -r /home/humitos/.emacs.d/requirements.elpy.in; pyenv deactivate
+  done

@@ -32,7 +32,7 @@ function venv_cd {
     cd "$@" && workon_cwd
 }
 
-alias cd="venv_cd"
+# alias cd="venv_cd"
 
 
 extract () {
