@@ -1,0 +1,5 @@
+# ; -*- mode: sh -*-
+#!/bin/bash
+
+# genius
+setxkbmap -model pc105 -layout es -option
