@@ -1,11 +1,16 @@
+# ; -*- mode: sh -*-
 #!/bin/bash
 
-source /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
-MOZIO_VIRTUALENVS="mozio-auth mozio-data-entry mozio-ondemand mozio-locations mozio-search"
-for venv in ${MOZIO_VIRTUALENVS}; do
-    rmvirtualenv ${venv}
-    mkvirtualenv --python /usr/bin/python2 ${venv}
+# we need to hardcode them because they may not exists
+VIRTUALENVS="mozio-auth mozio-data-entry mozio-ondemand mozio-locations mozio-search"
+
+for venv in ${VIRTUALENVS}; do
+    pyenv virtualenv-delete --force ${venv}
+    pyenv virtualenv 2.7.13 ${venv}
+    pyenv activate ${venv}
     pip install -U pip
 
     REPO_DIR=/home/humitos/mozio/${venv}
@@ -22,15 +27,15 @@ for venv in ${MOZIO_VIRTUALENVS}; do
 
     echo "Repository directory:" ${REPO_DIR}
     if [ -d ${REPO_DIR} ]; then
-        workon ${venv};
+        # workon ${venv};
         if [ -d ${REPO_DIR}/requirements/dev.txt ]; then
-            REQUIREMENTS=dev
+            REQUIREMENTS=dev.txt
         else
-            REQUIREMENTS=base
+            REQUIREMENTS=base.txt
         fi
-        pip install -r ${REPO_DIR}/requirements/${REQUIREMENTS}.txt
+        pip install -r ${REPO_DIR}/requirements/${REQUIREMENTS}
     fi
     pip install -U -r /home/humitos/.emacs.d/requirements.elpy.in
-    pip install -U pdbpp dj-cmd django-extensions pur
+    pip install -U -r /home/humitos/mozio/requirements.utils.txt
     deactivate;
 done
