@@ -19,7 +19,7 @@
 
 # DESCRIPTION:
 #
-# This program allows you to do not listen to Spotify Ads withuot having a paid
+# This program allows you to do not listen to Spotify Ads without having a paid
 # account. It's not too much intelligent right now, so you have to add the
 # Artists you usually listen to or the name of the Spotify Ads you want to mute.
 #
@@ -72,6 +72,7 @@ KNOWN_TITLES = (
     ['Genesis'],
     ['JAF'],
     ['Los Rodriguez'],
+    ['Talking Heads'],
 
     # Titles I want to be sure that are valid
     map(
@@ -193,12 +194,7 @@ def check_spotify_ads():
 
 if __name__ == '__main__':
     try:
-        while True:
-            if not is_spotify_opened():
-                print('Spotify not running. Sleeping...')
-                time.sleep(SLEEP_WHEN_SPOTIFY_CLOSED)
-                continue
-
+        while is_spotify_opened():
             check_spotify_ads()
             time.sleep(SLEEP_BETWEEN_EACH_CHECK)
     except KeyboardInterrupt:
