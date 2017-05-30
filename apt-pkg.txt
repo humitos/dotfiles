@@ -98,6 +98,7 @@ thunderbird-locale-es-es
 tig
 transmission
 trickle
+ubuntu-fan
 unrar
 vim
 virtualbox
