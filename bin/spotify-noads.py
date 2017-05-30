@@ -71,6 +71,7 @@ KNOWN_TITLES = (
     ['Gustavo Santaolalla'],
     ['Genesis'],
     ['JAF'],
+    ['Los Rodriguez'],
 
     # Titles I want to be sure that are valid
     map(
