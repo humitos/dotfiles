@@ -98,6 +98,7 @@ ADS_TITLES = (
     ['Sillón de amigos'],
     ['Discover te lleva a Soda Stereo'],
     ['Legarda'],
+    ['Queen of the South'],
 )  # yapf: disable
 
 
