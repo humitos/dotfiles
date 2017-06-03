@@ -62,6 +62,11 @@ npm
 openshot
 openssh-server
 pandoc
+
+# Fixes a crash at boot time
+# https://askubuntu.com/questions/407131/why-is-plymouthd-crashing-on-startup
+plymouth-x11
+
 postgis
 postgresql
 postgresql-9.5
@@ -98,7 +103,10 @@ thunderbird-locale-es-es
 tig
 transmission
 trickle
+
+# Fixes an issue when re-connecting to a network that try to execute this command
 ubuntu-fan
+
 unrar
 vim
 virtualbox
