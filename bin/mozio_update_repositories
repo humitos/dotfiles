@@ -5,5 +5,5 @@ MOZIO_REPOSITORIES="data-entry mozio mozio_auth mozio-commons mozio-locations mo
 
 for REPO in ${MOZIO_REPOSITORIES}; do
   echo "Updating '${REPO}'...";
-  git --git-dir ${MOZIO_PATH}/${REPO}/.git fetch origin;
+  git --git-dir ${MOZIO_PATH}/${REPO}/.git fetch origin --prune;
 done
