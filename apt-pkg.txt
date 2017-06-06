@@ -37,6 +37,7 @@ iproute2
 iptraf
 ipython
 jhead
+lame
 libjpeg-dev
 libpython-dev
 libreoffice
