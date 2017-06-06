@@ -12,4 +12,4 @@ for venv in $VIRTUALENVS; do
   pip install -U -r /home/humitos/mozio/requirements.utils.txt
 
   pyenv deactivate;
-  done
+done
