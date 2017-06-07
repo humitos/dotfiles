@@ -88,6 +88,7 @@ rpl
 ruby
 screen
 shtool
+silversearcher-ag
 spotify-client
 sqlite3
 ssh
