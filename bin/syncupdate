@@ -8,6 +8,9 @@ sudo apt dist-upgrade -dy
 # update pyenv
 cd ~/.pyenv ; git pull ; cd -
 
+# update fades
+cd ~/.fades ; git pull ; cd -
+
 # update mozio repositories and environments
 mozio_update_repositories
 mozio_update_venv_elpy
