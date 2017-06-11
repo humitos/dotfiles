@@ -123,4 +123,5 @@ wmctrl
 wodim
 workrave
 xclip
+xprintidle
 xtitle
