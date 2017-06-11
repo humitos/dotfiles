@@ -42,12 +42,9 @@
       <property name="&lt;Super&gt;t" type="string" value="/home/humitos/bin/change-window terminator"/>
       <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
       <property name="XF86HomePage" type="string" value="exo-open --launch WebBrowser"/>
-      <property name="&lt;Super&gt;w" type="string" value="exo-open --launch WebBrowser"/>
       <property name="XF86Calculator" type="string" value="gnome-calculator"/>
-      <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter -w"/>
+      <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter --window"/>
       <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder"/>
-      <property name="&lt;Super&gt;1" type="string" value="gmusicbrowser"/>
-      <property name="&lt;Alt&gt;F1" type="string" value="xfce4-popup-applicationsmenu"/>
       <property name="&lt;Alt&gt;F3" type="string" value="xfce4-appfinder"/>
       <property name="&lt;Alt&gt;F2" type="string" value="xfrun4"/>
       <property name="XF86WWW" type="string" value="exo-open --launch WebBrowser"/>
@@ -56,17 +53,13 @@
       <property name="&lt;Super&gt;f" type="string" value="/home/humitos/bin/change-window firefox"/>
       <property name="&lt;Primary&gt;Escape" type="string" value="xfce4-popup-whiskermenu"/>
       <property name="XF86Mail" type="string" value="exo-open --launch MailReader"/>
-      <property name="Print" type="string" value="xfce4-screenshooter -f"/>
+      <property name="Print" type="string" value="xfce4-screenshooter --fullscreen"/>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Escape" type="string" value="xkill"/>
       <property name="XF86Music" type="string" value="gmusicbrowser"/>
       <property name="XF86Display" type="string" value="xfce4-display-settings --minimal"/>
       <property name="XF86Messenger" type="string" value="pidgin"/>
-      <property name="&lt;Primary&gt;&lt;Alt&gt;t" type="string" value="exo-open --launch TerminalEmulator"/>
-      <property name="&lt;Super&gt;2" type="string" value="pidgin"/>
-      <property name="&lt;Super&gt;3" type="string" value="abiword"/>
-      <property name="&lt;Super&gt;4" type="string" value="gnumeric"/>
-      <property name="&lt;Super&gt;m" type="string" value="exo-open --launch MailReader"/>
       <property name="override" type="bool" value="true"/>
+      <property name="&lt;Super&gt;m" type="string" value="/home/humitos/bin/change-window thunderbird"/>
       <property name="&lt;Super&gt;a" type="string" value="/home/humitos/bin/change-window thunar"/>
       <property name="&lt;Super&gt;c" type="string" value="/home/humitos/bin/change-window pidgin"/>
       <property name="&lt;Super&gt;j" type="string" value="/home/humitos/bin/change-window josm-latest"/>
