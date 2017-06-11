@@ -32,6 +32,7 @@ from __future__ import division, print_function, unicode_literals
 
 import commands
 import os
+import subprocess
 import sys
 import time
 
@@ -46,6 +47,8 @@ SPOTIFY_OPEN_COMMAND = 'ps -ef | grep Spotify | grep -v grep | wc -l'
 
 MUTED = False
 SPOTIFY_OPENED = False
+PAREC_PROCESS = None
+LAME_PROCESS = None
 SONGS_PLAYED = []
 
 # Time in seconds
@@ -115,6 +118,34 @@ def get_pacmd_index():
     return commands.getoutput(cmd).decode(TERMINAL_ENCODING)
 
 
+def start_recording(index, output_filename):
+    import shlex
+    global PAREC_PROCESS, LAME_PROCESS
+
+    parec_cmd = 'parec --format=s16le --record --monitor-stream {index}'
+    lame_cmd = 'lame -r -q 2 --lowpass 17 --abr 192 - "{output_filename}"'
+    parec_cmd = parec_cmd.format(index=index).encode('utf-8')
+    lame_cmd = lame_cmd.format(output_filename=output_filename).encode('utf-8')
+
+    PAREC_PROCESS = subprocess.Popen(
+        shlex.split(parec_cmd), stdout=subprocess.PIPE)
+    LAME_PROCESS = subprocess.Popen(
+        shlex.split(lame_cmd), stdin=PAREC_PROCESS.stdout)
+    print('Recording at {}...'.format(output_filename))
+
+
+def stop_recording():
+    global PAREC_PROCESS, LAME_PROCESS
+
+    if None not in (PAREC_PROCESS, LAME_PROCESS):
+        print('Stop recording file...')
+
+        import signal
+        PAREC_PROCESS.send_signal(signal.SIGTERM)
+        LAME_PROCESS.send_signal(signal.SIGTERM)
+        PAREC_PROCESS = LAME_PROCESS = None
+
+
 def mute():
     global MUTED
     MUTED = True
@@ -177,7 +208,14 @@ def check_spotify_ads():
     spotify_title = spotify_title.strip()
     known_title = is_known_title(spotify_title)
     if (spotify_title not in SONGS_PLAYED and known_title) or (not MUTED and not known_title):
+        index = get_pacmd_index()
+        track = len(SONGS_PLAYED) + 1
+        output_filename = '{:03} - {}.mp3'.format(track, spotify_title)
+        stop_recording()
+        start_recording(index, output_filename)
         print('Playing:', spotify_title)
+    elif not known_title:
+        stop_recording()
 
     if spotify_title not in SONGS_PLAYED and known_title:
         SONGS_PLAYED.append(spotify_title)
@@ -189,6 +227,7 @@ def check_spotify_ads():
             unmute()
     else:
         if not MUTED:
+            stop_recording()
             print('Sound MUTED.')
             mute()
 
