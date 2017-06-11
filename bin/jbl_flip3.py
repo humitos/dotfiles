@@ -1,4 +1,4 @@
-#! /usr/bin/env python3.5
+#! /usr/bin/env python3
 
 from __future__ import division, print_function, unicode_literals
 
@@ -11,7 +11,6 @@ WAIT_TIME = 1.75
 
 
 class BluetoothctlProtocol(asyncio.SubprocessProtocol):
-
     def __init__(self, exit_future, echo=True):
         self.exit_future = exit_future
         self.transport = None
@@ -99,8 +98,17 @@ async def set_profile(device_id, profile='a2dp_sink'):
 
 async def main():
 
+    # My own JBL
     mac = 'FC:A8:9A:B9:45:14'
     device_id = 'bluez_card.FC_A8_9A_B9_45_14'
+
+    # Mani's Sony SRS-X3
+    mac = '0C:A6:94:7C:E4:40'
+    device_id = 'bluez_card.0C_A6_94_7C_E4_40'
+
+    # Jesica's
+    mac = '40:EF:4C:68:57:58'
+    device_id = 'bluez_card.40_EF_4C_68_57_58'
 
     exit_future = asyncio.Future()
     transport, protocol = await asyncio.get_event_loop().subprocess_exec(
