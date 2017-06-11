@@ -51,6 +51,10 @@ COMMANDS_TO_WMCMD = {
     },
     'terminator': 'terminator.Terminator',
     'slack': 'slack.Slack',
+    'thunderbird': {
+        'command': 'thunderbird',
+        'window-title': 'Mozilla Thunderbird',
+    },
 }
 
 
