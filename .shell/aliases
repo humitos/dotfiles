@@ -58,4 +58,7 @@ alias o='cd /home/humitos/mozio/ondemand'
 alias py=python
 
 
-alias jbl='pyenv shell 3.6.1 ; python3 ~/bin/jbl_flip3.py'
+alias jbl='~/./.pyenv/versions/3.6.1/bin/python ~/bin/jbl_flip3.py'
+
+alias docker-down='docker-compose -f docker-compose-java.yml down'
+alias docker-shell='docker-compose -f docker-compose-java.yml run shell'
