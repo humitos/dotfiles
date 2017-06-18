@@ -34,7 +34,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+## EMACS
 alias e='emacsclient -n'
+# http://emacsredux.com/blog/2013/04/21/edit-files-as-root/
+alias E="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
+
 alias supdate='sudo apt update'
 alias supgrade='sudo apt upgrade'
 
