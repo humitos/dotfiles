@@ -31,6 +31,7 @@
 from __future__ import division, print_function, unicode_literals
 
 import commands
+import datetime
 import os
 import subprocess
 import sys
@@ -209,10 +210,12 @@ def check_spotify_ads():
 
     spotify_title = spotify_title.strip()
     known_title = is_known_title(spotify_title)
-    if (spotify_title not in SONGS_PLAYED and known_title) or (not MUTED and not known_title):
+    if (spotify_title not in SONGS_PLAYED and known_title) or (
+            not MUTED and not known_title):
         index = get_pacmd_index()
         track = len(SONGS_PLAYED) + 1
-        output_filename = '{:03} - {}.mp3'.format(track, spotify_title)
+        d = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+        output_filename = '{} - {:03} - {}.mp3'.format(d, track, spotify_title)
         stop_recording()
         start_recording(index, output_filename)
         print('Playing:', spotify_title)
