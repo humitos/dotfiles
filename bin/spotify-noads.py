@@ -76,6 +76,7 @@ KNOWN_TITLES = (
     ['JAF'],
     ['Los Rodriguez'],
     ['Talking Heads'],
+    ['Fito Páez'],
 
     # Titles I want to be sure that are valid
     map(
@@ -84,6 +85,7 @@ KNOWN_TITLES = (
             'Acoustic', 'Versión Acústica', 'Live', 'Directo', 'directo',
             'unplugged', 'en directo', 'Unplugged Version', 'Live/Unplugged',
             'Instrumental', 'Remasterizado', 'BBC', 'Single Version',
+            'En Directo',
         ],
     ),
     # ...
