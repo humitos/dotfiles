@@ -112,7 +112,8 @@ def get_pacmd_index():
     """
     Get the current index for the Spotify audio stream using `pacmd`.
 
-    At the moment it's quite dumb and could be improved to really get just the Spotify index.
+    At the moment it's quite dumb and could be improved to really get just the
+    Spotify index.
     """
     cmd = "LC_ALL=C pacmd list-sink-inputs | grep -C 20 Spotify | grep index | awk '{ print $2 }' | head -n 1"
     # cmd = "LC_ALL=C pactl list | grep -E '(^Sink Input)|(media.name = \"Spotify\"$)' | cut -d \# -f2 | grep -v Spotify"
