@@ -23,3 +23,6 @@ fi
 for f in $HOME/.shell/completion.d/*; do
    . $f
 done
+
+~/bin/es_keyboard
+~/bin/en_keyboard
