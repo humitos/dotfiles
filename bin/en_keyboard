@@ -2,4 +2,4 @@
 #!/bin/bash
 
 # lenovo
-setxkbmap -model pc105 -layout en_US -variant ",deadtilde" -option "compose:ralt"
+setxkbmap -device 5 -model pc105 -layout en_US -variant ",deadtilde" -option "compose:ralt"
