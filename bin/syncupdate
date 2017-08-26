@@ -11,20 +11,22 @@ cd ~/.pyenv ; git pull ; cd -
 # update fades
 cd ~/.fades ; git pull ; cd -
 
-# update mozio repositories and environments
-mozio_update_repositories
-mozio_update_venv_elpy
-
-mozio_docker_pull
-
 # update emacs configuration
 cd ~/.emacs.d ; ./bin/update_git_submodules ; cd -
 
 # backup personal trac
 backup_trac
 
+# update mozio repositories and environments
+mozio_update_repositories
+mozio_update_venv_elpy
+
+mozio_docker_pull
+
 # update raspberrypi packages
-ssh alarm@192.168.10.1 sudo pacman -Suy --noconfirm
+# added `--ignore wpa_supplicant --ignore openssl` because of a bug in
+# openssl that makes the installation to fail
+ssh alarm@192.168.10.1 sudo pacman -Suy --noconfirm --ignore wpa_supplicant --ignore openssl
 
 # clean pacman old packages
 ssh alarm@192.168.10.1 sudo pacman -Sc --noconfirm
