@@ -57,6 +57,8 @@ SLEEP_BEFORE_UNMUTE = 1.5
 SLEEP_BETWEEN_EACH_CHECK = 0.1
 SLEEP_WHEN_SPOTIFY_CLOSED = 5
 
+DEFAULT_OUTPUT_DIR = 'spotify'
+
 # Define the names of the Artists, Songs, etc you usually listen to here
 KNOWN_TITLES = (
     # Titles that I found with problems matching dumb rules
@@ -78,6 +80,7 @@ KNOWN_TITLES = (
     ['Los Rodriguez'],
     ['Talking Heads'],
     ['Fito Páez'],
+    ['Perotá Chingò'],
 
     # Titles I want to be sure that are valid
     map(
@@ -105,6 +108,8 @@ ADS_TITLES = (
     ['Discover te lleva a Soda Stereo'],
     ['Legarda'],
     ['Queen of the South'],
+    ['Super Hits'],
+    ['Rome Santos'],
 )  # yapf: disable
 
 
@@ -212,13 +217,28 @@ def check_spotify_ads():
     spotify_title = spotify_title.strip()
     known_title = is_known_title(spotify_title)
     if (spotify_title not in SONGS_PLAYED and known_title) or (
-            not MUTED and not known_title):
+            not MUTED and not known_title):  # and spotify_title != 'Spotify'):
         index = get_pacmd_index()
-        track = len(SONGS_PLAYED) + 1
-        d = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
-        output_filename = '{} - {:03} - {}.mp3'.format(d, track, spotify_title)
+
+        try:
+            output_path = None
+            # FIXME: doesn't work with CD's with multiples artists
+            # get output filename
+            track = len(SONGS_PLAYED) + 1
+            d = datetime.datetime.now().strftime('%Y-%m-%d_%H:%M:%S')
+            print(spotify_title)
+            artist, song = spotify_title.split(' - ')
+            output_filename = '{} - {:03} - {}.mp3'.format(d, track, song)
+            output_dir = os.path.join(DEFAULT_OUTPUT_DIR, artist)
+            if not os.path.exists(output_dir):
+                os.makedirs(output_dir)
+            output_path = os.path.join(output_dir, output_filename)
+        except:
+            stop_recording()
+
         stop_recording()
-        start_recording(index, output_filename)
+        if output_path:
+            start_recording(index, output_path)
         print('Playing:', spotify_title)
     elif not known_title:
         stop_recording()
