@@ -65,6 +65,7 @@
       <property name="&lt;Super&gt;c" type="string" value="/home/humitos/bin/change-window pidgin"/>
       <property name="&lt;Super&gt;j" type="string" value="/home/humitos/bin/change-window josm-latest"/>
       <property name="&lt;Super&gt;g" type="string" value="/home/humitos/bin/change-window google-chrome"/>
+      <property name="&lt;Super&gt;F12" type="string" value="/home/humitos/bin/switch-monitor.sh"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">
