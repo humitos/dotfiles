@@ -60,5 +60,6 @@ alias py=python
 
 alias jbl='~/./.pyenv/versions/3.6.1/bin/python ~/bin/jbl_flip3.py'
 
-alias docker-down='docker-compose -f docker-compose-java.yml down'
-alias docker-shell='docker-compose -f docker-compose-java.yml run shell'
+alias docker-down='docker-compose -f docker-compose.humitos.yml down'
+alias docker-kill='docker-compose -f docker-compose.humitos.yml kill'
+alias docker-shell='docker-compose -f docker-compose.humitos.yml run shell'
