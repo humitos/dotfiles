@@ -49,6 +49,14 @@ COMMANDS_TO_WMCMD = {
         'command': 'google-chrome --app=https://mozio.slack.com/ --profile-directory=Default',
         'window-title': 'Mozio Slack',
     },
+    'whatsapp': {
+        'command': 'google-chrome --app=https://web.whatsapp.com/ --profile-directory="Profile 1"',
+        'window-title': 'WhatsApp',
+    },
+    'telegram': {
+        'command': 'google-chrome --app="https://web.telegram.org/" --profile-directory="Profile 1"',
+        'window-title': 'Telegram Web',
+    },
     'terminator': 'terminator.Terminator',
     'slack': 'slack.Slack',
     'thunderbird': {
