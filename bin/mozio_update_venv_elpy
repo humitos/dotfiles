@@ -8,8 +8,8 @@ VIRTUALENVS=`pyenv virtualenvs  | grep -E " +mozio| +emacs-default" | awk '{ pri
 for venv in $VIRTUALENVS; do
   pyenv activate ${venv}
 
-  pip install -U -r /home/humitos/.emacs.d/requirements.elpy.in
-  pip install -U -r /home/humitos/mozio/requirements.utils.txt
+  pip install -U -r /home/humitos/.emacs.d/requirements.elpy.in --exists-action s
+  pip install -U -r /home/humitos/mozio/requirements.utils.txt --exists-action s
 
   pyenv deactivate;
 done
