@@ -1,7 +1,7 @@
 #!/bin/bash
 
 MOZIO_PATH=/home/humitos/mozio
-MOZIO_REPOSITORIES="data-entry mozio mozio_auth mozio-commons mozio-locations mozio-search ondemand notifications errors"
+MOZIO_REPOSITORIES="data-entry django-mozio-auth-client errors mozio mozio_auth mozio-chef-repo mozio-commons mozio-corporate mozio-locations mozio-restrictions-client mozio-search notifications ondemand"
 
 for REPO in ${MOZIO_REPOSITORIES}; do
   echo "Updating '${REPO}'...";
