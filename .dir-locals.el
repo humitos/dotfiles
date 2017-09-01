@@ -16,4 +16,8 @@
      ;; use our own virtualenv for this project
      (eval . (pyvenv-workon 'emacs-default))
      )
-  ))
+  )
+ (nil
+  . (
+     (browse-url-generic-program  . "firefox")
+     )))
