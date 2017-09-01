@@ -23,6 +23,7 @@ firefox
 firefox-locale-en
 firefox-locale-es
 flashplugin-installer
+fswebcam
 g++
 gimp
 git
