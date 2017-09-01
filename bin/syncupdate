@@ -26,7 +26,9 @@ mozio_docker_pull
 # update raspberrypi packages
 # added `--ignore wpa_supplicant --ignore openssl` because of a bug in
 # openssl that makes the installation to fail
-ssh alarm@192.168.10.1 sudo pacman -Suy --noconfirm --ignore wpa_supplicant --ignore openssl
+# sudo pacman -S --force wpa_supplicant
+# sudo pacman -S --force openssl
+ssh alarm@192.168.10.1 sudo pacman -Suy --noconfirm  # --ignore wpa_supplicant --ignore openssl
 
 # clean pacman old packages
 ssh alarm@192.168.10.1 sudo pacman -Sc --noconfirm
