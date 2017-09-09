@@ -21,8 +21,12 @@
 #     ↳ ThinkPad Extra Buttons                  	id=16	[slave  keyboard (3)]
 #     ↳ FC:A8:9A:B9:45:14                       	id=17	[slave  keyboard (3)]
 
-
 # genius
-setxkbmap -device 9 -model pc105 -layout es -option
-setxkbmap -device 10 -model pc105 -layout es -option
-setxkbmap -device 11 -model pc105 -layout es -option
+IDS=`xinput list | grep "Chicony USB Keyboard" | awk '{ print $5 }' | sed -e 's/id=//g'`
+
+for id in $IDS;
+do
+    setxkbmap -device $id -model pc105 -layout es -option;
+    setxkbmap -device $id -model pc105 -layout es -option;
+    setxkbmap -device $id -model pc105 -layout es -option;
+done

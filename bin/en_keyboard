@@ -2,4 +2,6 @@
 #!/bin/bash
 
 # lenovo
-setxkbmap -device 5 -model pc105 -layout en_US -variant ",deadtilde" -option "compose:ralt"
+
+ID=`xinput list | grep "AT Translated Set 2 keyboard" | awk '{ print $7 }' | sed -e 's/id=//g'`
+setxkbmap -device $ID -model pc105 -layout en_US -variant ",deadtilde" -option "compose:ralt"
