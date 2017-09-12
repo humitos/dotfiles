@@ -71,6 +71,9 @@ class BluetoothctlProtocol(asyncio.SubprocessProtocol):
     async def scan(self, mode):
         await self.send_command('scan %s' % mode)
 
+    async def power(self, mode):
+        await self.send_command('power %s' % mode)
+
     async def quit(self):
         await self.send_command('quit')
 
@@ -102,19 +105,20 @@ async def main():
     mac = 'FC:A8:9A:B9:45:14'
     device_id = 'bluez_card.FC_A8_9A_B9_45_14'
 
-    # Mani's Sony SRS-X3
-    mac = '0C:A6:94:7C:E4:40'
-    device_id = 'bluez_card.0C_A6_94_7C_E4_40'
+    # # Mani's Sony SRS-X3
+    # mac = '0C:A6:94:7C:E4:40'
+    # device_id = 'bluez_card.0C_A6_94_7C_E4_40'
 
-    # Jesica's
-    mac = '40:EF:4C:68:57:58'
-    device_id = 'bluez_card.40_EF_4C_68_57_58'
+    # # Jesica's
+    # mac = '40:EF:4C:68:57:58'
+    # device_id = 'bluez_card.40_EF_4C_68_57_58'
 
     exit_future = asyncio.Future()
     transport, protocol = await asyncio.get_event_loop().subprocess_exec(
         lambda: BluetoothctlProtocol(exit_future, echo=True), 'bluetoothctl')
 
     await set_profile(device_id, profile='off')
+    await protocol.power('on')
     await protocol.scan('on')
     await protocol.disconnect(mac)
     await protocol.connect(mac)
