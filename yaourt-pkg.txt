@@ -1,0 +1,10 @@
+# Packages installed in ArchLinux with `yaourt`
+
+emacs-git
+google-chrome
+linux-firmware-iwlwifi
+pa-appliet-git
+rpl
+spotify
+ttf-mac-fonts
+xtitle
