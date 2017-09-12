@@ -1,9 +1,14 @@
 #!/bin/bash
 
 # update system
-sudo apt update
-sudo apt upgrade -dy
-sudo apt dist-upgrade -dy
+
+# UBUNTU
+# sudo apt update
+# sudo apt upgrade -dy
+# sudo apt dist-upgrade -dy
+
+# ARCHLINUX
+sudo pacman -Suy --downloadonly --noconfirm
 
 # update pyenv
 cd ~/.pyenv ; git pull ; cd -
