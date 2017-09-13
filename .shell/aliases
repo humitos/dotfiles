@@ -35,9 +35,9 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 ## EMACS
-alias e='emacsclient -n'
+alias e='emacsclient --no-wait --alternate-editor vim'
 # http://emacsredux.com/blog/2013/04/21/edit-files-as-root/
-alias E="SUDO_EDITOR=\"emacsclient -a emacs\" sudoedit"
+alias E="SUDO_EDITOR=\"emacsclient --alternate-editor emacs\" sudoedit"
 
 alias supdate='sudo apt update'
 alias supgrade='sudo apt upgrade'
