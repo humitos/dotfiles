@@ -54,6 +54,7 @@ recordmydesktop
 ruby
 sddm
 steam
+steam-native-runtime
 subversion
 swig
 thunderbird

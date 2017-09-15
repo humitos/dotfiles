@@ -4,7 +4,9 @@ emacs-git
 google-chrome
 linux-firmware-iwlwifi
 pa-appliet-git
+redshift-gtk-git
 rpl
 spotify
 ttf-mac-fonts
+wrld
 xtitle
