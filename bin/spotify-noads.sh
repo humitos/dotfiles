@@ -1,5 +1,5 @@
 #!/bin/bash
 
 spotify &
-sleep 1 ;
-python /home/humitos/bin/spotify-noads.py
+sleep 5 ;
+python2 /home/humitos/bin/spotify-noads.py
