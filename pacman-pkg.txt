@@ -33,9 +33,11 @@ iotop
 iproute2
 ipython
 jhead
+jq
 lame
 lib32-mesa
 libreoffice
+light-locker
 mc
 meld
 mencoder

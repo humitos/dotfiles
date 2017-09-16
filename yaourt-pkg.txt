@@ -3,6 +3,7 @@
 emacs-git
 google-chrome
 linux-firmware-iwlwifi
+mkpasswd
 pa-appliet-git
 redshift-gtk-git
 rpl
