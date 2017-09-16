@@ -37,7 +37,7 @@ fi
 ## EMACS
 alias e='emacsclient --no-wait --alternate-editor vim'
 # http://emacsredux.com/blog/2013/04/21/edit-files-as-root/
-alias E="SUDO_EDITOR=\"emacsclient --alternate-editor emacs\" sudoedit"
+# alias E="SUDO_EDITOR=\"emacsclient --alternate-editor emacs\" sudoedit"
 
 alias supdate='sudo apt update'
 alias supgrade='sudo apt upgrade'
@@ -64,3 +64,6 @@ alias docker-down='docker-compose -f docker-compose.yml down --remove-orphans'
 alias docker-kill='docker-compose -f docker-compose.yml kill'
 alias docker-shell='docker-compose -f docker-compose.yml run --service-ports shell'
 alias docker-logs='docker-compose -f docker-compose.yml logs -f'
+
+# https://pypi.python.org/pypi/ripdb
+alias ripdb='SAVED_STTY=`stty -g`; stty -icanon -opost -echo -echoe -echok -echoctl -echoke; nc 127.0.0.1 4444; stty $SAVED_STTY'

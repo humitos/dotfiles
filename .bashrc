@@ -1,10 +1,3 @@
-# ~/.bashrc: executed by bash(1) for non-login shells.
-# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
-# for examples
-
-# If not running interactively, don't do anything
-[ -z "$PS1" ] && return
-
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
@@ -18,6 +11,7 @@ fi
 . ~/.shell/aliases
 . ~/.shell/variables
 . ~/.shell/functions
+. ~/.shell/vanilla
 
 # bash completion
 for f in $HOME/.shell/completion.d/*; do

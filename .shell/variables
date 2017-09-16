@@ -7,7 +7,7 @@ export HISTCONTROL=ignoreboth
 export HISTSIZE=15000
 export HISTFILESIZE=19000
 export HISTFILE=~/.histfile
-export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g"
+export HISTIGNORE="&:ls:ll:la:l.:pwd:exit:clear:clr:[bf]g:history"
 
 export LESS="-R"
 
@@ -32,37 +32,37 @@ export PIP_USE_WHEEL=1
 export CDPATH=.:~/Source
 
 # This is because it's not set properly
-export TERM=xterm-256color
+# export TERM=xterm-256color
 
 # set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-256color) color_prompt=yes;;
-esac
+# case "$TERM" in
+#     xterm-256color) color_prompt=yes;;
+# esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
 #force_color_prompt=yes
 
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
-fi
+# if [ -n "$force_color_prompt" ]; then
+#     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+# 	# We have color support; assume it's compliant with Ecma-48
+# 	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+# 	# a case would tend to support setf rather than setaf.)
+# 	color_prompt=yes
+#     else
+# 	color_prompt=
+#     fi
+# fi
 
-if [ "$color_prompt" = yes ]; then
-    STARTCOLOR="\e[1;32m"
-    ENDCOLOR="\e[0m"
-    PS1="[\A] \u: \[$STARTCOLOR\]\W\[$ENDCOLOR\]> "
-else
-    PS1="\u@\h:\w\$ "
-fi
-unset color_prompt force_color_prompt
+# if [ "$color_prompt" = yes ]; then
+#     STARTCOLOR="\e[1;32m"
+#     ENDCOLOR="\e[0m"
+#     PS1="[\A] \u: \[$STARTCOLOR\]\W\[$ENDCOLOR\]> "
+# else
+#     PS1="\u@\h:\w\$ "
+# fi
+# unset color_prompt force_color_prompt
 
 
 export BROWSER=firefox
@@ -75,7 +75,7 @@ shopt -s cmdhist # Multiline commands are a single command in history.
 shopt -s extglob # Allows basic regexps in bash.
 
 # set window title at start
-PROMPT_COMMAND='xtitle ${USER}@${HOSTNAME}: `basename "${PWD}"`'
+# PROMPT_COMMAND='xtitle ${USER}@${HOSTNAME}: `basename "${PWD}"`'
 
 # use jedi for autocompletion (sudo pip install jedi)
 # export PYTHONSTARTUP="$(python -m jedi repl)"

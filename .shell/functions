@@ -1,38 +1,38 @@
 # ; -*- mode: sh;-*-
 
-# Automatically activate Git projects' virtual environments based on the
-# directory name of the project. Virtual environment name can be overridden
-# by placing a .venv file in the project root with a virtualenv name in it
-function workon_cwd {
-    # Check that this is a Git repo
-    GIT_DIR=`git rev-parse --git-dir 2> /dev/null`
-    if [ $? == 0 ]; then
-        # Find the repo root and check for virtualenv name override
-        GIT_DIR=`\cd $GIT_DIR`  # I had to remove "; pwd" from this line
-        PROJECT_ROOT=`dirname "$GIT_DIR"`
-        ENV_NAME=`basename "$PROJECT_ROOT"`
-        if [ -f "$PROJECT_ROOT/.venv" ]; then
-            ENV_NAME=`cat "$PROJECT_ROOT/.venv"`
-        fi
-        # Activate the environment only if it is not already active
-        if [ "$VIRTUAL_ENV" != "$WORKON_HOME/$ENV_NAME" ]; then
-            if [ -e "$WORKON_HOME/$ENV_NAME/bin/activate" ]; then
-                workon "$ENV_NAME" && export CD_VIRTUAL_ENV="$ENV_NAME"
-            fi
-        fi
-    elif [ $CD_VIRTUAL_ENV ]; then
-        # We've just left the repo, deactivate the environment
-        # Note: this only happens if the virtualenv was activated automatically
-        deactivate && unset CD_VIRTUAL_ENV
-    fi
-}
+# # Automatically activate Git projects' virtual environments based on the
+# # directory name of the project. Virtual environment name can be overridden
+# # by placing a .venv file in the project root with a virtualenv name in it
+# function workon_cwd {
+#     # Check that this is a Git repo
+#     GIT_DIR=`git rev-parse --git-dir 2> /dev/null`
+#     if [ $? == 0 ]; then
+#         # Find the repo root and check for virtualenv name override
+#         GIT_DIR=`\cd $GIT_DIR`  # I had to remove "; pwd" from this line
+#         PROJECT_ROOT=`dirname "$GIT_DIR"`
+#         ENV_NAME=`basename "$PROJECT_ROOT"`
+#         if [ -f "$PROJECT_ROOT/.venv" ]; then
+#             ENV_NAME=`cat "$PROJECT_ROOT/.venv"`
+#         fi
+#         # Activate the environment only if it is not already active
+#         if [ "$VIRTUAL_ENV" != "$WORKON_HOME/$ENV_NAME" ]; then
+#             if [ -e "$WORKON_HOME/$ENV_NAME/bin/activate" ]; then
+#                 workon "$ENV_NAME" && export CD_VIRTUAL_ENV="$ENV_NAME"
+#             fi
+#         fi
+#     elif [ $CD_VIRTUAL_ENV ]; then
+#         # We've just left the repo, deactivate the environment
+#         # Note: this only happens if the virtualenv was activated automatically
+#         deactivate && unset CD_VIRTUAL_ENV
+#     fi
+# }
 
-# New cd function that does the virtualenv magic
-function venv_cd {
-    cd "$@" && workon_cwd
-}
+# # New cd function that does the virtualenv magic
+# function venv_cd {
+#     cd "$@" && workon_cwd
+# }
 
-# alias cd="venv_cd"
+# # alias cd="venv_cd"
 
 
 extract () {
@@ -83,40 +83,46 @@ ips () {
 
 # Show the currently running command in the terminal title:
 # http://www.davidpashley.com/articles/xterm-titles-with-bash.html
-show_command_in_title_bar()
-{
-    case "$BASH_COMMAND" in
-        *\033]0*)
-        # The command is trying to set the title bar as well;
-        # this is most likely the execution of $PROMPT_COMMAND.
-        # In any case nested escapes confuse the terminal, so don't
-        # output them.
-        ;;
-	*)
-	    xtitle $BASH_COMMAND
-	;;
-    esac
-}
-trap show_command_in_title_bar DEBUG
+# show_command_in_title_bar()
+# {
+#     case "$BASH_COMMAND" in
+#         *\033]0*)
+#         # The command is trying to set the title bar as well;
+#         # this is most likely the execution of $PROMPT_COMMAND.
+#         # In any case nested escapes confuse the terminal, so don't
+#         # output them.
+#         ;;
+# 	*)
+# 	    xtitle $BASH_COMMAND
+# 	;;
+#     esac
+# }
+# trap show_command_in_title_bar DEBUG
 
 
-### pars for fun: install | remove | rollback
-function apt-history(){
-      case "$1" in
-        install)
-              cat /var/log/dpkg.log | grep 'install '
-              ;;
-        upgrade|remove)
-              cat /var/log/dpkg.log | grep $1
-              ;;
-        rollback)
-              cat /var/log/dpkg.log | grep upgrade | \
-                  grep "$2" -A10000000 | \
-                  grep "$3" -B10000000 | \
-                  awk '{print $4"="$5}'
-              ;;
-        *)
-              cat /var/log/dpkg.log | grep $1
-              ;;
-      esac
+# ### pars for fun: install | remove | rollback
+# function apt-history(){
+#       case "$1" in
+#         install)
+#               cat /var/log/dpkg.log | grep 'install '
+#               ;;
+#         upgrade|remove)
+#               cat /var/log/dpkg.log | grep $1
+#               ;;
+#         rollback)
+#               cat /var/log/dpkg.log | grep upgrade | \
+#                   grep "$2" -A10000000 | \
+#                   grep "$3" -B10000000 | \
+#                   awk '{print $4"="$5}'
+#               ;;
+#         *)
+#               cat /var/log/dpkg.log | grep $1
+#               ;;
+#       esac
+# }
+
+
+E() {
+    # alias E='SUDO_EDITOR="emacsclient --alternate-editor emacs" sudoedit'
+    emacsclient --eval "(find-file (concat \"/sudo::\" (expand-file-name \"$1\")))"
 }
