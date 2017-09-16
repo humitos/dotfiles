@@ -1,13 +1,31 @@
-# only require 1 <Tab> to see ambiguous listings
+# man readline
+
+# UP and DOWN to go back and forward on the history by matching the
+# start of the line
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# instead of ringing a bell, shows the completions when ambiguous
 set show-all-if-ambiguous on
+set show-all-if-unmodified on
 
-# result in a character being appended to any file-names returned by
-# completion
-set visible-stats on
-
+# ignore case in completions and cd
 set completion-ignore-case on
 
-# no limit in history
-# set history-size 0
+set mark-symlinked-directories on
 
-$include  /etc/inputrc
+# be able to switch between completion options by just pressing TAB
+TAB: menu-complete
+
+# SHIFT+TAB go back to previous completion
+"\e[Z": "\e-1\C-i"
+
+# treats hyphens (-) and underscores (_)
+set completion-map-case on
+
+set colored-completion-prefix off
+set colored-stats on
+set bell-style none
+set completion-query-items 50
+set enable-bracketed-paste on
+set menu-complete-display-prefix on
