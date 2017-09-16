@@ -47,6 +47,7 @@ mesa-demos
 mesa-libgl
 mplayer
 multitail
+namcap
 netcat
 openshot
 pandoc
