@@ -81,6 +81,8 @@ KNOWN_TITLES = (
     ['Talking Heads'],
     ['Fito Páez'],
     ['Perotá Chingò'],
+    ['John Lennon'],
+    ['David Bowie'],
 
     # Titles I want to be sure that are valid
     map(
