@@ -29,3 +29,12 @@ set bell-style none
 set completion-query-items 50
 set enable-bracketed-paste on
 set menu-complete-display-prefix on
+
+# mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
+# https://stackoverflow.com/questions/5029118/bash-ctrl-to-move-cursor-between-words-strings
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+"\e[5C": forward-word
+"\e[5D": backward-word
+"\e\e[C": forward-word
+"\e\e[D": backward-word
