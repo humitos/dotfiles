@@ -4,10 +4,14 @@ emacs-git
 google-chrome
 linux-firmware-iwlwifi
 mkpasswd
+ministat-git
 pa-appliet-git
+packback-git
+pacolog
 redshift-gtk-git
 rpl
 spotify
 ttf-mac-fonts
 wrld
 xtitle
+skypeforlinux-bin

@@ -1,43 +1,75 @@
+# ;; Local Variables:
+# ;; eval: (flyspell-mode -1)
+# ;; End:
+
 # Packages installed in ArchLinux
 # M-x sort-lines
 
+# Emacs
+emacs
+
+## FlySpell
 aspell-en
 aspell-es
+
+## mate.el
+espeak
+
+# ------------------------------------------------
+
+# Compiling / Building
 autoconf
 autogen
 automake
+
+# Bluetooth
 bluez
 bluez-tools
 bluez-utils
+
+# Development
 bzr
 cabextract
 colordiff
 curl
 docker
-emacs
-emacs
-espeak
+git
+subversion
+virtualbox
+
+# Arch
+expac
+
 fatsort
+
+# Office
 firefox-i18n-es-ar
 flashplugin
+libreoffice
 fswebcam
+
+# Graphics
 gimp
-git
-gnujump
 gthumb
-htop
-httpie
 imagemagick
 inkscape
+
+# System Utilities
+htop
+httpie
 iotop
 iproute2
-ipython
 jhead
 jq
+
+ipython
 lame
 lib32-mesa
-libreoffice
+
+# Lock the session when going to suspend
 light-locker
+xscreensaver
+
 mc
 meld
 mencoder
@@ -56,21 +88,30 @@ qt4
 recordmydesktop
 ruby
 sddm
-steam
-steam-native-runtime
-subversion
-swig
 thunderbird
 thunderbird-i18n-es-ar
 tig
 ttf-ubuntu-font-family
 unrar
 vim
-virtualbox
-vlc
 vlc
 wget
 wmctrl
 workrave
 xclip
+swig
+
+
+# Games
+steam
+steam-native-runtime
+
+## Kelvin and the Infamous Machine
+## http://store.steampowered.com/app/376520/Kelvin_and_the_Infamous_Machine/
+jdk8-openjdk
+jre8-openjdk
+
+## Drivers for my Intel Card on Lenovo X1 Carbon 5th Generation
 xf86-video-intel
+
+gnujump
