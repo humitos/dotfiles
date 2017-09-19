@@ -13,6 +13,11 @@ fi
 . ~/.shell/functions
 . ~/.shell/vanilla
 
+# https://github.com/junegunn/fzf
+# pacman -S fzf
+. /usr/share/fzf/completion.bash
+. /usr/share/fzf/key-bindings.bash
+
 # bash completion
 for f in $HOME/.shell/completion.d/*; do
    . $f
