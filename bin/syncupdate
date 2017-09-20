@@ -9,9 +9,11 @@
 
 # ARCHLINUX
 sudo pacman -Suy --downloadonly --noconfirm
+# yaourt -Su --aur
 
 # update pyenv
 cd ~/.pyenv ; git pull ; cd -
+cd ~/.pyenv/plugins/pyenv-virtualenv ; git pull ; cd -
 
 # update fades
 cd ~/.fades ; git pull ; cd -
@@ -21,6 +23,9 @@ cd ~/.emacs.d ; ./bin/update_git_submodules ; cd -
 
 # backup personal trac
 backup_trac
+
+# backup pacman database
+yaourt -B /home/humitos/.pacman
 
 # update mozio repositories and environments
 mozio_update_repositories
