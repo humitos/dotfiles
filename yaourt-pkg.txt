@@ -1,3 +1,7 @@
+# ;; Local Variables:
+# ;; eval: (flyspell-mode -1)
+# ;; End:
+
 # Packages installed in ArchLinux with `yaourt`
 
 emacs-git

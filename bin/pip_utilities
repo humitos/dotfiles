@@ -1,9 +1,0 @@
-#!/bin/bash
-
-pip install --use-wheel \
-    ipdb \
-    ipython \
-    django-debug-toolbar \
-    fabric \
-    fabric-virtualenv \
-    dj-cmd

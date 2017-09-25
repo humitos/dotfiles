@@ -115,3 +115,11 @@ jre8-openjdk
 xf86-video-intel
 
 gnujump
+
+# Audio
+audacity
+
+openshot
+
+# http://maslinux.es/como-acelerar-el-proceso-de-compilacion-al-instalar-paquetes-de-aur/
+ccache
