@@ -8,6 +8,10 @@ MOZIO_REPOSITORIES="mozio ondemand data-entry mozio-locations mozio-commons mozi
 
 DOCKER_COMPOSE="docker-compose"
 
+# login into AWS ECR
+LOGIN=`/home/humitos/.pyenv/versions/3.6.2/bin/aws ecr get-login --no-include-email --region us-east-1`
+$LOGIN
+
 for REPO in ${MOZIO_REPOSITORIES}; do
   echo "Pulling docker-compose from '${REPO}'...";
   ${DOCKER_COMPOSE} --file ${MOZIO_PATH}/${REPO}/docker-compose.yml pull # --parallel
