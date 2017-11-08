@@ -37,25 +37,37 @@ CHANGE_WINDOW = 'wmctrl -i -a {}'
 COMMANDS_TO_WMCMD = {
     'pidgin': 'Pidgin.Pidgin',
     'emacs': {
-        'command': 'emacs-snapshot --no-site-file --no-site-lisp',
-        'window-title': 'emacs-snapshot.Emacs',
+        'command': 'emacs --no-site-file --no-site-lisp',
+        'window-title': 'emacs.Emacs',
     },
     'thunar': 'Thunar.Thunar',
     'xfce4-terminal': 'xfce4-terminal.Xfce4-terminal',
-    'firefox': 'Navigator.Firefox',
+    'firefox': {
+        'command': 'firefox-beta-bin',
+        'window-title': 'Navigator.Firefox',
+    },
     'josm-latest': 'sun-awt-X11-XFramePeer.org-openstreetmap-josm-Main',
-    'google-chrome': 'Google-chrome.Google-chrome',
+    'google-chrome': {
+        'command': 'google-chrome-stable --profile-directory=Default',
+        'window-title': 'Google-chrome.Google-chrome',
+    },
     'mozio-slack': {
-        'command': 'google-chrome --app=https://mozio.slack.com/ --profile-directory=Default',
-        'window-title': 'Mozio Slack',
+        'command':
+        'google-chrome-stable --app=https://mozio.slack.com/ --profile-directory=Default',
+        'window-title':
+        'Mozio Slack',
     },
     'whatsapp': {
-        'command': 'google-chrome --app=https://web.whatsapp.com/ --profile-directory="Profile 1"',
-        'window-title': 'WhatsApp',
+        'command':
+        'google-chrome-stable --app=https://web.whatsapp.com/ --profile-directory="Profile 1"',
+        'window-title':
+        'WhatsApp',
     },
     'telegram': {
-        'command': 'google-chrome --app="https://web.telegram.org/" --profile-directory="Profile 1"',
-        'window-title': 'Telegram Web',
+        'command':
+        'google-chrome-stable --app="https://web.telegram.org/" --profile-directory="Profile 1"',
+        'window-title':
+        'web.telegram.org.Google-chrome',
     },
     'terminator': 'terminator.Terminator',
     'slack': 'slack.Slack',
