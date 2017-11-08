@@ -5,6 +5,7 @@
 # Packages installed in ArchLinux with `yaourt`
 
 emacs-git
+ff-git
 google-chrome
 linux-firmware-iwlwifi
 mkpasswd
@@ -19,3 +20,16 @@ ttf-mac-fonts
 wrld
 xtitle
 skypeforlinux-bin
+
+
+fd-rs
+
+# theme for lightdm
+# https://github.com/Litarvan/lightdm-webkit-theme-litarvan
+lightdm-webkit-theme-litarvan
+
+
+# support h.254 GoPro videos with VA-API from Intel
+# https://wiki.videolan.org/VLC_GPU_Decoding/
+libvdpau-va-gl-i965
+libva-intel-driver
