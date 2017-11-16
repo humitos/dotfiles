@@ -57,6 +57,12 @@ COMMANDS_TO_WMCMD = {
         'window-title':
         'Mozio Slack',
     },
+    'readthedocs-slack': {
+        'command':
+        'google-chrome-stable --app=https://readthedocs.slack.com/ --profile-directory="Profile 1"',
+        'window-title':
+        'Read the Docs Slack',
+    },
     'whatsapp': {
         'command':
         'google-chrome-stable --app=https://web.whatsapp.com/ --profile-directory="Profile 1"',

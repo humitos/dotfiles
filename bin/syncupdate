@@ -27,11 +27,10 @@ backup_trac
 # backup pacman database
 yaourt -B /home/humitos/.pacman
 
-# update mozio repositories and environments
-mozio_update_repositories
-mozio_update_venv_elpy
-
-mozio_docker_pull
+# update RTD repositories and environments
+rtd_update_org_repositories
+rtd_update_com_repositories
+rtd_docker_pull
 
 # update raspberrypi packages
 # added `--ignore wpa_supplicant --ignore openssl` because of a bug in
