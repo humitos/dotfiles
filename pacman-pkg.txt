@@ -27,6 +27,7 @@ bluez
 bluez-tools
 bluez-utils
 blueman
+pulseaudio-bluetooth
 
 # Development
 bzr
@@ -84,7 +85,6 @@ namcap
 netcat
 openshot
 pandoc
-pulseaudio-bluetooth
 qt4
 recordmydesktop
 ruby
@@ -152,3 +152,12 @@ calibre
 
 # replacement for xarchiver
 file-roller
+
+
+# Image visualizer
+feh
+geeqie
+
+# https://github.com/garabik/grc
+# colorize commands output
+grc
