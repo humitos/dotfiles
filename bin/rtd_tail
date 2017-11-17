@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # pip install rainbow
-tail -f ~/rtfd/code/readthedocs.org/logs/debug.log | \
+tail -f -n 100 ~/rtfd/code/readthedocs.org/logs/debug.log | \
   rainbow \
     --yellow='INFO' \
     --cyan='WARNING' \
@@ -9,4 +9,4 @@ tail -f ~/rtfd/code/readthedocs.org/logs/debug.log | \
     --red='ERROR' \
     --green='POST|GET|PUT' \
     --italic='DEBUG' \
-    --bold='git |bzr |pdflatex |pip |conda |mv |ln |cat |sphinx-build '
+    --bold='git |bzr |pdflatex |pip |conda |mv |ln |cat |sphinx-build |python2\.7 |python3\.5 |python 3'
