@@ -13,13 +13,14 @@
   [[default]]
     [[[child1]]]
       command = ""
+      directory = ""
       parent = window0
       profile = default
       type = Terminal
     [[[window0]]]
       parent = ""
-      type = Window
       title = Terminator | Bash
+      type = Window
   [[RTD]]
     [[[child0]]]
       fullscreen = False
@@ -35,14 +36,14 @@
     [[[child1]]]
       order = 0
       parent = child0
-      position = 227
-      ratio = 0.216603053435
+      position = 300
+      ratio = 0.5
       type = VPaned
     [[[child3]]]
       order = 1
       parent = child1
-      position = 589
-      ratio = 0.718292682927
+      position = 500
+      ratio = 0.5
       type = VPaned
     [[[terminal2]]]
       command = /home/humitos/bin/rtd_tail
