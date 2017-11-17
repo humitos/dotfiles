@@ -2,6 +2,7 @@
 
 # pip install watchdog
 WATCHMEDO=/home/humitos/.pyenv/versions/rtfd/bin/watchmedo
+CELERY=/home/humitos/.pyenv/versions/rtfd/bin/celery
 
 cd /home/humitos/rtfd/code/readthedocs.org
 
@@ -12,4 +13,4 @@ $WATCHMEDO auto-restart \
   --ignore-directories \
   --recursive \
   -- \
-  celery -A readthedocs worker -Q default,celery,web,builder -c 2
+  $CELERY -A readthedocs worker -Q default,celery,web,builder -c 2

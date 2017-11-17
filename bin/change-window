@@ -75,7 +75,14 @@ COMMANDS_TO_WMCMD = {
         'window-title':
         'web.telegram.org.Google-chrome',
     },
-    'terminator': 'terminator.Terminator',
+    'terminator': {
+        'command': 'terminator',
+        'window-title': 'Terminator | Bash',
+    },
+    'readthedocs-dev': {
+        'command': 'terminator --layout=RTD',
+        'window-title': 'Read The Docs | Development',
+    },
     'slack': 'slack.Slack',
     'thunderbird': {
         'command': 'thunderbird',

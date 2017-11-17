@@ -14,6 +14,7 @@
         <property name="startup-notify" type="empty"/>
       </property>
       <property name="&lt;Primary&gt;&lt;Alt&gt;Delete" type="empty"/>
+      <property name="&lt;Primary&gt;&lt;Alt&gt;l" type="empty"/>
       <property name="XF86Display" type="empty"/>
       <property name="&lt;Super&gt;p" type="empty"/>
       <property name="&lt;Primary&gt;Escape" type="empty"/>
@@ -41,13 +42,13 @@
     </property>
     <property name="custom" type="empty">
       <property name="XF86Explorer" type="string" value="exo-open --launch FileManager"/>
-      <property name="&lt;Super&gt;s" type="string" value="/home/humitos/bin/change-window mozio-slack"/>
+      <property name="&lt;Super&gt;s" type="string" value="/home/humitos/bin/change-window readthedocs-slack"/>
       <property name="&lt;Super&gt;t" type="string" value="/home/humitos/bin/change-window terminator"/>
       <property name="&lt;Super&gt;p" type="string" value="xfce4-display-settings --minimal"/>
       <property name="XF86HomePage" type="string" value="exo-open --launch WebBrowser"/>
       <property name="XF86Calculator" type="string" value="gnome-calculator"/>
       <property name="&lt;Alt&gt;Print" type="string" value="xfce4-screenshooter --window"/>
-      <property name="&lt;Super&gt;r" type="string" value="xfce4-appfinder"/>
+      <property name="&lt;Super&gt;r" type="string" value="/home/humitos/bin/change-window readthedocs-dev"/>
       <property name="&lt;Alt&gt;F3" type="string" value="xfce4-appfinder"/>
       <property name="&lt;Alt&gt;F2" type="string" value="xfrun4"/>
       <property name="XF86WWW" type="string" value="exo-open --launch WebBrowser"/>
@@ -71,7 +72,7 @@
       <property name="&lt;Super&gt;F12" type="string" value="/home/humitos/bin/switch-monitor.sh"/>
       <property name="&lt;Super&gt;w" type="string" value="/home/humitos/bin/change-window whatsapp"/>
       <property name="&lt;Super&gt;l" type="string" value="/home/humitos/bin/change-window telegram"/>
-      <property name="&lt;Super&gt;Print" type="string" value="fswebcam --quiet --no-timestamp --no-banner --no-info --no-title --no-subtitle --no-underlay -r 1280x720 --png 9 -D 1 --save /home/humitos/Descargas/`date '+%Y-%m-%d_%H:%M'`_web-cam-shot.png"/>
+      <property name="&lt;Super&gt;Print" type="string" value="/home/humitos/bin/webcamshot"/>
     </property>
   </property>
   <property name="xfwm4" type="empty">

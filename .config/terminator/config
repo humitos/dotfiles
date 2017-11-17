@@ -12,12 +12,62 @@
 [layouts]
   [[default]]
     [[[child1]]]
+      command = ""
       parent = window0
       profile = default
       type = Terminal
     [[[window0]]]
       parent = ""
       type = Window
+      title = Terminator | Bash
+  [[RTD]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 27689460-e063-46e1-a15c-65140c0c65f5
+      last_active_window = True
+      maximised = True
+      order = 0
+      parent = ""
+      position = 0:27
+      size = 1920, 1053
+      title = Read the Docs | Development
+      type = Window
+    [[[child1]]]
+      order = 0
+      parent = child0
+      position = 227
+      ratio = 0.216603053435
+      type = VPaned
+    [[[child3]]]
+      order = 1
+      parent = child1
+      position = 589
+      ratio = 0.718292682927
+      type = VPaned
+    [[[terminal2]]]
+      command = /home/humitos/bin/rtd_tail
+      directory = /home/humitos
+      order = 0
+      parent = child1
+      profile = default
+      type = Terminal
+      uuid = 086f157a-db94-406b-be42-df8e52d1e62b
+    [[[terminal4]]]
+      command = /home/humitos/.pyenv/versions/rtfd/bin/python manage.py runserver
+      directory = /home/humitos/rtfd/code/readthedocs.org
+      order = 0
+      parent = child3
+      profile = default
+      type = Terminal
+      uuid = 27689460-e063-46e1-a15c-65140c0c65f5
+    [[[terminal5]]]
+      command = /home/humitos/bin/rtd_celery
+      directory = /home/humitos
+      order = 1
+      parent = child3
+      profile = default
+      type = Terminal
+      uuid = 45d7e6eb-d6fe-46f2-8b98-c92193ce6958
 [plugins]
 [profiles]
   [[default]]
