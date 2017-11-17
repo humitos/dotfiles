@@ -1,12 +1,13 @@
 #!/bin/bash
 
 # pip install rainbow
-tail -f -n 100 ~/rtfd/code/readthedocs.org/logs/debug.log | \
-  rainbow \
+tail -f -n 200 ~/rtfd/code/readthedocs.org/logs/debug.log | \
+  ~/.pyenv/versions/rtfd/bin/rainbow \
     --yellow='INFO' \
     --cyan='WARNING' \
     --blue=' ([a-z0-9_\.])+:\d{1,3}\[\d+\]' \
     --red='ERROR' \
     --green='POST|GET|PUT' \
-    --italic='DEBUG' \
-    --bold='git |bzr |pdflatex |pip |conda |mv |ln |cat |sphinx-build |python2\.7 |python3\.5 |python 3'
+    --faint='.*DEBUG.*' \
+    --intensity-reset-before='git |bzr |pdflatex |pip |conda |mv |ln |cat |sphinx-build |python2\.7 |python3\.5 |python 3|conda ' \
+    --bold='git |bzr |pdflatex |pip |conda |mv |ln |cat |sphinx-build |python2\.7 |python3\.5 |python 3|conda '
