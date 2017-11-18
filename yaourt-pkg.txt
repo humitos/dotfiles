@@ -33,3 +33,7 @@ lightdm-webkit-theme-litarvan
 # https://wiki.videolan.org/VLC_GPU_Decoding/
 libvdpau-va-gl-i965
 libva-intel-driver
+
+# find raspberry in the same network
+# sudo netdiscover -i eth0
+netdiscover
