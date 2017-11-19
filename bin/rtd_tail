@@ -10,7 +10,7 @@ tail -f -n 200 ~/rtfd/code/readthedocs.org/logs/debug.log | \
     --blue=' ([a-z0-9_\.])+:\d{2,3}\[\d+\]' \
     --green='POST|GET|PUT|DELETE|OPTIONS' \
     --magenta='\d{2,4}\[\d+\]' \
-    --reset-all='\[\d+\]' \
+    --blue='\[\d\d\d\d\d+\]' \
     --red='^Traceback \(most recent call last\):|^  File ".*", line \d+, in .*|^    .*|^[A-Z].*' \
     --reset-all='^\{.*}$' \
     --intensity-reset-before='git |bzr |pdflatex |pip |conda |mv |ln |cat |sphinx-build |python2\.7 |python3\.5 |python 3|conda ' \
