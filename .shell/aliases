@@ -74,6 +74,7 @@ alias docker-login='aws ecr get-login --no-include-email --region us-east-1'
 # https://pypi.python.org/pypi/ripdb
 alias ripdb='SAVED_STTY=`stty -g`; stty -icanon -opost -echo -echoe -echok -echoctl -echoke; nc 127.0.0.1 4444; stty $SAVED_STTY'
 
-
 # https://github.com/garabik/grc
 [[ -s "/etc/profile.d/grc.bashrc" ]] && source /etc/profile.d/grc.bashrc
+
+alias ping='colourify ping -c 5'

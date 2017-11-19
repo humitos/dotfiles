@@ -64,7 +64,7 @@ _isroot=false
   #}}}
 #}}}
 # CONFIG {{{
-  export PATH=/usr/local/bin:$PATH
+  # export PATH=/usr/local/bin:$PATH
   if [[ -d "$HOME/bin" ]] ; then
       PATH="$HOME/bin:$PATH"
   fi
@@ -193,7 +193,7 @@ _isroot=false
   #}}}
   # FILE & STRINGS RELATED FUNCTIONS {{{
     ## FIND A FILE WITH A PATTERN IN NAME {{{
-      ff() { find . -type f -iname '*'$*'*' -ls ; }
+      # ff() { find . -type f -iname '*'$*'*' -ls ; }
     #}}}
     ## FIND A FILE WITH PATTERN $1 IN NAME AND EXECUTE $2 ON IT {{{
       fe() { find . -type f -iname '*'$1'*' -exec "${2:-file}" {} \;  ; }

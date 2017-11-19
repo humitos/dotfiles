@@ -8,10 +8,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+. ~/.shell/vanilla
+
 . ~/.shell/aliases
 . ~/.shell/variables
 . ~/.shell/functions
-. ~/.shell/vanilla
 
 # https://github.com/junegunn/fzf
 # pacman -S fzf
