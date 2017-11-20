@@ -3,10 +3,10 @@
 # pip install rainbow
 tail -f -n 200 ~/rtfd/code/readthedocs.org/logs/debug.log | \
   ~/.pyenv/versions/rtfd/bin/rainbow \
-    --yellow='INFO' \
-    --cyan='WARNING' \
-    --red='ERROR' \
-    --faint='.*DEBUG.*' \
+    --yellow=' INFO ' \
+    --cyan=' WARNING ' \
+    --red=' ERROR ' \
+    --faint='.* DEBUG .*' \
     --blue=' ([a-z0-9_\.])+:\d{2,3}\[\d+\]' \
     --green='POST|GET|PUT|DELETE|OPTIONS' \
     --magenta='\d{2,4}\[\d+\]' \
