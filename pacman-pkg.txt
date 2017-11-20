@@ -163,3 +163,9 @@ geeqie
 grc
 
 hub
+
+# unlock gnome-keyring at login (it's used by Google Chrome, for example)
+# https://wiki.archlinux.org/index.php/GNOME/Keyring#Without_a_display_manager
+# https://wiki.archlinux.org/index.php/GNOME/Keyring#With_a_display_manager
+libgnome-keyring
+

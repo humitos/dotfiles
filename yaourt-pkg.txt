@@ -37,3 +37,7 @@ libva-intel-driver
 # find raspberry in the same network
 # sudo netdiscover -i eth0
 netdiscover
+
+
+# https://github.com/cruegge/pam-gnupg
+pam-gnupg-git
