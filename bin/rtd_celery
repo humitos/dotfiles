@@ -9,9 +9,9 @@ cd /home/humitos/rtfd/code/readthedocs.org
 
 $WATCHMEDO auto-restart \
   --patterns="*.py" \
-  --ignore-patterns="*.#*.py" \
-  --ignore-patterns="./user_builds/*" \
+  --ignore-patterns="*.#*.py;./user_builds/*" \
   --ignore-directories \
   --recursive \
+  --signal=9 \
   -- \
-  $CELERY -A readthedocs worker -Q default,celery,web,builder -c 2
+  $CELERY -A readthedocs worker -Q default,celery,web,builder -l DEBUG -c 2
