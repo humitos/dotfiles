@@ -7,7 +7,11 @@ CELERY=/home/humitos/.pyenv/versions/rtfd/bin/celery
 
 cd /home/humitos/rtfd/code/readthedocs.org
 
-$WATCHMEDO auto-restart \
+# PYTHONOPTIMIZE allows daemon celery processes to create children and
+# we need this for `ripdb`
+# https://docs.python.org/2/using/cmdline.html#envvar-PYTHONOPTIMIZE
+# https://github.com/celery/celery/issues/1709#issuecomment-29731104
+PYTHONOPTIMIZE=true $WATCHMEDO auto-restart \
   --patterns="*.py" \
   --ignore-patterns="*.#*.py;./user_builds/*" \
   --ignore-directories \
