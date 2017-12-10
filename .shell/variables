@@ -90,8 +90,13 @@ export PYENV_ROOT="$HOME/.pyenv"
 # export PYENV_VERSION=2.7.13
 # export PYENV_VERSION=system
 export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # pyenv-virtualenv: https://github.com/pyenv/pyenv-virtualenv
 PYENV_VIRTUALENV_CACHE_PATH="$HOME/.pyenv/cache"
-eval "$(pyenv virtualenv-init -)"
+# Deactivated because of slow time to load
+# https://github.com/pyenv/pyenv-virtualenv/issues/42
+# eval "$(pyenv virtualenv-init -)"
+
+# export PYENV_DEBUG=1
+# --no-rehash to speed up: https://github.com/pyenv/pyenv/issues/571#issuecomment-210227102
+eval "$(pyenv init - --no-rehash)"
