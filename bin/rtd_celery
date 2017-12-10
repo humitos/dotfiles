@@ -13,9 +13,11 @@ cd /home/humitos/rtfd/code/readthedocs.org
 # https://github.com/celery/celery/issues/1709#issuecomment-29731104
 PYTHONOPTIMIZE=true $WATCHMEDO auto-restart \
   --patterns="*.py" \
-  --ignore-patterns="*.#*.py;./user_builds/*" \
+  --ignore-patterns="*.#*.py;./user_builds/*;./public_*;*.pyo;*.pyc" \
   --ignore-directories \
   --recursive \
-  --signal=9 \
+  --signal=SIGTERM \
+  --kill-after=5 \
+  --interval=3 \
   -- \
-  $CELERY -A readthedocs worker -Q default,celery,web,builder -l DEBUG -c 2
+  $CELERY -A readthedocs worker -Q default,celery,web,builder -l DEBUG -c 1
