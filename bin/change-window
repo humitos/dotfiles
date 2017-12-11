@@ -43,7 +43,7 @@ COMMANDS_TO_WMCMD = {
     'thunar': 'Thunar.Thunar',
     'xfce4-terminal': 'xfce4-terminal.Xfce4-terminal',
     'firefox': {
-        'command': 'firefox-beta-bin',
+        'command': 'firefox',
         'window-title': 'Navigator.Firefox',
     },
     'josm-latest': 'sun-awt-X11-XFramePeer.org-openstreetmap-josm-Main',
