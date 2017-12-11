@@ -20,5 +20,7 @@ locate.db
 *.questions
 .style.yapf
 
+*.rej
+
 setup.cfg
 celerybeat-schedule
