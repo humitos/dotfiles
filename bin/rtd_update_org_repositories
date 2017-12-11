@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RTD_PATH=/home/humitos/rtfd/code
-RTD_REPOSITORIES="blog pydoc.io readthedocs-build readthedocs-docker-images readthedocs.org readthedocs-sphinx-ext sphinx-autoapi sphinx_rtd_theme"
+RTD_REPOSITORIES="blog pydoc.io readthedocs-build readthedocs-docker-images readthedocs.org sphinx-autoapi sphinx_rtd_theme"
 
 for REPO in ${RTD_REPOSITORIES}; do
   echo "Updating '${REPO}'...";

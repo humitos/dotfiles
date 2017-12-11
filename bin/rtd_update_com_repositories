@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RTD_PATH=/home/humitos/rtfd/code
-RTD_REPOSITORIES="bot readthedocs-corporate readthedocs-ext"
+RTD_REPOSITORIES="bot readthedocs-corporate readthedocs-corporate-ops readthedocs-ext readthedocs-sphinx-ext redirect"
 
 for REPO in ${RTD_REPOSITORIES}; do
   echo "Updating '${REPO}'...";
