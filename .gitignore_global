@@ -8,6 +8,7 @@ TAGS
 locate.db
 \#*
 *_flymake.py
+flycheck_*.py
 
 # git
 *.orig
