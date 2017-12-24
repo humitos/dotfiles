@@ -1,6 +1,6 @@
 # http://www.zsh.org/
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/humitos/.oh-my-zsh
@@ -61,7 +61,10 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   archlinux
+
+# pacman -S autojump
   autojump
+
   celery
   colored-man-pages
   common-aliases
@@ -73,18 +76,23 @@ plugins=(
   emacs
   git
   globalias
+
+  # pacman -S httpie
   httpie
+
   pyenv
   python
   # sudo
+
+  # pacman -S thefuck
   thefuck
+
+  # git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  zsh-autosuggestions
 
   # https://github.com/zsh-users/zsh-syntax-highlighting
   # Note that zsh-syntax-highlighting must be the last plugin sourced
   zsh-syntax-highlighting
-
-  # git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-  zsh-autosuggestions
 )
 
 # https://github.com/robbyrussell/oh-my-zsh
