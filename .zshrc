@@ -78,6 +78,13 @@ plugins=(
   python
   # sudo
   thefuck
+
+  # https://github.com/zsh-users/zsh-syntax-highlighting
+  # Note that zsh-syntax-highlighting must be the last plugin sourced
+  zsh-syntax-highlighting
+
+  # git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+  zsh-autosuggestions
 )
 
 # https://github.com/robbyrussell/oh-my-zsh
@@ -113,4 +120,5 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.zsh/aliases
+source ~/.zsh/autosuggest
 source ~/.zsh/fzf
