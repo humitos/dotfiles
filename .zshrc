@@ -71,7 +71,6 @@ plugins=(
   # docker
   extract
   emacs
-  fzf-zsh
   git
   globalias
   httpie
@@ -114,3 +113,4 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 source ~/.zsh/aliases
+source ~/.zsh/fzf
