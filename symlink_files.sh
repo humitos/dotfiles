@@ -1,25 +1,18 @@
-#!/bin/bash
+#!/bin/zsh
 
-shopt -s dotglob # shows dots in file globbing
+for i in `ls`; do
 
-for i in *; do
-  rm $HOME/$i 2>/dev/null # remove duplicates
-  
-  if [[ $i == *~ ] | [ $i == README.md ] | [$i == scripts] ] 
+  # FIXME: this compare line doesn't work
+  if [[ ($i == *~ | $i == "README.rst" | $i == "scripts" | $i == *.txt | $i == ".git" | $i == "trac-plugins" | $i == "symlink_files.sh" ) ]]
   then
-      echo "Excluding $i"
+      echo "Excluding ${i}"
   else
-      ln -s `pwd`/$i $HOME/$i # copy new files in
+      echo mv -f $HOME/$i $HOME/$i.dotfiles # remove/backup duplicates
+      cd $HOME
+      echo ln -s `pwd`/$i . # copy new files in
   fi
 done
 
-# Clean up after our naieve loop
-rm $HOME/symlink_files.sh
-rm $HOME/crontab
-rm -rf $HOME/.git
-
-mkdir $HOME/.virtualenvs
-mkdir $HOME/.pip
-mkdir $HOME/.pip/packages
+cd -
 
 echo "Symlinking successful."
