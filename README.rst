@@ -6,6 +6,8 @@ My dotfiles (and scripts!) for some programs
 Installation
 ============
 
+::
+
     git clone
     cd dotfiles
     ./symlink_files.sh
@@ -24,7 +26,7 @@ pyenv
 
    pyenv virtualenv 3.6.4 selenium
    pyenv activate selenium
-   
+
    echo 2.7.14 > ~/.python-version
 
    pip install ipython bpython ipdb docker-compose
@@ -43,4 +45,3 @@ Archlinux packages
 ==================
 
 Take a look at `pacman-pkg.txt`.
-
