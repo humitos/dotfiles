@@ -169,3 +169,8 @@ hub
 # https://wiki.archlinux.org/index.php/GNOME/Keyring#With_a_display_manager
 libgnome-keyring
 
+# zsh
+autojump
+powerline-fonts
+zsh
+thefuck
