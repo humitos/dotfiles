@@ -1,0 +1,6 @@
+# ; -*- mode: sh;-*-
+
+E() {
+    # alias E='SUDO_EDITOR="emacsclient --alternate-editor emacs" sudoedit'
+    emacsclient --eval "(find-file (concat \"/sudo::\" (expand-file-name \"$1\")))"
+}

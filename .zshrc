@@ -73,7 +73,10 @@ plugins=(
   # docker-compose
   # docker
   extract
-  emacs
+
+  # interfers with my own commands
+  # emacs
+
   git
   globalias
 
@@ -129,4 +132,5 @@ source $ZSH/oh-my-zsh.sh
 
 source ~/.zsh/aliases
 source ~/.zsh/autosuggest
+source ~/.zsh/functions
 source ~/.zsh/fzf
