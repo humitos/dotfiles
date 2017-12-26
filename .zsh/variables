@@ -1,0 +1,11 @@
+export LESS="-R"
+
+
+# Python "pip" configurations
+export PIP_USE_WHEEL=1
+
+export BROWSER=firefox
+
+export ALTERNATE_EDITOR=emacs
+export EDITOR=emacsclient
+export VISUAL=emacsclient

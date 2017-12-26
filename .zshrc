@@ -134,3 +134,4 @@ source ~/.zsh/aliases
 source ~/.zsh/autosuggest
 source ~/.zsh/functions
 source ~/.zsh/fzf
+source ~/.zsh/variables
