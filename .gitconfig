@@ -43,7 +43,10 @@ lp = log -p
 ls = log --stat
 st = status -s
 locate = ls-tree --name-only -r HEAD
-serve = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+serve-this = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
+# Serve all RTD external repositories to test them
+# git clone git://localhost/requests
+serve-rtd = daemon --verbose --export-all --base-path=/home/humitos/rtfd/repos --reuseaddr
 # Delete branches that were already merged
 # https://stackoverflow.com/a/33548037/2187091
 cleanup = "!git fetch --prune && for branch in `git branch -vv | grep ': gone]' | grep -v '*' | gawk '{print $1}'`; do git branch -D $branch; done"
