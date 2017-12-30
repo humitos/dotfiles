@@ -38,12 +38,23 @@ CURRENT_MONITOR=`xrandr | grep 1920x1080+0+0 | awk '{ print $1 }'`
 HDMI="HDMI1"
 NOTEBOOK="eDP1"
 
-
 if [ $CURRENT_MONITOR = $HDMI ]
 then
     # switch to NOTEBOOK monitor
     xrandr --output $HDMI --off --output $NOTEBOOK --mode 1920x1080 --pos 0x0 --rotate normal
-else
+    exit 0
+fi
+
+if [ $CURRENT_MONITOR = $NOTEBOOK ]
+then
     # switch to EXTERNAL (LG) monitor
     xrandr --output $NOTEBOOK --off --output $HDMI --mode 1920x1080 --pos 0x0 --rotate normal
+    exit 0
 fi
+
+
+# always fallback to the $NOTEBOOK monitor in case that the last
+# monitor was $HDMI but now the cable is not connected so, not
+# detected
+echo "Fallback..."
+xrandr --output $HDMI --off --output $NOTEBOOK --mode 1920x1080 --pos 0x0 --rotate normal
