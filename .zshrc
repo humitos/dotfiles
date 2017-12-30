@@ -90,8 +90,9 @@ plugins=(
   # pacman -S thefuck
   thefuck
 
+  # FIXME: this plugin interferes with UP key to go back in the history
   # git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-  zsh-autosuggestions
+  # zsh-autosuggestions
 
   # https://github.com/zsh-users/zsh-syntax-highlighting
   # Note that zsh-syntax-highlighting must be the last plugin sourced
