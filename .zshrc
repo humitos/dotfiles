@@ -136,6 +136,3 @@ source ~/.zsh/autosuggest
 source ~/.zsh/functions
 source ~/.zsh/fzf
 source ~/.zsh/variables
-
-~/bin/es_keyboard
-~/bin/en_keyboard
