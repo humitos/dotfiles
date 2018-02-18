@@ -2,6 +2,9 @@
 
 # pip install watchdog
 # sudo sysctl fs.inotify.max_user_watches=16384
+# WATCHMEDO=/home/humitos/.pyenv/versions/rtd3/bin/watchmedo
+# CELERY=/home/humitos/.pyenv/versions/rtd3/bin/celery
+
 WATCHMEDO=/home/humitos/.pyenv/versions/rtfd/bin/watchmedo
 CELERY=/home/humitos/.pyenv/versions/rtfd/bin/celery
 
@@ -11,9 +14,9 @@ cd /home/humitos/rtfd/code/readthedocs.org
 # we need this for `ripdb`
 # https://docs.python.org/2/using/cmdline.html#envvar-PYTHONOPTIMIZE
 # https://github.com/celery/celery/issues/1709#issuecomment-29731104
-PYTHONOPTIMIZE=true $WATCHMEDO auto-restart \
+PYTHONOPTIMIZE=true CELERY=t $WATCHMEDO auto-restart \
   --patterns="*.py" \
-  --ignore-patterns="*.#*.py;./user_builds/*;./public_*;*.pyo;*.pyc;*flycheck*.py;./media/*" \
+  --ignore-patterns="*.#*.py;./user_builds/*;./public_*;./private_*;*.pyo;*.pyc;*flycheck*.py;./media/*" \
   --ignore-directories \
   --recursive \
   --signal=SIGTERM \
