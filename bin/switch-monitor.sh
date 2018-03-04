@@ -1,3 +1,4 @@
+#!/bin/bash
 # $ xrandr
 # Screen 0: minimum 8 x 8, current 1920 x 1080, maximum 32767 x 32767
 # eDP1 connected 1920x1080+0+0 (normal left inverted right x axis y axis) 310mm x 170mm
@@ -33,15 +34,16 @@
 #    640x480       60.00    59.94
 # VIRTUAL1 disconnected (normal left inverted right x axis y axis)
 
-CURRENT_MONITOR=`xrandr | grep 1920x1080+0+0 | awk '{ print $1 }'`
+CURRENT_MONITOR=`xrandr | grep 1920x1080+0+0 | awk '{ print $1 }' | head -n 1`
 
 HDMI="HDMI1"
+HDMI_HUB="DP2"
 NOTEBOOK="eDP1"
 
-if [ $CURRENT_MONITOR = $HDMI ]
+if [ $CURRENT_MONITOR = $HDMI ] || [ $CURRENT_MONITOR = $HDMI_HUB ]
 then
     # switch to NOTEBOOK monitor
-    xrandr --output $HDMI --off --output $NOTEBOOK --mode 1920x1080 --pos 0x0 --rotate normal
+    xrandr --output $HDMI --off --output $HDMI_HUB --off --output $NOTEBOOK --mode 1920x1080 --pos 0x0 --rotate normal
     exit 0
 fi
 
@@ -49,6 +51,8 @@ if [ $CURRENT_MONITOR = $NOTEBOOK ]
 then
     # switch to EXTERNAL (LG) monitor
     xrandr --output $NOTEBOOK --off --output $HDMI --mode 1920x1080 --pos 0x0 --rotate normal
+    # switch to EXTERNAL monitor over USC-C Hub
+    xrandr --output $NOTEBOOK --off --output $HDMI_HUB --mode 1920x1080 --pos 0x0 --rotate normal
     exit 0
 fi
 
