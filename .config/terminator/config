@@ -55,7 +55,7 @@
       type = Terminal
       uuid = 086f157a-db94-406b-be42-df8e52d1e62b
     [[[terminal4]]]
-      command = /home/humitos/.pyenv/versions/rtfd/bin/python manage.py runserver
+      command = CELERY=t /home/humitos/.pyenv/versions/rtd3/bin/python manage.py runserver
       directory = /home/humitos/rtfd/code/readthedocs.org
       order = 0
       parent = child3
