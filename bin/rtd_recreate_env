@@ -1,0 +1,12 @@
+#!/bin/bash
+
+pyenv uninstall -f rtd3
+pyenv virtualenv 3.6.4 rtd3
+
+PIP=/home/humitos/.pyenv/versions/rtd3/bin/pip
+
+$PIP install -r ~/rtfd/code/readthedocs.org/requirements.txt
+$PIP install -r ~/.emacs.d/requirements.elpy.in
+$PIP install tox watchdog
+$PIP install ipython rainbow datadiff dj-cmd
+$PIP install pdbpp fancycompleter pygments
