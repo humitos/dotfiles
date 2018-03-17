@@ -2,8 +2,8 @@
 
 # pip install watchdog
 # sudo sysctl fs.inotify.max_user_watches=16384
-WATCHMEDO=/home/humitos/.pyenv/versions/rtd3/bin/watchmedo
-CELERY=/home/humitos/.pyenv/versions/rtd3/bin/celery
+WATCHMEDO=/home/humitos/.pyenv/versions/readthedocs.org/bin/watchmedo
+CELERY=/home/humitos/.pyenv/versions/readthedocs.org/bin/celery
 
 # WATCHMEDO=/home/humitos/.pyenv/versions/rtfd/bin/watchmedo
 # CELERY=/home/humitos/.pyenv/versions/rtfd/bin/celery
