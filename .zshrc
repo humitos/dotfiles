@@ -79,7 +79,9 @@ plugins=(
   # emacs
 
   git
-  globalias
+
+  # I don't like that it expands the alias
+  # globalias
 
   # pacman -S httpie
   httpie
