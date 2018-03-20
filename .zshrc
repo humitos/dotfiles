@@ -67,6 +67,7 @@ plugins=(
 
   celery
   colored-man-pages
+  colorize
   common-aliases
   cp
   django
