@@ -7,10 +7,15 @@ do
 
     PIP=/home/humitos/.pyenv/versions/$env/bin/pip
 
+    if [ $env = readthedocs-corporate ]
+    then
+        $PIP install -r ~/rtfd/code/readthedocs.org/requirements.txt
+    fi
+
     $PIP install -r ~/rtfd/code/$env/requirements.txt
     $PIP install -r ~/.emacs.d/requirements.elpy.in
     $PIP install tox watchdog
     $PIP install ipython rainbow dj-cmd
-    $PIP install pdbpp fancycompleter pygments datadiff
+    $PIP install ipdb rpdb ripdb pdbpp fancycompleter pygments datadiff
     $PIP install pre-commit
 done
