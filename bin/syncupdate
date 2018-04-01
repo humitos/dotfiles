@@ -42,7 +42,7 @@ rtd_docker_pull
 # openssl that makes the installation to fail
 # sudo pacman -S --force wpa_supplicant
 # sudo pacman -S --force openssl
-ssh alarm@192.168.10.1 sudo pacman -Suy --noconfirm  # --ignore wpa_supplicant --ignore openssl
+# ssh alarm@192.168.10.1 sudo pacman -Suy --noconfirm  # --ignore wpa_supplicant --ignore openssl
 
 # clean pacman old packages
-ssh alarm@192.168.10.1 sudo pacman -Sc --noconfirm
+# ssh alarm@192.168.10.1 sudo pacman -Sc --noconfirm
