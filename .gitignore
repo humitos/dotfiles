@@ -5,3 +5,4 @@
 .ignore
 .agignore
 .grepignore
+bin/node_modules

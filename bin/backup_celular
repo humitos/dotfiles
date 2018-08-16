@@ -1,0 +1,18 @@
+#!/bin/bash
+# Connect Seagate Backup Plus Drive
+# Mount point: /run/media/humitos/Seagate Backup Plus Drive
+
+# Connect Nexus 5
+
+jmtpfs nexus
+
+# BE CAREFUL with ``--remove-source-files`` since it removes the files
+# transfered from source into destination
+for x in Pictures DCIM Download Telegram WhatsApp Slack FalconPro3;
+do
+    rsync -rav \ # --remove-source-files \
+          nexus/Almacenamiento\ interno\ compartido/$x/ \
+          '/run/media/humitos/Seagate Backup Plus Drive/Celular/'$x;
+done
+
+fusermount -u nexus
