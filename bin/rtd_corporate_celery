@@ -11,7 +11,8 @@ cd /home/humitos/rtfd/code/readthedocs-corporate
 # we need this for `ripdb`
 # https://docs.python.org/2/using/cmdline.html#envvar-PYTHONOPTIMIZE
 # https://github.com/celery/celery/issues/1709#issuecomment-29731104
-PYTHONOPTIMIZE=true CELERY=t $WATCHMEDO auto-restart \
+# PYTHONOPTIMIZE=true
+CELERY=t $WATCHMEDO auto-restart \
   --directory="./" \
   --directory="../readthedocs.org" \
   --patterns="*.py" \

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RTD_PATH=/home/humitos/rtfd
-RTD_IMAGES="readthedocs/build:2.0 readthedocs/build:latest"
+RTD_IMAGES="readthedocs/build:latest readthedocs/build:3.0"
 
 # FADES=/home/humitos/Source/3rdparty/fades/bin/fades
 # DOCKER_COMPOSE="${FADES} -d docker-compose -x docker-compose"

@@ -2,7 +2,7 @@
 
 # pip install rainbow
 tail -f -n 200 ~/rtfd/code/readthedocs.org/logs/debug.log | \
-  ~/.pyenv/versions/3.6.1/bin/python ~/.fades/bin/fades -d rainbow -x rainbow \
+  ~/.pyenv/versions/3.6.6/envs/readthedocs.org/bin/rainbow \
     --yellow=' INFO ' \
     --cyan=' WARNING ' \
     --red=' ERROR ' \
