@@ -1,15 +1,23 @@
 #!/bin/bash
 
-for env in readthedocs.org readthedocs-corporate
+for env in readthedocs-corporate readthedocs.org
 do
     pyenv uninstall -f $env
-    pyenv virtualenv 3.6.4 $env
+    if [ $env = readthedocs-corporate ]
+    then
+        pyenv virtualenv 2.7.15 $env
+    else
+        pyenv virtualenv 3.6.6 $env
+    fi
 
     PIP=/home/humitos/.pyenv/versions/$env/bin/pip
+
+    $PIP install -U pip
 
     if [ $env = readthedocs-corporate ]
     then
         $PIP install -r ~/rtfd/code/readthedocs.org/requirements.txt
+        $PIP install ~/rtfd/code/readthedocs-corporate
     fi
 
     $PIP install -r ~/rtfd/code/$env/requirements.txt
@@ -18,4 +26,6 @@ do
     $PIP install ipython rainbow dj-cmd
     $PIP install ipdb rpdb ripdb pdbpp fancycompleter pygments datadiff
     $PIP install pre-commit
+    # this one shouldn't be required but we are using system from pre-commit
+    $PIP install prospector
 done
