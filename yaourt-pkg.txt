@@ -41,3 +41,5 @@ netdiscover
 
 # https://github.com/cruegge/pam-gnupg
 pam-gnupg-git
+
+safecopy

@@ -174,3 +174,7 @@ autojump
 powerline-fonts
 zsh
 thefuck
+
+
+# Compile Python with pyenv
+tk
