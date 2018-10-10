@@ -1,0 +1,5 @@
+#!/bin/bash
+
+ACTION=$1  # "up" or "down"
+
+nmcli connection ${ACTION} 3ffbd5fb-e6a0-4f29-9d86-e1db42425162  # readthedocs.com
