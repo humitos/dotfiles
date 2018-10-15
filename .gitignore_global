@@ -25,3 +25,6 @@ flycheck_*.py
 
 setup.cfg
 celerybeat-schedule
+
+.node-version
+.pytest_cache
