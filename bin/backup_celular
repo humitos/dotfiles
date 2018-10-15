@@ -6,11 +6,16 @@
 
 jmtpfs nexus
 
+# Remove thumbnails which size it's crazy!
+rm -rf 'nexus/Almacenamiento interno compartido/DCIM/.thumbnails'
+
 # BE CAREFUL with ``--remove-source-files`` since it removes the files
 # transfered from source into destination
 for x in Pictures DCIM Download Telegram WhatsApp Slack FalconPro3;
 do
-    rsync -rav \ # --remove-source-files \
+    rsync -rav --remove-source-files \
+          --inplace \
+          --size-only \
           nexus/Almacenamiento\ interno\ compartido/$x/ \
           '/run/media/humitos/Seagate Backup Plus Drive/Celular/'$x;
 done
