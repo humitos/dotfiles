@@ -1,6 +1,6 @@
 # http://www.zsh.org/
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/.pyenv/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/humitos/.oh-my-zsh
@@ -60,14 +60,16 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  archlinux
+  # archlinux
 
-# pacman -S autojump
+  # aterminal
+  # pacman -S autojump
   autojump
 
-  celery
+  # celery
   colored-man-pages
   colorize
+  command-time
   common-aliases
   cp
   django
@@ -88,7 +90,8 @@ plugins=(
 
   pyenv
   python
-  # sudo
+  sudo
+  supervisor
 
   # pacman -S thefuck
   thefuck
@@ -134,8 +137,20 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+HISTSIZE=1000000
+
+
 source ~/.zsh/aliases
 source ~/.zsh/autosuggest
 source ~/.zsh/functions
 source ~/.zsh/fzf
 source ~/.zsh/variables
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/vault vault
+
+pyenv virtualenvwrapper_lazy
