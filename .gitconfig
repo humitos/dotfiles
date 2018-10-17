@@ -49,7 +49,7 @@ serve-this = daemon --verbose --export-all --base-path=.git --reuseaddr --strict
 serve-rtd = daemon --verbose --export-all --base-path=/home/humitos/rtfd/repos --reuseaddr
 # Delete branches that were already merged
 # https://stackoverflow.com/a/33548037/2187091
-cleanup = "!git fetch --prune && for branch in `git branch -vv | grep ': gone]' | grep -v '*' | gawk '{print $1}'`; do git branch -D $branch; done"
+cleanup = "!git fetch --prune && for branch in `git branch -vv | grep -E ': (gone|desaparecido)' | grep -v '*' | gawk '{print $1}'`; do git branch -D $branch; done"
 
 [push]
 default = simple
