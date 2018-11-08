@@ -3,12 +3,7 @@
 for env in readthedocs-corporate readthedocs.org
 do
     pyenv uninstall -f $env
-    if [ $env = readthedocs-corporate ]
-    then
-        pyenv virtualenv 2.7.15 $env
-    else
-        pyenv virtualenv 3.6.6 $env
-    fi
+    pyenv virtualenv 3.6.6 $env
 
     PIP=/home/humitos/.pyenv/versions/$env/bin/pip
 
@@ -26,6 +21,9 @@ do
     $PIP install ipython rainbow dj-cmd
     $PIP install ipdb rpdb ripdb pdbpp fancycompleter pygments datadiff
     $PIP install pre-commit
+
     # this one shouldn't be required but we are using system from pre-commit
-    $PIP install prospector
+    $PIP install prospector pylint-django pylint-celery
+
+    $PIP install pur
 done

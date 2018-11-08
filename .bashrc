@@ -28,3 +28,5 @@ done
 
 ~/bin/es_keyboard
 ~/bin/en_keyboard
+
+complete -C /usr/bin/vault vault

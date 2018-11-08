@@ -23,4 +23,4 @@ PYTHONOPTIMIZE=true CELERY=t $WATCHMEDO auto-restart \
   --kill-after=5 \
   --interval=3 \
   -- \
-  $CELERY -A readthedocs worker -Q default,celery,web,builder -l DEBUG -c 2
+  $CELERY worker -A readthedocs.worker -Q default,celery,web,builder -l DEBUG -c 2

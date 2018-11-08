@@ -42,7 +42,7 @@ alias e='emacsclient --no-wait --alternate-editor vim'
 alias supdate='sudo apt update'
 alias supgrade='sudo apt upgrade'
 
-alias fades='~/./.pyenv/versions/3.6.1/bin/python /home/humitos/.fades/bin/fades'
+# alias fades='~/./.pyenv/versions/3.6.1/bin/python /home/humitos/.fades/bin/fades'
 # alias bpython='fades -d bpython -d jedi -d watchdog -x bpython'
 # alias docker-compose='fades -d docker-compose -x docker-compose'
 # alias ipython='fades -d ipython -x ipython'
@@ -79,3 +79,6 @@ alias ripdb='SAVED_STTY=`stty -g`; stty -icanon -opost -echo -echoe -echok -echo
 [[ -s "/etc/profile.d/grc.bashrc" ]] && source /etc/profile.d/grc.bashrc
 
 alias ping='colourify ping -c 5'
+
+alias vim=nvim
+alias v=nvim
