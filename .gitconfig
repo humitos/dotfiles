@@ -6,15 +6,6 @@ excludesfile = /home/humitos/.gitignore_global
 diff = auto
 ui = auto
 
-[sendemail]
-chainreplyto = false
-from = Manuel Kaufmann <humitos@gmail.com>
-smtpserver = smtp.gmail.com
-smtpuser = humitos@gmail.com
-smtpserverport = 587
-smtpencryption = tls
-confirm = auto
-
 [user]
 name = Manuel Kaufmann
 email = humitos@gmail.com
@@ -49,7 +40,10 @@ serve-this = daemon --verbose --export-all --base-path=.git --reuseaddr --strict
 serve-rtd = daemon --verbose --export-all --base-path=/home/humitos/rtfd/repos --reuseaddr
 # Delete branches that were already merged
 # https://stackoverflow.com/a/33548037/2187091
-cleanup = "!git fetch --prune && for branch in `git branch -vv | grep -E ': (gone|desaparecido)' | grep -v '*' | gawk '{print $1}'`; do git branch -D $branch; done"
+cleanup-gone-branches = "!git fetch --prune && for branch in `git branch -vv | grep -E ': (gone|desaparecido)' | grep -v '*' | gawk '{print $1}'`; do git branch -D $branch; done"
+# https://gist.github.com/schacon/942899
+cleanup-merged-branches = "!git fetch --prune && for branch in `git branch --merged | grep -v '*' | grep -v master | grep -v develop`; do git branch -d $branch; done"
+
 
 [push]
 default = simple

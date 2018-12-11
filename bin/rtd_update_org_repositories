@@ -1,9 +1,10 @@
 #!/bin/bash
 
 RTD_PATH=/home/humitos/rtfd/code
-RTD_REPOSITORIES="blog pydoc.io internal-docs readthedocs-build readthedocs-docker-images readthedocs.org recommonmark sphinx-autoapi sphinx_rtd_theme readthedocs-ops"
+RTD_REPOSITORIES="blog django-textclassifier internal-docs pydoc.io readthedocs-common readthedocs-docker-images readthedocs.org recommonmark sphinx-version-warning sphinx-version-warning-example sphinx_rtd_theme test-builds"
 
 for REPO in ${RTD_REPOSITORIES}; do
   echo "Updating '${REPO}'...";
-  git --git-dir ${RTD_PATH}/${REPO}/.git fetch origin --prune;
+  git --git-dir ${RTD_PATH}/${REPO}/.git cleanup-gone-branches;
+  git --git-dir ${RTD_PATH}/${REPO}/.git cleanup-merged-branches;
 done

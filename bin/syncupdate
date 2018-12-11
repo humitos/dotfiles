@@ -24,7 +24,7 @@ cd ~/.oh-my-zsh/custom/plugins ; for plugin in `ls`; do cd $plugin ; git pull ; 
 cd ~/.fades ; git pull ; cd -
 
 # update emacs configuration
-cd ~/.emacs.d ; ./bin/update_git_submodules ; cd -
+# cd ~/.emacs.d ; ./bin/update_git_submodules ; cd -
 
 # backup personal trac
 backup_trac
