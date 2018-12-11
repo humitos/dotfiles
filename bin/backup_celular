@@ -2,22 +2,24 @@
 # Connect Seagate Backup Plus Drive
 # Mount point: /run/media/humitos/Seagate Backup Plus Drive
 
-# Connect Nexus 5
+# Connect Xiaomi MI8
 
-jmtpfs nexus
+jmtpfs xiaomi-mi8
 
 # Remove thumbnails which size it's crazy!
-rm -rf 'nexus/Almacenamiento interno compartido/DCIM/.thumbnails'
+# rm -rf 'nexus/interno compartido/DCIM/.thumbnails'
 
 # BE CAREFUL with ``--remove-source-files`` since it removes the files
 # transfered from source into destination
-for x in Pictures DCIM Download Telegram WhatsApp Slack FalconPro3;
+for x in Pictures DCIM bluetooth Download Telegram WhatsApp Slack FalconPro3 MIUI;
 do
-    rsync -rav --remove-source-files \
+    rsync -rav \
           --inplace \
           --size-only \
-          nexus/Almacenamiento\ interno\ compartido/$x/ \
-          '/run/media/humitos/Seagate Backup Plus Drive/Celular/'$x;
+          --exclude .thumbnails \
+          --remove-source-files \
+          xiaomi-mi8/Internal\ shared\ storage/$x/ \
+          '/run/media/humitos/Seagate Backup Plus Drive/xiaomi-mi8/'$x;
 done
 
-fusermount -u nexus
+fusermount -u xiaomi-mi8
