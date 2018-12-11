@@ -33,3 +33,24 @@ alias ripdb='SAVED_STTY=`stty -g`; stty -icanon -opost -echo -echoe -echok -echo
 
 # remove all __pycache__ directories
 alias pycache='find ./ -name __pycache__ -type d -exec rm -rf {} +'
+
+# use bat instead of cat
+alias cat=bat
+
+# unalias from common-alias plugin
+unalias l
+unalias la
+unalias lr
+unalias lt
+unalias ll
+unalias ldot
+unalias lS
+unalias lart
+unalias lrt
+
+alias l='exa'
+alias ls='exa'
+alias ll='exa -l'
+alias la='exa -la'
+alias lr='exa -R'
+alias lt='exa -l -T'
