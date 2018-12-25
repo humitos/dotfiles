@@ -14,6 +14,9 @@ jmtpfs xiaomi-mi8
 for x in Pictures DCIM bluetooth Download Telegram WhatsApp Slack FalconPro3 MIUI;
 do
     rsync -rav \
+          --progress \
+          --omit-dir-times \
+          --no-perms \
           --inplace \
           --size-only \
           --exclude .thumbnails \
