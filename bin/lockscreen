@@ -1,0 +1,4 @@
+#!/bin/bash
+
+/home/humitos/bin/switch-presentation-mode off
+xflock4
