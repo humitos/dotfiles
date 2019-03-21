@@ -28,3 +28,10 @@ celerybeat-schedule
 
 .node-version
 .pytest_cache
+
+*dev.db*
+
+.ignore
+
+spam-data/
+datasets/
