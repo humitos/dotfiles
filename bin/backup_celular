@@ -2,6 +2,8 @@
 # Connect Seagate Backup Plus Drive
 # Mount point: /run/media/humitos/Seagate Backup Plus Drive
 
+set -e
+
 # Connect Xiaomi MI8
 
 jmtpfs xiaomi-mi8
@@ -11,7 +13,7 @@ jmtpfs xiaomi-mi8
 
 # BE CAREFUL with ``--remove-source-files`` since it removes the files
 # transfered from source into destination
-for x in Pictures DCIM bluetooth Download Telegram WhatsApp Slack FalconPro3 MIUI;
+for x in Pictures DCIM bluetooth Download Telegram WhatsApp Slack MIUI;
 do
     rsync -rav \
           --progress \
@@ -20,6 +22,8 @@ do
           --inplace \
           --size-only \
           --exclude .thumbnails \
+          --exclude .music \
+          --exclude .cache \
           --remove-source-files \
           xiaomi-mi8/Internal\ shared\ storage/$x/ \
           '/run/media/humitos/Seagate Backup Plus Drive/xiaomi-mi8/'$x;
