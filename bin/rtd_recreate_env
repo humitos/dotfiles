@@ -3,7 +3,7 @@
 for env in readthedocs-corporate readthedocs.org
 do
     pyenv uninstall -f $env
-    pyenv virtualenv 3.6.6 $env
+    pyenv virtualenv 3.6.8 $env
 
     PIP=/home/humitos/.pyenv/versions/$env/bin/pip
 
