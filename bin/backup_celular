@@ -5,6 +5,7 @@
 set -e
 
 # Connect Xiaomi MI8
+fusermount -u xiaomi-mi8 || echo
 
 jmtpfs xiaomi-mi8
 
@@ -24,6 +25,9 @@ do
           --exclude .thumbnails \
           --exclude .music \
           --exclude .cache \
+          --exclude .Shared \
+          --exclude .trash \
+          --exclude debug_log \
           --remove-source-files \
           xiaomi-mi8/Internal\ shared\ storage/$x/ \
           '/run/media/humitos/Seagate Backup Plus Drive/xiaomi-mi8/'$x;
