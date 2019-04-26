@@ -1,6 +1,6 @@
 cd ~/trac.mkaufmann.com.ar-rsync/
-rpl -i -b "password_file = /home/humitos/apps/trachumitos/trac.htpasswd" "password_file = trac.htpasswd" conf/trac.ini
-rpl -i -b "authz_file = /home/humitos/apps/trachumitos/conf/authzpolicy.conf" "authz_file = conf/authzpolicy.conf" conf/trac.ini
+rpl -i "password_file = /home/humitos/apps/trachumitos/trac.htpasswd" "password_file = trac.htpasswd" conf/trac.ini
+rpl -i "authz_file = /home/humitos/apps/trachumitos/conf/authzpolicy.conf" "authz_file = conf/authzpolicy.conf" conf/trac.ini
 
 eval "$(pyenv init -)"
 pyenv activate trac

@@ -153,4 +153,15 @@ source ~/.zsh/variables
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/vault vault
 
-pyenv virtualenvwrapper_lazy
+# https://github.com/pyenv/pyenv/issues/784#issuecomment-443792076
+eval "$(pyenv virtualenv-init -)"
+
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# eval "$(rbenv init -)"
+
+# https://github.com/syndbg/goenv/blob/master/INSTALL.md
+# export GOENV_ROOT="$HOME/.goenv"
+# export PATH="$GOENV_ROOT/bin:$PATH"
+# eval "$(goenv init -)"
+# export PATH="$GOROOT/bin:$PATH"
+# export PATH="$GOPATH/bin:$PATH"

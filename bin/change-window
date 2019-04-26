@@ -59,6 +59,7 @@ COMMANDS_TO_WMCMD = {
     },
     'readthedocs-slack': {
         'command':
+        # 'firefox --safe-mode --new-window https://readthedocs.slack.com/',
         'google-chrome-stable --app=https://readthedocs.slack.com/ --profile-directory="Profile 1"',
         'window-title':
         'Read the Docs Slack',

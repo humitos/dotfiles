@@ -26,7 +26,7 @@ for f in $HOME/.shell/completion.d/*; do
    . $f
 done
 
-~/bin/es_keyboard
-~/bin/en_keyboard
+# ~/bin/es_keyboard
+# ~/bin/en_keyboard
 
-complete -C /usr/bin/vault vault
+# complete -C /usr/bin/vault vault

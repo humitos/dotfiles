@@ -1,12 +1,12 @@
 #!/bin/bash
 
 RTD_PATH=/home/humitos/rtfd
-RTD_IMAGES="readthedocs/build:latest readthedocs/build:3.0"
+RTD_IMAGES="readthedocs/build:3.0 readthedocs/build:4.0 readthedocs/build:5.0rc1"
 
-# FADES=/home/humitos/Source/3rdparty/fades/bin/fades
-# DOCKER_COMPOSE="${FADES} -d docker-compose -x docker-compose"
+FADES=`which fades`
+DOCKER_COMPOSE="${FADES} -d docker-compose -x docker-compose"
 
-DOCKER_COMPOSE="/home/humitos/.pyenv/versions/3.6.2/bin/docker-compose"
+# DOCKER_COMPOSE="/home/humitos/.pyenv/versions/3.6.2/bin/docker-compose"
 
 for IMG in ${RTD_IMAGES}; do
   echo "Pulling docker image '${IMG}'...";

@@ -27,15 +27,15 @@ cd ~/.fades ; git pull ; cd -
 # cd ~/.emacs.d ; ./bin/update_git_submodules ; cd -
 
 # backup personal trac
-backup_trac
+# backup_trac
 
 # backup pacman database
-yaourt -B /home/humitos/.pacman
+# yaourt -B /home/humitos/.pacman
 
 # update RTD repositories and environments
 rtd_update_org_repositories
 rtd_update_com_repositories
-rtd_docker_pull
+# rtd_docker_pull
 
 # update raspberrypi packages
 # added `--ignore wpa_supplicant --ignore openssl` because of a bug in
