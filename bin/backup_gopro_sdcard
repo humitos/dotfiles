@@ -5,6 +5,7 @@
 # Connect SDCARD GoPro
 # SDCARD Mount Point: /run/media/humitos/8765-4321/DCIM/100GOPRO/
 
+set -e
 
 # BE CAREFUL with ``--remove-source-files`` since it removes the files
 # transfered from source into destination
