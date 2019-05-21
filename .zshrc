@@ -108,6 +108,7 @@ plugins=(
 # https://github.com/robbyrussell/oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -137,21 +138,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-setopt HIST_EXPIRE_DUPS_FIRST
-setopt HIST_FIND_NO_DUPS
-setopt HIST_SAVE_NO_DUPS
-setopt HIST_REDUCE_BLANKS
-HISTSIZE=1000000
-
-
 source ~/.zsh/aliases
 source ~/.zsh/autosuggest
+source ~/.zsh/history
 source ~/.zsh/functions
 source ~/.zsh/fzf
 source ~/.zsh/variables
 
 autoload -U +X bashcompinit && bashcompinit
-complete -o nospace -C /usr/bin/vault vault
+# complete -o nospace -C /usr/bin/vault vault
 
 # https://github.com/pyenv/pyenv/issues/784#issuecomment-443792076
 eval "$(pyenv virtualenv-init -)"
