@@ -92,6 +92,7 @@ plugins=(
   python
   sudo
   supervisor
+  ssh-agent
 
   # pacman -S thefuck
   thefuck
@@ -104,6 +105,8 @@ plugins=(
   # Note that zsh-syntax-highlighting must be the last plugin sourced
   zsh-syntax-highlighting
 )
+
+zstyle :omz:plugins:ssh-agent lifetime 6h
 
 # https://github.com/robbyrussell/oh-my-zsh
 source $ZSH/oh-my-zsh.sh
