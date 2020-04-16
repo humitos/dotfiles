@@ -1,12 +1,7 @@
 #!/bin/bash
 
 RTD_PATH=/home/humitos/rtfd
-RTD_IMAGES="readthedocs/build:3.0 readthedocs/build:4.0 readthedocs/build:5.0rc1"
-
-FADES=`which fades`
-DOCKER_COMPOSE="${FADES} -d docker-compose -x docker-compose"
-
-# DOCKER_COMPOSE="/home/humitos/.pyenv/versions/3.6.2/bin/docker-compose"
+RTD_IMAGES="readthedocs/build:6.0 readthedocs/build:7.0"
 
 for IMG in ${RTD_IMAGES}; do
   echo "Pulling docker image '${IMG}'...";
@@ -25,4 +20,5 @@ docker rm -v $(docker ps -a -q -f status=exited)
 docker rmi $(docker images -f "dangling=true" -q)
 
 # more work on "dangling" ones
-docker volume rm $(docker volume ls -qf dangling=true)
+# docker volume rm $(docker volume ls -qf dangling=true)
+# docker volume prune

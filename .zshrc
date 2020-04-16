@@ -75,6 +75,7 @@ plugins=(
   django
   # docker-compose
   # docker
+  dotenv
   extract
 
   # interfers with my own commands
@@ -101,10 +102,17 @@ plugins=(
   # git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
   # zsh-autosuggestions
 
+  # auto jump into directories
+  # yay -S z-git
+  z
+
   # https://github.com/zsh-users/zsh-syntax-highlighting
   # Note that zsh-syntax-highlighting must be the last plugin sourced
   zsh-syntax-highlighting
 )
+
+ZSH_DOTENV_FILE=.dotenv
+ZSH_DOTENV_PROMPT=false
 
 zstyle :omz:plugins:ssh-agent lifetime 6h
 

@@ -35,3 +35,7 @@ celerybeat-schedule
 
 spam-data/
 datasets/
+
+.mypy_cache/
+/TODOs.org
+/.dotenv

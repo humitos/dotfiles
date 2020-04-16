@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RTD_PATH=/home/humitos/rtfd/code
-RTD_REPOSITORIES="blog django-textclassifier internal-docs pydoc.io readthedocs-common readthedocs-docker-images readthedocs.org recommonmark sphinx-version-warning sphinx-version-warning-example sphinx_rtd_theme test-builds sphinx-notfound-page sphinx-hoverxref"
+RTD_REPOSITORIES="blog internal-docs pydoc.io readthedocs-common readthedocs-docker-images readthedocs.org readthedocs-ops recommonmark sphinx-version-warning sphinx_rtd_theme test-builds sphinx-notfound-page sphinx-hoverxref"
 
 for REPO in ${RTD_REPOSITORIES}; do
   echo "Updating '${REPO}'...";

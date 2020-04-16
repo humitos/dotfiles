@@ -32,106 +32,133 @@ import sys
 # [...]
 
 TERMINAL_ENCODING = commands.getoutput('locale charmap')
-LIST_WINDOWS = 'wmctrl -l -x | grep -i "{}" | grep -v grep | tail -n {}'
+LIST_WINDOWS = 'wmctrl -l -x | grep -i "{}" | grep -v grep'
 CHANGE_WINDOW = 'wmctrl -i -a {}'
 COMMANDS_TO_WMCMD = {
     'pidgin': 'Pidgin.Pidgin',
     'emacs': {
         'command': 'emacs --no-site-file --no-site-lisp',
-        'window-title': 'emacs.Emacs',
+        'window-title': 'emacs@julia',
+        'open-new': False,
     },
     'thunar': 'Thunar.Thunar',
     'xfce4-terminal': 'xfce4-terminal.Xfce4-terminal',
     'firefox': {
         'command': 'firefox',
         'window-title': 'Navigator.Firefox',
+        'open-new': True,
     },
     'josm-latest': 'sun-awt-X11-XFramePeer.org-openstreetmap-josm-Main',
     'google-chrome': {
         'command': 'google-chrome-stable --profile-directory="Profile 1"',
         'window-title': 'Google-chrome.Google-chrome',
+        'open-new': False,
     },
     'mozio-slack': {
-        'command':
-        'google-chrome-stable --app=https://mozio.slack.com/ --profile-directory=Default',
-        'window-title':
-        'Mozio Slack',
+        'command': 'google-chrome-stable --app=https://mozio.slack.com/ --profile-directory=Default',
+        'window-title': 'Mozio Slack',
+        'open-new': False,
     },
     'readthedocs-slack': {
-        'command':
+        # 'command':
         # 'firefox --safe-mode --new-window https://readthedocs.slack.com/',
-        'google-chrome-stable --app=https://readthedocs.slack.com/ --profile-directory="Profile 1"',
-        'window-title':
-        'Read the Docs Slack',
+        # 'google-chrome-stable --app=https://irccloud.com/ --profile-directory="Profile 1"',
+        # 'slack',
+        'window-title': ' | Read the Docs - Mozilla Firefox',
+        'open-new': False,
+        'switch-to-other-desktop': True,
     },
     'whatsapp': {
         'command':
         'google-chrome-stable --app=https://web.whatsapp.com/ --profile-directory="Profile 1"',
         'window-title':
         'WhatsApp',
+        'open-new': False,
     },
     'telegram': {
         'command':
         'google-chrome-stable --app="https://web.telegram.org/" --profile-directory="Profile 1"',
         'window-title':
         'web.telegram.org.Google-chrome',
+        'open-new': False,
     },
     'terminator': {
         'command': 'terminator',
         'window-title': 'Terminator | Bash',
+        'open-new': True,
     },
     'readthedocs-dev': {
         'command': 'terminator --layout=RTD',
         'window-title': 'Read The Docs | Development',
+        'open-new': False,
     },
-    'slack': 'slack.Slack',
     'thunderbird': {
-        'command': 'thunderbird',
+        'command': 'thunderbird-beta',
         'window-title': 'Mozilla Thunderbird',
+        'open-new': False,
     },
 }
 
 
-def get_window_id(command):
-    # This function is horrible but it's late at night and I just want
-    # this shit working :)
-    if command == 'pidgin':
-        n = 2
-    else:
-        n = 1
-
+def get_window_and_desktop_id(command):
     window_title = COMMANDS_TO_WMCMD.get(command)
+    if window_title is None:
+        print('Command not found.')
+        sys.exit(1)
     if isinstance(window_title, dict):
         window_title = window_title.get('window-title')
 
-    output = commands.getoutput(LIST_WINDOWS.format(window_title, n))
+    output = commands.getoutput(LIST_WINDOWS.format(window_title))
     output = output.decode(TERMINAL_ENCODING)
-    if n > 1:
-        if command == 'pidgin':
-            lines = output.splitlines()
-            for l in lines:
-                if 'Lista de amigos' not in l:
-                    output = l
-                    break
 
-    win_id = output.split(' ')[0]
-    return win_id
+    application = COMMANDS_TO_WMCMD.get(command)
+    current_desktop_id = get_current_desktop_id()
+    for line in output.splitlines():
+        win_id, desktop_id = line.split()[:2]
+        if current_desktop_id == desktop_id or application.get('switch-to-other-desktop', False):
+            return win_id, desktop_id
+    return '', ''
+
+
+def get_current_desktop_id():
+    output = commands.getoutput("wmctrl -d | grep '*'")
+    output = output.decode(TERMINAL_ENCODING)
+    return output.split()[0]
 
 
 def main():
     program = sys.argv[1]
-    win_id = get_window_id(program)
+    win_id, desktop_id = get_window_and_desktop_id(program)
+    print('win_id:', win_id)
+    print('desktop_id:', desktop_id)
+    application = COMMANDS_TO_WMCMD.get(program)
     if win_id != '':
+        # Change to window opened
         cmd = CHANGE_WINDOW.format(win_id)
+        print('Command to execute:', cmd)
+
+        current_desktop_id = get_current_desktop_id()
+        if current_desktop_id == desktop_id:
+            if program == 'readthedocs-slack':
+                brotab_cmd = (
+                    "fades -d brotab -x brotab activate `fades -d brotab -x brotab list | grep irccloud | awk '{ print $1 }'`"
+                )
+                print(brotab_cmd)
+                os.system(brotab_cmd)
+        else:
+            if application.get('open-new', False):
+                os.system(cmd)
+
+        os.system(cmd)
+
     else:
-        cmd = COMMANDS_TO_WMCMD.get(program)
-        if isinstance(cmd, dict):
-            cmd = cmd['command']
+        # Execute the program
+        if isinstance(application, dict):
+            cmd = application['command']
         else:
             cmd = program
-
-    print(cmd)
-    os.system(cmd)
+        print('Command to execute:', cmd)
+        os.system(cmd)
 
 
 if __name__ == '__main__':

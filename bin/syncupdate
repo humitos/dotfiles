@@ -15,13 +15,17 @@ sudo pacman -Suy --downloadonly --noconfirm
 cd ~/.pyenv ; git pull ; cd -
 cd ~/.pyenv/plugins/pyenv-virtualenv ; git pull ; cd -
 
+# update nodenv
+cd ~/.nodenv ; git pull ; cd -
+cd ~/.nodenv/plugins/node-build ; git pull ; cd -
+
 # update oh-my-zsh
 cd ~/.oh-my-zsh ; git pull ; cd -
 cd ~/.oh-my-zsh/custom/plugins ; for plugin in `ls`; do cd $plugin ; git pull ; cd -; done
 
 
 # update fades
-cd ~/.fades ; git pull ; cd -
+# cd ~/.fades ; git pull ; cd -
 
 # update emacs configuration
 # cd ~/.emacs.d ; ./bin/update_git_submodules ; cd -

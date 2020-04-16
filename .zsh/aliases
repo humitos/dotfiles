@@ -9,7 +9,7 @@
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 ## EMACS
-alias e='emacsclient --no-wait --alternate-editor vim'
+alias e='emacsclient --no-wait --alternate-editor nvim'
 # http://emacsredux.com/blog/2013/04/21/edit-files-as-root/
 # alias E="SUDO_EDITOR=\"emacsclient --alternate-editor emacs\" sudoedit"
 
@@ -23,7 +23,9 @@ alias twine='fades -d twine -x twine'
 alias g=git
 alias py=python
 
-alias r='cd /home/humitos/rtfd/code/readthedocs.org'
+alias r='~/.pyenv/versions/r/bin/inv --search-root ~/rtfd/code/r/'
+alias rr='cd /home/humitos/rtfd/code/readthedocs.org'
+alias ro='cd /home/humitos/rtfd/code/readthedocs-ops'
 alias rc='cd /home/humitos/rtfd/code/readthedocs-corporate'
 
 
