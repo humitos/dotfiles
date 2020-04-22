@@ -83,8 +83,9 @@ COMMANDS_TO_WMCMD = {
         'open-new': False,
     },
     'terminator': {
-        'command': 'terminator',
-        'window-title': 'Terminator | Bash',
+        # 'command': 'terminator',
+        'command': 'kitty',
+        'window-title': 'kitty.kitty',
         'open-new': True,
     },
     'readthedocs-dev': {
