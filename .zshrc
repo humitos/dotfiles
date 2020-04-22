@@ -72,7 +72,7 @@ plugins=(
   command-time
   common-aliases
   cp
-  django
+  # django
   # docker-compose
   # docker
   dotenv
@@ -82,21 +82,22 @@ plugins=(
   # emacs
 
   git
+  git-extra-commands
 
   # I don't like that it expands the alias
   # globalias
 
   # pacman -S httpie
-  httpie
+  # httpie
 
   pyenv
   python
   sudo
-  supervisor
+  # supervisor
   ssh-agent
 
   # pacman -S thefuck
-  thefuck
+  # thefuck
 
   # FIXME: this plugin interferes with UP key to go back in the history
   # git clone https://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
@@ -104,11 +105,11 @@ plugins=(
 
   # auto jump into directories
   # yay -S z-git
-  z
+  # z
 
   # https://github.com/zsh-users/zsh-syntax-highlighting
   # Note that zsh-syntax-highlighting must be the last plugin sourced
-  zsh-syntax-highlighting
+  # zsh-syntax-highlighting
 )
 
 ZSH_DOTENV_FILE=.dotenv
