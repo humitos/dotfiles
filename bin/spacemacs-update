@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+
+cd ~/.emacs.d
+git fetch origin
+git diff develop origin/develop
+
+read -p 'Do you want to update Spacemacs? [y/N] ' answer
+
+if [ "$answer" = 'y' ]
+then
+    echo Pulling origin develop...
+    git pull origin develop
+else
+    echo Quitting...
+fi
+
+cd -
