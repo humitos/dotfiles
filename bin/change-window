@@ -159,7 +159,7 @@ def main():
         else:
             cmd = program
         print('Command to execute:', cmd)
-        os.system(cmd)
+        os.system('nice {cmd} &'.format(cmd=cmd))
 
 
 if __name__ == '__main__':
