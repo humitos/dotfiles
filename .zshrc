@@ -5,10 +5,14 @@ export PATH=$HOME/bin:/usr/local/bin:$HOME/.pyenv/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH=/home/humitos/.oh-my-zsh
 
+# There was a problem with all the commands
+# _z_precmd:1: nice(5) failed: no such process
+# unsetopt BG_NICE
+
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="amuse"
+ZSH_THEME="avit"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -68,7 +72,7 @@ plugins=(
 
   # celery
   colored-man-pages
-  colorize
+  # colorize
   command-time
   common-aliases
   cp
@@ -81,8 +85,8 @@ plugins=(
   # interfers with my own commands
   # emacs
 
-  git
-  git-extra-commands
+  # git
+  # git-extra-commands
 
   # I don't like that it expands the alias
   # globalias
@@ -157,7 +161,7 @@ source ~/.zsh/functions
 source ~/.zsh/fzf
 source ~/.zsh/variables
 
-autoload -U +X bashcompinit && bashcompinit
+# autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /usr/bin/vault vault
 
 # https://github.com/pyenv/pyenv/issues/784#issuecomment-443792076
