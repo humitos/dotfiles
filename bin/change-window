@@ -109,18 +109,25 @@ def get_current_desktop_id():
 
 def main():
     program = sys.argv[1]
+    new_window = '--new-window' in sys.argv
+    application = COMMANDS_TO_WMCMD.get(program)
+
+    if new_window:
+        cmd = application.get('command')
+        print('Command to execute:', cmd)
+        os.system(f'nice {cmd} &')
+        return
+
     win_id, desktop_id = get_window_and_desktop_id(program)
     print('win_id:', win_id)
     print('desktop_id:', desktop_id)
-    application = COMMANDS_TO_WMCMD.get(program)
+
     if win_id != '':
         # Change to window opened
-        cmd = CHANGE_WINDOW.format(win_id)
-        print('Command to execute:', cmd)
-
+        change_window_cmd = CHANGE_WINDOW.format(win_id)
         current_desktop_id = get_current_desktop_id()
         if current_desktop_id == desktop_id:
-            if program == 'readthedocs-slack':
+            if program == 'slack':
                 brotab_cmd = (
                     "fades -d brotab -x brotab activate `fades -d brotab -x brotab list | grep irccloud | awk '{ print $1 }'`"
                 )
@@ -128,9 +135,8 @@ def main():
                 os.system(brotab_cmd)
         else:
             if application.get('open-new', False):
-                os.system(cmd)
-
-        os.system(cmd)
+                os.system(change_window_cmd)
+        os.system(change_window_cmd)
 
     else:
         # Execute the program
@@ -139,7 +145,7 @@ def main():
         else:
             cmd = program
         print('Command to execute:', cmd)
-        os.system('nice {cmd} &'.format(cmd=cmd))
+        os.system(f'nice {cmd} &')
 
 
 if __name__ == '__main__':
