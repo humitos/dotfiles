@@ -1,10 +1,8 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python3
 
-from __future__ import division, print_function, unicode_literals
-
-import commands
 import os
 import sys
+import subprocess
 
 # EXAMPLE OF wmctrl OUTPUT
 
@@ -31,7 +29,7 @@ import sys
 #       <property name="&lt;Super&gt;g" type="string" value="/home/humitos/bin/change-window google-chrome"/>
 # [...]
 
-TERMINAL_ENCODING = commands.getoutput('locale charmap')
+TERMINAL_ENCODING = subprocess.getoutput('locale charmap')
 LIST_WINDOWS = 'wmctrl -l -x | grep -i "{}" | grep -v grep'
 CHANGE_WINDOW = 'wmctrl -i -a {}'
 COMMANDS_TO_WMCMD = {
@@ -109,8 +107,7 @@ def get_window_and_desktop_id(command):
     if isinstance(window_title, dict):
         window_title = window_title.get('window-title')
 
-    output = commands.getoutput(LIST_WINDOWS.format(window_title))
-    output = output.decode(TERMINAL_ENCODING)
+    output = subprocess.getoutput(LIST_WINDOWS.format(window_title))
 
     application = COMMANDS_TO_WMCMD.get(command)
     current_desktop_id = get_current_desktop_id()
@@ -122,8 +119,7 @@ def get_window_and_desktop_id(command):
 
 
 def get_current_desktop_id():
-    output = commands.getoutput("wmctrl -d | grep '*'")
-    output = output.decode(TERMINAL_ENCODING)
+    output = subprocess.getoutput("wmctrl -d | grep '*'")
     return output.split()[0]
 
 
