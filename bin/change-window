@@ -33,31 +33,23 @@ TERMINAL_ENCODING = subprocess.getoutput('locale charmap')
 LIST_WINDOWS = 'wmctrl -l -x | grep -i "{}" | grep -v grep'
 CHANGE_WINDOW = 'wmctrl -i -a {}'
 COMMANDS_TO_WMCMD = {
-    'pidgin': 'Pidgin.Pidgin',
     'emacs': {
         'command': 'emacs --no-site-file --no-site-lisp',
         'window-title': 'emacs@julia',
         'open-new': False,
     },
     'thunar': 'Thunar.Thunar',
-    'xfce4-terminal': 'xfce4-terminal.Xfce4-terminal',
     'firefox': {
         'command': 'firefox',
         'window-title': 'Navigator.Firefox',
         'open-new': True,
     },
-    'josm-latest': 'sun-awt-X11-XFramePeer.org-openstreetmap-josm-Main',
     'google-chrome': {
         'command': 'google-chrome-stable --profile-directory="Profile 1"',
         'window-title': 'Google-chrome.Google-chrome',
         'open-new': False,
     },
-    'mozio-slack': {
-        'command': 'google-chrome-stable --app=https://mozio.slack.com/ --profile-directory=Default',
-        'window-title': 'Mozio Slack',
-        'open-new': False,
-    },
-    'readthedocs-slack': {
+    'slack': {
         # 'command':
         # 'firefox --safe-mode --new-window https://readthedocs.slack.com/',
         # 'google-chrome-stable --app=https://irccloud.com/ --profile-directory="Profile 1"',
@@ -69,27 +61,19 @@ COMMANDS_TO_WMCMD = {
     'whatsapp': {
         'command':
         'google-chrome-stable --app=https://web.whatsapp.com/ --profile-directory="Profile 1"',
-        'window-title':
-        'WhatsApp',
+        'window-title': 'WhatsApp',
         'open-new': False,
     },
     'telegram': {
         'command':
         'google-chrome-stable --app="https://web.telegram.org/" --profile-directory="Profile 1"',
-        'window-title':
-        'web.telegram.org.Google-chrome',
+        'window-title': 'web.telegram.org.Google-chrome',
         'open-new': False,
     },
-    'terminator': {
-        # 'command': 'terminator',
+    'terminal': {
         'command': 'kitty',
         'window-title': 'kitty.kitty',
         'open-new': True,
-    },
-    'readthedocs-dev': {
-        'command': 'terminator --layout=RTD',
-        'window-title': 'Read The Docs | Development',
-        'open-new': False,
     },
     'thunderbird': {
         'command': 'thunderbird-beta',
