@@ -7,6 +7,12 @@
 # sudo apt upgrade -dy
 # sudo apt dist-upgrade -dy
 
+# update RTD repositories and environments
+rtd_update_org_repositories
+rtd_update_com_repositories
+
+# rtd_docker_pull
+
 # ARCHLINUX
 sudo pacman -Suy --downloadonly --noconfirm
 # yaourt -Su --aur
@@ -35,11 +41,6 @@ cd ~/.oh-my-zsh/custom/plugins ; for plugin in `ls`; do cd $plugin ; git pull ; 
 
 # backup pacman database
 # yaourt -B /home/humitos/.pacman
-
-# update RTD repositories and environments
-rtd_update_org_repositories
-rtd_update_com_repositories
-# rtd_docker_pull
 
 # update raspberrypi packages
 # added `--ignore wpa_supplicant --ignore openssl` because of a bug in

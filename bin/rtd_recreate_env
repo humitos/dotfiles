@@ -15,9 +15,12 @@ do
     then
         $PIP install -r ~/rtfd/code/readthedocs.org/requirements.txt
         $PIP install -e ~/rtfd/code/readthedocs-corporate
+        $PIP install -e ~/rtfd/code/readthedocs.org
     else
         $PIP install -r ~/rtfd/code/$env/requirements.txt
     fi
+
+    $PIP install -e ~/rtfd/code/readthedocs-ext
 
     $PIP install -r ~/rtfd/code/requirements.elpy.in
     $PIP install tox watchdog
@@ -25,6 +28,9 @@ do
     $PIP install ipdb rpdb ripdb pdbpp fancycompleter pygments datadiff
     $PIP install pre-commit
     $PIP install supervisor
+
+    $PIP install docker-compose
+    $PIP install invoke
 
     # this one shouldn't be required but we are using system from pre-commit
     $PIP install prospector pylint-django pylint-celery
