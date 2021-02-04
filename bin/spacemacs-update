@@ -11,6 +11,18 @@ if [ "$answer" = 'y' ]
 then
     echo Pulling origin develop...
     git pull origin develop
+
+    echo
+    echo '*******************************************'
+    echo '       RE-INSTALL ALL PACKAGES             '
+    echo '*******************************************'
+    echo
+    read -p '[y/N] ' answer
+    if [ "$answer" = 'y' ]
+    then
+        echo Removing ~/.emacs.d/elpa ...
+        rm -rf ~/.emacs.d/elpa
+    fi
 else
     echo Quitting...
 fi
