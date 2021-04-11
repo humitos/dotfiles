@@ -5,9 +5,9 @@
 set -e
 
 # Connect Xiaomi MI8
-fusermount -u xiaomi-mi8 || echo
+# fusermount -u xiaomi-mi8 || echo
 
-jmtpfs xiaomi-mi8
+# jmtpfs xiaomi-mi8
 
 # Remove thumbnails which size it's crazy!
 # rm -rf 'nexus/interno compartido/DCIM/.thumbnails'
@@ -29,8 +29,9 @@ do
           --exclude .trash \
           --exclude debug_log \
           --remove-source-files \
-          xiaomi-mi8/Internal\ shared\ storage/$x/ \
+          # xiaomi-mi8/Internal\ shared\ storage/$x/ \
+          /run/user/1000/gvfs/mtp:host=Xiaomi_MI_8_f82db1c8/Internal\ shared\ storage/$x/ \
           '/run/media/humitos/Seagate Backup Plus Drive/xiaomi-mi8/'$x;
 done
 
-fusermount -u xiaomi-mi8
+# fusermount -u xiaomi-mi8
