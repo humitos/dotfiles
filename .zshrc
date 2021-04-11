@@ -70,17 +70,22 @@ plugins=(
   # pacman -S autojump
   autojump
 
+  asdf
+
   # celery
   colored-man-pages
   # colorize
   command-time
   common-aliases
   cp
+  direnv
   # django
   # docker-compose
   # docker
   dotenv
   extract
+
+  gpg-agent
 
   # interfers with my own commands
   # emacs
@@ -119,7 +124,7 @@ plugins=(
 ZSH_DOTENV_FILE=.dotenv
 ZSH_DOTENV_PROMPT=false
 
-zstyle :omz:plugins:ssh-agent lifetime 6h
+zstyle :omz:plugins:ssh-agent lifetime 10h
 
 # https://github.com/robbyrussell/oh-my-zsh
 source $ZSH/oh-my-zsh.sh

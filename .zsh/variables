@@ -18,3 +18,5 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 
 # Use binaries from current node modules
 export PATH=./node_modules/.bin:$PATH
+
+export DIRENV_WARN_TIMEOUT=10s
