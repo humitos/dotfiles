@@ -34,6 +34,8 @@ lp = log -p
 ls = log --stat
 st = status -s
 locate = ls-tree --name-only -r HEAD
+pr = "!f() { git fetch origin pull/${1}/head:pr/${1}; git checkout pr/${1}; }; f"
+prpush = "!f() { git push git@github.com:${2}/python-docs-es.git pr/${1}:${3}; }; f"
 serve-this = daemon --verbose --export-all --base-path=.git --reuseaddr --strict-paths .git/
 # Serve all RTD external repositories to test them
 # git clone git://localhost/requests
