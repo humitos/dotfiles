@@ -29,7 +29,6 @@ do
           --exclude .trash \
           --exclude debug_log \
           --remove-source-files \
-          # xiaomi-mi8/Internal\ shared\ storage/$x/ \
           /run/user/1000/gvfs/mtp:host=Xiaomi_MI_8_f82db1c8/Internal\ shared\ storage/$x/ \
           '/run/media/humitos/Seagate Backup Plus Drive/xiaomi-mi8/'$x;
 done
