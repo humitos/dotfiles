@@ -13,9 +13,8 @@ rtd_update_com_repositories
 
 # rtd_docker_pull
 
-# ARCHLINUX
-sudo pacman -Suy --downloadonly --noconfirm
-# yaourt -Su --aur
+# update asdf
+cd ~/.asdf; git pull ; cd -
 
 # update pyenv
 cd ~/.pyenv ; git pull ; cd -
@@ -29,6 +28,11 @@ cd ~/.nodenv/plugins/node-build ; git pull ; cd -
 cd ~/.oh-my-zsh ; git pull ; cd -
 cd ~/.oh-my-zsh/custom/plugins ; for plugin in `ls`; do cd $plugin ; git pull ; cd -; done
 
+# ARCHLINUX
+sudo pacman -Suy --downloadonly --noconfirm
+# yaourt -Su --aur
+
+yay -Pwwq
 
 # update fades
 # cd ~/.fades ; git pull ; cd -

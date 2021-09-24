@@ -1,6 +1,5 @@
 export LESS="-R"
 
-
 # Python "pip" configurations
 export PIP_USE_WHEEL=1
 

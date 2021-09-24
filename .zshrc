@@ -1,6 +1,6 @@
 # http://www.zsh.org/
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$HOME/.pyenv/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/humitos/.oh-my-zsh
@@ -85,6 +85,9 @@ plugins=(
   dotenv
   extract
 
+  # https://github.com/zdharma/history-search-multi-word
+  history-search-multi-word
+
   gpg-agent
 
   # interfers with my own commands
@@ -99,7 +102,7 @@ plugins=(
   # pacman -S httpie
   # httpie
 
-  pyenv
+  # pyenv
   python
   sudo
   # supervisor
@@ -163,14 +166,18 @@ source ~/.zsh/aliases
 source ~/.zsh/autosuggest
 source ~/.zsh/history
 source ~/.zsh/functions
-source ~/.zsh/fzf
+# source ~/.zsh/fzf
 source ~/.zsh/variables
+source ~/.zsh/ps1
 
 # autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /usr/bin/vault vault
 
 # https://github.com/pyenv/pyenv/issues/784#issuecomment-443792076
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv virtualenv-init -)"
+
+# nodenv
+# eval "$(nodenv init -)"
 
 # export PATH="$HOME/.rbenv/bin:$PATH"
 # eval "$(rbenv init -)"
