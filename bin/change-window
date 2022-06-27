@@ -50,12 +50,15 @@ COMMANDS_TO_WMCMD = {
         'open-new': False,
     },
     'slack': {
-        # 'command':
+        # https://techdows.com/2020/03/firefox-install-websites-as-apps-like-chrome.html
+        # 'command': 'firefox --ssb https://irccloud.com',
         # 'firefox --safe-mode --new-window https://readthedocs.slack.com/',
         # 'google-chrome-stable --app=https://irccloud.com/ --profile-directory="Profile 1"',
         # 'slack',
-        'window-title': ' | Read the Docs - Mozilla Firefox',
-        'open-new': False,
+        # 'command': 'irccloud',
+        'command': 'slack',
+        'window-title': '| Read the Docs',
+        'open-new': True,
         'switch-to-other-desktop': True,
     },
     'whatsapp': {
@@ -123,23 +126,34 @@ def main():
     print('desktop_id:', desktop_id)
 
     if win_id != '':
-        # Change to window opened
         change_window_cmd = CHANGE_WINDOW.format(win_id)
-        current_desktop_id = get_current_desktop_id()
-        if current_desktop_id == desktop_id:
-            if program == 'slack':
-                brotab_cmd = (
-                    "fades -d brotab -x brotab activate `fades -d brotab -x brotab list | grep irccloud | awk '{ print $1 }'`"
-                )
-                print(brotab_cmd)
-                os.system(brotab_cmd)
-        else:
-            if application.get('open-new', False):
-                os.system(change_window_cmd)
+        # Change to window opened
+        # current_desktop_id = get_current_desktop_id()
+        # if current_desktop_id == desktop_id:
+        #     if program == 'slack':
+        #         brotab_cmd = (
+        #             "fades -d brotab -x brotab activate `fades -d brotab -x brotab list | grep irccloud | awk '{ print $1 }'`"
+        #         )
+        #         print(brotab_cmd)
+        #         os.system(brotab_cmd)
+        # else:
         os.system(change_window_cmd)
 
     else:
         # Execute the program
+        # if program == 'slack':
+        #     tab_id = subprocess.getoutput("fades -d brotab -x brotab list | grep irccloud | awk '{ print $1 }'").strip()
+        #     print(f'tab_id: {tab_id}')
+        #     if tab_id:
+        #         brotab_cmd = f"fades -d brotab -x brotab activate {tab_id}"
+        #         os.system(brotab_cmd)
+
+        #         # Before switching windows, we need the tab to be active
+        #         win_id, desktop_id = get_window_and_desktop_id(program)
+        #         change_window_cmd = CHANGE_WINDOW.format(win_id)
+        #         os.system(change_window_cmd)
+        #         return
+
         if isinstance(application, dict):
             cmd = application['command']
         else:
