@@ -67,8 +67,14 @@ plugins=(
   # archlinux
 
   # aterminal
+
+  # Disabled because it's broken
+  # Traceback (most recent call last):
+  # File "/usr/bin/autojump", line 39, in <module>
+  #     from autojump_argparse import ArgumentParser
+  # ModuleNotFoundError: No module named 'autojump_argparse'
   # pacman -S autojump
-  autojump
+  # autojump
 
   asdf
 
@@ -117,11 +123,14 @@ plugins=(
 
   # auto jump into directories
   # yay -S z-git
-  # z
+  z
 
   # https://github.com/zsh-users/zsh-syntax-highlighting
   # Note that zsh-syntax-highlighting must be the last plugin sourced
   # zsh-syntax-highlighting
+
+  # https://github.com/nv1t/zsh-universal-variables
+  # zsh-universal-variables
 )
 
 ZSH_DOTENV_FILE=.dotenv
@@ -188,3 +197,10 @@ source ~/.zsh/ps1
 # eval "$(goenv init -)"
 # export PATH="$GOROOT/bin:$PATH"
 # export PATH="$GOPATH/bin:$PATH"
+
+
+# pipx
+# https://github.com/pypa/pipx
+export PATH=$HOME/.local/bin:$PATH
+source ${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc
+source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
