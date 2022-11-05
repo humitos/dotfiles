@@ -14,4 +14,4 @@ else
     notify-send -i video-display -t 4000 "Presentation mode"  Disabled
 fi
 
-xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode --set $SET_TO
+xfconf-query -c xfce4-power-manager -p /xfce4-power-manager/presentation-mode --type bool --create --set $SET_TO
