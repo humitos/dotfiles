@@ -14,8 +14,9 @@ aft-mtp-mount ~/realme
 
 # BE CAREFUL with ``--remove-source-files`` since it removes the files
 # transfered from source into destination
+# e.g. bluetooth
 # TODO: add more directories here once I found more
-for x in Documents Pictures DCIM bluetooth Download Telegram WhatsApp Slack;
+for x in Documents Pictures DCIM Download Telegram Android/media/com.whatsapp/WhatsApp/;
 do
     rsync -rav \
           --progress \
@@ -38,7 +39,7 @@ done
 # /run/user/1000/gvfs/mtp:host=realme_RMX3085_DE5DZHHI6LUOFQ6X/Internal\ shared\ storage/$x/ \
 
 # Same that previous command but without deleting files from the phone
-for x in Android/data/net.osmand;
+for x in Android/data/net.osmand/files/tracks Android/data/com.mapswithme.maps.pro;
 do
     rsync -rav \
           --progress \
