@@ -30,7 +30,7 @@ import subprocess
 # [...]
 
 TERMINAL_ENCODING = subprocess.getoutput('locale charmap')
-LIST_WINDOWS = 'wmctrl -l -x | grep -i "{}" | grep -v grep'
+LIST_WINDOWS = 'wmctrl -l -x | grep -i "{}" 2>/dev/null | grep -v grep | tail -n 1'
 CHANGE_WINDOW = 'wmctrl -i -a {}'
 COMMANDS_TO_WMCMD = {
     'emacs': {
@@ -57,7 +57,8 @@ COMMANDS_TO_WMCMD = {
         # 'slack',
         # 'command': 'irccloud',
         'command': 'slack',
-        'window-title': '| Read the Docs',
+        'window-title': '\- Read the Docs \- Slack',
+        # 'window-title': '| Read the Docs',
         'open-new': True,
         'switch-to-other-desktop': True,
     },
