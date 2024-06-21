@@ -18,12 +18,14 @@ alias e='emacsclient --no-wait --alternate-editor nvim'
 # alias docker-compose='fades -d docker-compose -x docker-compose'
 # alias ipython='fades -d ipython -x ipython'
 
-alias twine='fades -d twine -x twine'
+# alias twine='fades -d twine -x twine'
+alias r='direnv exec /home/humitos/rtfd/code/r inv --search-root ~/rtfd/code/r/'
 
 alias g=git
 alias py=python
 
-alias r='~/.pyenv/versions/r/bin/inv --search-root ~/rtfd/code/r/'
+# alias r='~/.pyenv/versions/r/bin/inv --search-root ~/rtfd/code/r/'
+alias ra='cd /home/humitos/rtfd/code/addons'
 alias rr='cd /home/humitos/rtfd/code/readthedocs.org'
 alias ro='cd /home/humitos/rtfd/code/readthedocs-ops'
 alias rc='cd /home/humitos/rtfd/code/readthedocs-corporate'
@@ -56,3 +58,6 @@ alias ll='exa -l'
 alias la='exa -la'
 alias lr='exa -R'
 alias lt='exa -l -T'
+
+# autojump and z
+alias j=z

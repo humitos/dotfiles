@@ -39,3 +39,13 @@ datasets/
 .mypy_cache/
 /TODOs.org
 /.dotenv
+/GPATH
+/GRTAGS
+/GTAGS
+/readthedocsinc/GTAGS
+/readthedocsinc/GRTAGS
+/readthedocsinc/GPATH
+.direnv
+.envrc
+.tool-versions
+dump_*.sql

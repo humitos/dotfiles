@@ -82,3 +82,6 @@ alias ping='colourify ping -c 5'
 
 alias vim=nvim
 alias v=nvim
+
+
+alias j=z

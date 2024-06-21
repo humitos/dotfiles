@@ -1,7 +1,7 @@
 #!/bin/bash
 
 RTD_PATH=/home/humitos/rtfd/code
-RTD_REPOSITORIES="blog internal-docs readthedocs-common readthedocs-docker-images readthedocs.org readthedocs-ops sphinx_rtd_theme test-builds sphinx-notfound-page sphinx-hoverxref sphinx-autoapi ethical-ad-server readthedocs-sphinx-ext ethical-ad-client reports abandoned-project ext-theme"
+RTD_REPOSITORIES="addons blog internal-docs readthedocs-common readthedocs-docker-images readthedocs.org readthedocs-ops sphinx_rtd_theme test-builds sphinx-notfound-page sphinx-hoverxref sphinx-autoapi ethical-ad-server readthedocs-sphinx-ext ethical-ad-client reports abandoned-project ext-theme"
 
 for REPO in ${RTD_REPOSITORIES}; do
   echo "Updating '${REPO}'...";

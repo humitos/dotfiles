@@ -1,13 +1,12 @@
 #!/bin/bash
 
 RTD_PATH=/home/humitos/rtfd
-RTD_IMAGES="readthedocs/build:ubuntu-20-2021.09.23"  # readthedocs/build:8.0"
+RTD_IMAGES="readthedocs/build:ubuntu-22.04-2024.01.29"
 
 for IMG in ${RTD_IMAGES}; do
   echo "Pulling docker image '${IMG}'...";
   docker pull ${IMG}
 done
-
 
 # remove all the untagged images to save space
 docker images | grep "<none>" | awk '{ print $3 }' | xargs -I '{}' docker rmi --force '{}'
@@ -20,5 +19,5 @@ docker rm -v $(docker ps -a -q -f status=exited)
 docker rmi $(docker images -f "dangling=true" -q)
 
 # more work on "dangling" ones
-# docker volume rm $(docker volume ls -qf dangling=true)
+docker volume rm $(docker volume ls -qf dangling=true | grep -v community_ | grep -v commercial_)
 # docker volume prune
