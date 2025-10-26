@@ -34,6 +34,16 @@ TERMINAL_ENCODING = subprocess.getoutput('locale charmap')
 LIST_WINDOWS = 'wmctrl -l -x | grep -i "{}" 2>/dev/null | grep -v grep | head -n 1'
 CHANGE_WINDOW = 'wmctrl -i -a {}'
 COMMANDS_TO_WMCMD = {
+    'obsidian': {
+        'command': 'obsidian',
+        'window-title': 'Obsidian',
+        'open-new': False,
+    },
+    'vscode': {
+        'command': 'code',
+        'window-title': 'Visual Studio Code',
+        'open-new': False,
+    },
     'emacs': {
         'command': 'emacs --no-site-file --no-site-lisp',
         'window-title': 'emacs@julia',
@@ -42,11 +52,12 @@ COMMANDS_TO_WMCMD = {
     'thunar': 'Thunar.Thunar',
     'firefox': {
         'command': 'firefox',
+        'nice': 5,
         'window-title': 'Navigator.Firefox',
         'open-new': True,
     },
     'google-chrome': {
-        'command': 'google-chrome-stable --profile-directory="Profile 1"',
+        'command': 'google-chrome-stable --profile-directory="Profile 2"',
         'window-title': 'Google-chrome.Google-chrome',
         'open-new': False,
     },
@@ -58,6 +69,7 @@ COMMANDS_TO_WMCMD = {
         # 'slack',
         # 'command': 'irccloud',
         'command': 'slack',
+        'nice': 5,
         'window-title': '\\- Read the Docs \\- Slack',
         # 'window-title': '\- Read the Docs \- Slack',
         # 'window-title': '| Read the Docs',
@@ -66,7 +78,7 @@ COMMANDS_TO_WMCMD = {
     },
     'whatsapp': {
         'command':
-        'google-chrome-stable --app=https://web.whatsapp.com/ --profile-directory="Profile 1"',
+        'google-chrome-stable --app=https://web.whatsapp.com/ --profile-directory="Profile 2"',
         'window-title': 'WhatsApp',
         'open-new': False,
     },
@@ -79,6 +91,11 @@ COMMANDS_TO_WMCMD = {
     'terminal': {
         'command': 'kitty',
         'window-title': 'kitty.kitty',
+        'open-new': True,
+    },
+    'keepassxc': {
+        'command': 'keepassxc',
+        'window-title': 'keepassxc.KeePassXC',
         'open-new': True,
     },
     'thunderbird': {
@@ -120,8 +137,10 @@ def main():
 
     if new_window:
         cmd = application.get('command')
-        print('Command to execute:', cmd)
-        os.system(f'nice {cmd} &')
+        nice = application.get('nice', 10)
+        full_command = f'nice -n {nice} {cmd} &'
+        print('Command to execute:', full_command)
+        os.system(full_command)
         return
 
     win_id, desktop_id = get_window_and_desktop_id(program)
@@ -159,10 +178,14 @@ def main():
 
         if isinstance(application, dict):
             cmd = application['command']
+            nice = application.get('nice', 10)
         else:
             cmd = program
-        print('Command to execute:', cmd)
-        os.system(f'nice {cmd} &')
+            nice = 10
+
+        full_command = f'nice -n {nice} {cmd} &'
+        print('Command to execute:', full_command)
+        os.system(full_command)
 
 
 if __name__ == '__main__':
