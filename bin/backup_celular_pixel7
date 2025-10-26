@@ -1,0 +1,63 @@
+#!/bin/bash
+# Connect Seagate Backup Plus Drive
+# Mount point: /run/media/humitos/Seagate Backup Plus Drive
+
+set -e
+
+# Connect Realme Phone
+mkdir -p ~/pixel7
+fusermount -u pixel7 || echo
+udisksctl mount -b /dev/sda1 || echo
+
+echo "Mounting the phone"
+aft-mtp-mount ~/pixel7
+
+# Create destination directory
+mkdir -p '/run/media/humitos/Seagate Backup Plus Drive/pixel7' || echo
+
+# BE CAREFUL with ``--remove-source-files`` since it removes the files
+# transfered from source into destination
+# e.g. bluetooth
+# TODO: add more directories here once I found more
+for x in Documents Pictures Movies DCIM Download Telegram Android/media/com.whatsapp/WhatsApp/ Android/media/org.telegram.messenger/;
+do
+    rsync -rav \
+          --progress \
+          --omit-dir-times \
+          --no-perms \
+          --inplace \
+          --size-only \
+          --exclude .thumbnails \
+          --exclude .music \
+          --exclude .cache \
+          --exclude .Shared \
+          --exclude .trash \
+          --exclude debug_log \
+          --remove-source-files \
+          ~/pixel7/Internal\ shared\ storage/$x/ \
+          '/run/media/humitos/Seagate Backup Plus Drive/pixel7/'$x;
+done
+
+# Old path
+# /run/user/1000/gvfs/mtp:host=realme_RMX3085_DE5DZHHI6LUOFQ6X/Internal\ shared\ storage/$x/ \
+
+# Same that previous command but without deleting files from the phone
+for x in Android/data/net.osmand/files/tracks Android/data/com.mapswithme.maps.pro;
+do
+    rsync -rav \
+          --progress \
+          --omit-dir-times \
+          --no-perms \
+          --inplace \
+          --size-only \
+          --exclude .thumbnails \
+          --exclude .music \
+          --exclude .cache \
+          --exclude .Shared \
+          --exclude .trash \
+          --exclude debug_log \
+          ~/pixel7/Internal\ shared\ storage/$x/ \
+          '/run/media/humitos/Seagate Backup Plus Drive/pixel7/'$x;
+done
+
+fusermount -u pixel7 || echo "Phone already un-mounted"
