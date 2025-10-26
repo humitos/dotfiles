@@ -18,4 +18,11 @@ export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 # Use binaries from current node modules
 export PATH=./node_modules/.bin:$PATH
 
+# Add asdf to the path
+# export PATH=~/.asdf/bin:$PATH
+export ASDF_DATA_DIR="/home/humitos/.asdf"
+
 export DIRENV_WARN_TIMEOUT=10s
+
+export KP_WORK_DB="/home/humitos/Sync/keepassxc/work.kdbx"
+export KP_HUMITOS_DB="/home/humitos/Sync/keepassxc/humitos.kdbx"

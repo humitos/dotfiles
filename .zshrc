@@ -88,7 +88,7 @@ plugins=(
   # django
   # docker-compose
   # docker
-  dotenv
+  # dotenv
   extract
 
   # https://github.com/zdharma/history-search-multi-word
@@ -112,7 +112,9 @@ plugins=(
   python
   sudo
   # supervisor
-  ssh-agent
+
+  # TODO: re-enable, just a test
+  # ssh-agent
 
   # pacman -S thefuck
   # thefuck
@@ -133,8 +135,8 @@ plugins=(
   # zsh-universal-variables
 )
 
-ZSH_DOTENV_FILE=.dotenv
-ZSH_DOTENV_PROMPT=false
+# ZSH_DOTENV_FILE=.dotenv
+# ZSH_DOTENV_PROMPT=false
 
 zstyle :omz:plugins:ssh-agent lifetime 10h
 
@@ -202,5 +204,5 @@ source ~/.zsh/ps1
 # pipx
 # https://github.com/pypa/pipx
 export PATH=$HOME/.local/bin:$PATH
-source ${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc
-source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"
+# source ${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc
+# source "${XDG_CONFIG_HOME:-$HOME/.config}/asdf-direnv/zshrc"

@@ -1,7 +1,7 @@
 [core]
 editor = "emacs -nw --quick"
 excludesfile = /home/humitos/.gitignore_global
-pager = delta
+pager = less
 
 [delta]
 plus-style = "syntax #012800"
