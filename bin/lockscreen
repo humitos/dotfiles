@@ -10,3 +10,9 @@ dm-tool lock
 
 # I uninstall light-locker because it behaves weird
 # https://forum.manjaro.org/t/xfce-has-some-sort-of-double-lockscreen/30491/18
+
+
+
+# Suspend is being blocked by YouTube videos or similars,
+# so I'm triggering suspend manually here.
+systemctl suspend
